@@ -1,0 +1,106 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+
+}
+/* INICIO DO HEADER*/
+.logocabecalho {
+    width: 150px;
+
+}
+
+
+.navbar {
+    background-color: transparent !important;
+
+}
+
+header {
+    background-color: #eef4ed;
+    display: flex;
+    justify-content: flex-end;
+    /* Alinha à esquerda */
+    align-items: center;
+    /* Alinha verticalmente */
+
+}
+
+.btn {
+    background-color: #13315c;
+    color: white;
+   margin-right: 25px; 
+} .btn:hover {
+    cursor: pointer;
+    transition: 0.3s;
+    background-color: #0b2545;
+    color: white;
+}
+  /*               PRECISA ALTERAR OS LINKS              */
+.nav-item {
+    color: black !important; 
+    width: auto;
+    padding-left: 30px ;
+   
+}
+/*FIM DO HEADER*/
+
+.home {
+  display: flex;
+ /* flex-direction: column; */
+  gap: 20px; /* Espaço entre imagem e texto */
+  align-items: center;
+ margin: 50px; 
+  margin-left: 200px;
+margin-right:200px;
+}
+
+/*.home-container-mae {
+    flex-direction: row;
+}*/
+
+.imagem-container {
+    flex: 1;
+  max-width: 420px; /* limita a largura da imagem */
+
+}
+
+.imagem-home {
+  width: 100%; /* imagem ocupa 100% do container limitado */
+  height: auto;
+  border-radius: 8px;
+}
+
+.container-texto {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+ align-items: center;
+} p{
+    line-height: 1.7; /* Espaçamento entre as linhas para facilitar a leitura */
+    margin-bottom: 18px;
+     max-width: 650px;
+       color: #444; /*adicionei cor cinza nas letras, para facilitar a escrita*/
+       font-size: 1.05em;
+        font-weight: normal;
+            /* Alinhamento do texto */
+    text-align: justify; /* Alinha o texto nas bordas, criando um bloco mais limpo */
+}
+
+titulo{
+   /*  margin-bottom: 25px;  Aumenta o espaço para destacar o título */
+   /* text-transform: uppercase;
+      font-size: 2.5em; /* Ajuste o tamanho para ser impactante */
+    /*  font-weight: 700; /* Mais encorpado para o título */
+}
+
+@media screen and (max-width: 1200px) {
+.container-texto {
+    color: red;
+}
+}

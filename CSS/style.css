@@ -102,7 +102,7 @@ body {
 p {
     line-height: 1.7;
     /* Espaçamento entre as linhas para facilitar a leitura */
-    margin-bottom: 18px;
+    margin-bottom: 17px;
     max-width: 650px;
     color: #444;
     /*adicionei cor cinza nas letras, para facilitar a escrita*/
@@ -113,11 +113,34 @@ p {
     /* Alinha o texto nas bordas, criando um bloco mais limpo */
 }
 
-titulo {
-    /*  margin-bottom: 25px;  Aumenta o espaço para destacar o título */
-    /* text-transform: uppercase;
+.quem-sou {
+    display: flex;
+    flex-direction: row-reverse ;
+    gap: 20px;
+    /* Espaço entre imagem e texto */
+    align-items: center;
+    margin: 50px;
+    margin-left: 200px;
+    margin-right: 200px;
+}
+
+.feedback{
+   display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    margin: 50px auto;
+    max-width: 1000px;
+    width: 70%;
+    padding: 0 20px;
+}
+.titulo {
+      margin-bottom: 25px;  /*Aumenta o espaço para destacar o título*/
+    
+       text-transform: uppercase;
       font-size: 2.5em; /* Ajuste o tamanho para ser impactante */
-    /*  font-weight: 700; /* Mais encorpado para o título */
+     font-weight: 700; /* Mais encorpado para o título */
+     
 }
 
 @media screen and (max-width: 1200px) {
@@ -127,8 +150,14 @@ titulo {
         gap: 30px;
     }
 
+    .quem-sou {
+        flex-direction: column;
+        margin: 20px;
+        gap: 30px;
+    }
+
     .imagem-container {
-        max-width: 100%;
+        max-width: 90%;
     }
 
     .container-texto {

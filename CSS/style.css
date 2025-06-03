@@ -162,7 +162,88 @@ p {
     padding-bottom: 80px;
 }
 
+.agendamento {
+    background-color: #8DA9C4;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+    padding-right: 1rem;
+    padding-left: 1rem;
+}
 
+.titulo-formulario::before {
+     margin-bottom: 25px;
+    /*Aumenta o espaço para destacar o título*/
+    padding-top: 25px;
+    text-transform: uppercase;
+    font-size: 2.5em;
+    /* Ajuste o tamanho para ser impactante */
+    font-weight: 700;
+    /* Mais encorpado para o título */
+    text-align: center;
+    display: block;
+}
+
+form {
+    width: 800px;
+    max-width: 32rem;
+    font-size: 1.125rem;
+}
+
+label, input, textarea, button {
+    display: block;
+    width: 100%;
+    
+}
+
+label {
+    line-height: 1;
+    margin-bottom: 0.5 rem;
+}
+
+input, textarea, select {
+    font: inherit;
+    
+    padding: 0.5rem;
+    padding: auto;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    transition: border-color,
+    box-shadow 0.2s;
+}
+
+textarea {
+    min-height: 13rem;
+    resize:vertical;
+}
+
+input:hover, input:focus,
+textarea:hover, textarea:focus {
+    outline: none;
+    border-color: #134074;
+    box-shadow: 0 0 0 0.3px #134074;
+}
+
+.btn-agendamento {
+    display: block;
+    padding: 1rem;
+    background-color: #13315c;
+    color: white;
+    font: inherit;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-agendamento:hover, .btn-agendamento:focus{
+    outline: none;
+    background-color: #0b2545;
+}
 
 footer {
     background-color: #eef4ed;

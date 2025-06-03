@@ -7,15 +7,18 @@
 
 body {
     font-family: 'Roboto', sans-serif;
+     padding-top: 70px;
 }
 
 /* INICIO DO HEADER*/
 header {
     text-transform: uppercase;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Garante que fique acima de outros elementos */
 }
-
-
-
 
 .logocabecalho {
     width: 150px;
@@ -25,7 +28,8 @@ header {
 
 .navbar {
     background-color: transparent !important;
-
+     margin-top: 0;
+    padding-top: 0;
 }
 
 .container-fluid {
@@ -107,6 +111,7 @@ header {
 .titulo {
     margin-bottom: 25px;
     /*Aumenta o espaço para destacar o título*/
+    padding-top: 25px;
     text-transform: uppercase;
     font-size: 2.5em;
     /* Ajuste o tamanho para ser impactante */
@@ -149,6 +154,12 @@ p {
     max-width: 1000px;
     width: 50%;
     padding: 0 20px;
+}
+
+.servico{
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-bottom: 80px;
 }
 
 footer {
@@ -227,7 +238,15 @@ footer .text-center {
         max-width: 100%;
     }
 
-      footer .row {
+    .row {
+        padding-bottom: 0px ;
+    }
+
+    .col-md-4 {
+        padding-bottom: 50px;
+    }
+
+    footer .row {
         flex-direction: column;
         text-align: center;
     }

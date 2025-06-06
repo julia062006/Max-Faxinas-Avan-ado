@@ -143,14 +143,26 @@ form.addEventListener("submit", (event) => {
     event.preventDefault();
 
     //verifica se o nome está vazio
-    if(nameInput.value === "" ) {
+    if(nameInput.value === "") {
         alert("Por favor, preencha seu nome")
         return;
     }
 
+    //verifica se o nome esta escrito corretamente
+    if ( !isNomeValid(nameInput.value)) {
+      alert("Por favor, preencha seu nome corretamente (somente letras e espaços).");
+      return;
+    }
+
     //verifica se o email esta prenchido e se é valido
-    if (emailInput.valeu === "" || !isEmailValid(emailInput.value)) {
-      alert("Por favor, preencha seu email")
+    if (emailInput.value === "") {
+      alert("Por favor, preencha seu email");
+      return;
+    }
+
+    //verifica se o email esta escrito corrtamente
+    if (!isEmailValid(emailInput.value)) {
+      alert("Por favor, preencha seu email corretamente")
       return;
     }
 
@@ -183,9 +195,22 @@ function isEmailValid(email) {
   } 
 
   return false; 
-  
+
+}
+
+//Função que válida o nome
+function isNomeValid(nome) {
+  //cria uma regex para validar o nome
+const nomeRegex = new RegExp(
+  /^[A-Za-zÀ-ÖØ-öø-ÿ\s]+$/
+)
+
+if(nomeRegex.test(nome) && nome.trim().length > 1) {
+  return true;
+}
+return false;
 }
 </script>
 </body>
 
-</html
+</html>

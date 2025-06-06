@@ -1,0 +1,13 @@
+<h1 class="tex-center">
+    Erro 404
+</h1>
+
+<h2 class="text-center">
+        A página que você está tentando entrar não existe ou foi removida!
+</h2>
+<p class="text-center">
+    <img src="imagens/" alt="404">
+</p>
+<p class="text-center">
+    <a href="home" title="Home" class="btn">
+</p>

@@ -6,7 +6,7 @@
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Nunito', sans-serif;
      padding-top: 70px;
 }
 
@@ -31,6 +31,7 @@ header {
      margin-top: 0;
     padding-top: 0;
 }
+
 
 .container-fluid {
     background-color: #eef4ed;
@@ -72,6 +73,7 @@ header {
 /*FIM DO HEADER*/
 
 .home {
+    background-image: url('imagens/sala-cozinha-da-casa.jpeg');
     display: flex;
     /* flex-direction: column; */
     gap: 20px;
@@ -82,15 +84,9 @@ header {
     margin-right: 200px;
 }
 
-/*.home-container-mae {
-    flex-direction: row;
-}*/
-
-.imagem-container {
-    flex: 1;
-    max-width: 420px;
-    /* limita a largura da imagem */
-
+.conteudo-banner p {
+    font-size: 1.3em;
+    max-width: 600px;
 }
 
 .imagem-home {
@@ -120,7 +116,9 @@ header {
     text-align: center;
 }
 
-p {
+
+
+.p-texto {
     line-height: 1.7;
     /* Espaçamento entre as linhas para facilitar a leitura */
     margin-bottom: 17px;
@@ -132,6 +130,38 @@ p {
     /* Alinhamento do texto */
     text-align: justify;
     /* Alinha o texto nas bordas, criando um bloco mais limpo */
+     font-family: 'Poppins', sans-serif;
+}
+
+/*.inicio {
+    background: url('../imagens/sala-cozinha-redimensionada.png');
+    width: 100%;
+    height: 900px;
+    display: inline-block;
+}*/
+
+.inicio {
+  width: 100%;
+  height: 100vh;
+  background-image: linear-gradient(rgba(255, 248, 248, 0.6), rgba(0,0,0,0.6)), url('../imagens/sala-cozinha-redimensionada.png');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.inicio-slogan {
+    width: 30%;
+    justify-content: left !important;
+    margin-right: 1000px;
+}
+
+.slogan {
+  color: black;
+  font-size: 3rem;
+  text-align: center;
+  font-family: sans-serif;
 }
 
 .quem-sou {
@@ -145,15 +175,31 @@ p {
     margin-right: 200px;
 }
 
+.valores {
+    background-color:#8DA9C4;
+}
+
+
+
+.btn.btn-primary {
+    border: none;
+}
+
+.servico{
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-bottom: 80px;
+}
+
 .feedback {
     display: flex;
     flex-direction: column;
     gap: 20px;
     align-items: center;
-    margin: 50px auto;
-    max-width: 1000px;
-    width: 50%;
+    margin: 0;
+    width: 100%;
     padding: 0 20px;
+    background-color: #8DA9C4;
 }
 
 .servico {
@@ -169,7 +215,7 @@ p {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Nunito' , sans-serif;
     padding-right: 1rem;
     padding-left: 1rem;
 }
@@ -238,12 +284,14 @@ textarea:hover, textarea:focus {
     border-radius: 8px;
     cursor: pointer;
     transition: 0.2s;
+    
 }
 
 .btn-agendamento:hover, .btn-agendamento:focus{
     outline: none;
     background-color: #0b2545;
 }
+
 
 footer {
     background-color: #eef4ed;

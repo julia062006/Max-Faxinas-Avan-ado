@@ -57,19 +57,21 @@
   </header>
 
   <main>
-    <?php
+   
+<?php
       //incluir o arquivo do array
         include "array.php";
         
       $pagina = $_GET["param"] ?? "home";
 
-      //a variavel esta recebendo o arquivo home
+     // a variavel esta recebendo o arquivo home
       $pagina = "home";
 
-      //home -> pages/home.php
+
+     // home -> pages/home.php
       $pagina = "pages/{$pagina}.php";
 
-      //verficar se a pagina existe
+     // verficar se a pagina existe
       if (file_exists($pagina)) {
         include $pagina;
       } else {
@@ -77,6 +79,7 @@
       }
 
     ?>
+
   </main>
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">

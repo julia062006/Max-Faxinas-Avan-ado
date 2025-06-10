@@ -56,11 +56,26 @@
     </nav>
   </header>
 
-  <main class="container">
+  <main>
     <?php
       //incluir o arquivo do array
-        include "array.php"
+        include "array.php";
         
+      $pagina = $_GET["param"] ?? "home";
+
+      //a variavel esta recebendo o arquivo home
+      $pagina = "home";
+
+      //home -> pages/home.php
+      $pagina = "pages/{$pagina}.php";
+
+      //verficar se a pagina existe
+      if (file_exists($pagina)) {
+        include $pagina;
+      } else {
+        include "pages/erro.php";
+      }
+
     ?>
   </main>
 

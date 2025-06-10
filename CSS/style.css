@@ -40,7 +40,6 @@ header {
     /* Alinha à esquerda */
     align-items: center;
     /* Alinha verticalmente */
-
 }
 
 .navbar-collapse {
@@ -140,6 +139,7 @@ header {
     display: inline-block;
 }*/
 
+/*erro no tamanho, burns disse q pode ser algo q esta centralizando*/
 .inicio {
   width: 100%;
   height: 100vh;

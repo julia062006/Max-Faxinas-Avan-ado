@@ -1,3 +1,11 @@
+<?php
+  //print_r($_SERVER);
+  $base = $_SERVER['SERVER_NAME'] . $_SERVER['SCRIPT_NAME'];
+  //SERVER_NAME -> localhost / www.uol.com.br (esse uol é um exemplo)
+  //SCRIPT_NAME -> /Faxinas%Max/index.php
+  //echo $base; (era so para ver se estava funcionando)
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -7,6 +15,9 @@
   <title>Max Faxinas</title>
 
   <!-- Ícone da aba -->
+  
+  <base href="http://<?=$base?>">
+
   <link rel="shortcut icon" href="imagens/Casa max.png">
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -39,16 +50,16 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="indexHome.html">Home</a>
+              <a class="nav-link" aria-current="page" href="index.php?param=home">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="quemSou.html">Quem sou</a>
+              <a class="nav-link" href="index.php?param=quemSou">Quem sou</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="servico.html">Serviços</a>
+              <a class="nav-link" href="index.php?param=servico">Serviços</a>
             </li>
             <li class="nav-item">
-              <a class="btn" href="agendamento.html">Agendamento</a>
+              <a class="btn" href="index.php?param=agendamento">Agendamento</a>
             </li>
           </ul>
         </div>
@@ -56,17 +67,24 @@
     </nav>
   </header>
 
-  <main>
+<main>
    
-<?php
+  <?php
+    //print_r($_GET);
+    $param = $_GET["param"];
+
       //incluir o arquivo do array
         include "array.php";
         
       $pagina = $_GET["param"] ?? "home";
 
-     // a variavel esta recebendo o arquivo home
-      $pagina = "home";
+      //produto/0 - produto 0
+      $param = explode("/", $pagina);
+     // print_r($param); teste
+     //$pagina = $param(0);
+      $id = $param[1] ?? NULL;
 
+      echo $id;
 
      // home -> pages/home.php
       $pagina = "pages/{$pagina}.php";
@@ -77,14 +95,13 @@
       } else {
         include "pages/erro.php";
       }
+  ?>
 
-    ?>
+</main>
 
-  </main>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-
-  <footer class="bg-light text-center text-lg-start">
+ <footer class="bg-light text-center text-lg-start">
     <div class="container p-4">
       <div class="row">
         <!-- Sobre -->

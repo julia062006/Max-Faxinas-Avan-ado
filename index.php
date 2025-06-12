@@ -71,7 +71,7 @@
    
   <?php
     //print_r($_GET);
-    $param = $_GET["param"];
+    //$param = $_GET["param"];
 
       //incluir o arquivo do array
         include "array.php";
@@ -104,27 +104,8 @@
  <footer class="bg-light text-center text-lg-start">
     <div class="container p-4">
       <div class="row">
-        <!-- Sobre -->
-        <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-          <h5 class="text-uppercase mb-3">Max Faxinas</h5>
-          <p>
-            Cuidamos da sua casa com carinho e dedicação, oferecendo serviços de limpeza para que você tenha mais tempo
-            livre, conforto e bem-estar.
-          </p>
-        </div>
 
-        <!-- Links -->
-        <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-          <h5 class="text-uppercase mb-3">Links Rápidos</h5>
-          <ul class="list-unstyled">
-            <li><a href="indexHome.html" class="text-dark text-decoration-none">Home</a></li>
-            <li><a href="quemSou.html" class="text-dark text-decoration-none">Quem Sou</a></li>
-            <li><a href="servico.html" class="text-dark text-decoration-none">Serviços</a></li>
-            <li><a href="agendamento.html" class="text-dark text-decoration-none">Agendamento</a></li>
-          </ul>
-        </div>
-
-        <!-- Contato -->
+       <!-- Contato -->
         <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
           <h5 class="text-uppercase mb-3">Contato</h5>
           <p class="mb-2">
@@ -139,6 +120,26 @@
             Araruna/Paraná
           </p>
         </div>
+
+        <!-- Links -->
+        <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase mb-3">Links Rápidos</h5>
+          <ul class="list-unstyled">
+            <li><a href="home.php" class="text-dark text-decoration-none">Home</a></li>
+            <li><a href="quemSou.php" class="text-dark text-decoration-none">Quem Sou</a></li>
+            <li><a href="servico.php" class="text-dark text-decoration-none">Serviços</a></li>
+            <li><a href="agendamento.php" class="text-dark text-decoration-none">Agendamento</a></li>
+          </ul>
+        </div>
+
+         <!-- Sobre -->
+        <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+          <h5 class="text-uppercase mb-3">Max Faxinas</h5>
+          <p>
+            Cuidamos da sua casa com carinho e dedicação, oferecendo serviços de limpeza para que você tenha mais tempo
+            livre, conforto e bem-estar.
+          </p>
+        </div>       
       </div>
     </div>
 

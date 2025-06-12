@@ -1,14 +1,23 @@
+<?php include 'array.php'; // o arquivo com seu array ?>
+<?php
+  $numero_whatsapp = "554499444208"; // Número fixo com DDI + DDD
+?>
+
 <section class="servico">
   <h2 class="titulo">Nossos Serviços</h2>
   <div class="row">
     <?php foreach ($servico as $servicoAtual): ?>
+       <?php
+        $mensagem = urlencode($servicoAtual['mensagem']);
+        $link = "https://wa.me/{$numero_whatsapp}?text={$mensagem}";
+       ?>
       <div class="col-md-4">
         <div class="card">
           <img src="<?= $servicoAtual['foto'] ?>" class="card-img-top" alt="<?= $s['nome'] ?>">
           <div class="card-body">
             <h5 class="card-title"><?= $servicoAtual['nome'] ?></h5>
             <p class="card-text"><?= $servicoAtual['descricao'] ?></p>
-            <a href="#" class="btn btn-primary">Agende Agora</a>
+             <a href="<?= $link ?>" target="_blank" class="btn btn-primary d-block mx-auto">Agende agora pelo WhatsApp</a>
           </div>
         </div>
       </div>

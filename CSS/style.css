@@ -143,7 +143,7 @@ header {
 .inicio {
   width: 100%;
   height: 100vh;
-  background-image: linear-gradient(rgba(255, 248, 248, 0.6), rgba(0,0,0,0.6)), url('../imagens/sala-cozinha-redimensionada.png');
+  background-image: linear-gradient(to right, rgba(255, 248, 248, 0.6), rgba(0,0,0,0.6)), url('../imagens/sala-cozinha-redimensionada.png');
   background-size: cover;
   background-position: center;
   display: flex;

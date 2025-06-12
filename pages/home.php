@@ -4,20 +4,19 @@
         <h1 class="slogan titulo-slogan">O cuidado que seu lar merece e o tempo livre que você precisa.</h1>
       </div>
     </section>
-    </section>
-
+    </section>    
     <section class="feedback">
       <h1 class="titulo">Por que escolher a Max Faxinas?</h1>
       <div id="carouselExample" class="carousel slide">
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img src="imagens/1-feedback.png" class="d-block w-100" alt="Primeiro feedback">
+            <img src="imagens/1-feedback.png" loading="eager" class="d-block w-100 carousel-img" alt="Primeiro feedback">
           </div>
           <div class="carousel-item">
-            <img src="imagens/2-feedback.png" class="d-block w-100" alt="Segundo feedback">
+            <img src="imagens/2-feedback.png" loading="eager" class="d-block w-100 carousel-img" alt="Segundo feedback">
           </div>
           <div class="carousel-item">
-            <img src="imagens/3-feedback.png" class="d-block w-100" alt="Terceiro feedback">
+            <img src="imagens/3-feedback.png"loading="eager" class="d-block w-100 carousel-img" alt="Terceiro feedback">
           </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">

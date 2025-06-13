@@ -6,7 +6,7 @@
       <input type="text" id="name">
 
       <label for="email">E-mail:</label>
-      <input type="email" id="email">
+      <input type="text" id="email">
 
       <label for="telefone">Telefone:</label>
       <input type="text" id="telefone" class="telefone">
@@ -67,8 +67,8 @@
       alert("Por favor, preencha seu email");
       return;
     }
-    //verifica se o EMAIL esta escrito corrtamente
-    if (!isEmailValid(emailInput.value)) {
+    //verifica se o EMAIL esta escrito corretamente
+    if (!isEmailValid(emailInput.value.trim())) {
       alert("Por favor, preencha seu email corretamente")
       return;
     }

@@ -18,8 +18,7 @@
         </p>
 
         <p class="container-texto p-texto">
-          Fora do trabalho, valorizo profundamente os momentos simples ao lado da família e a caminhada na fé católica.
-          Eu acredito que são as pequenas ações feitas com amor que verdadeiramente transformam o mundo ao nosso redor.
+         Valorizo os momentos simples com a família e minha fé católica, acreditando que pequenas ações feitas com amor transformam o mundo.
         </p>
         </div>
         <div class="col-12 col-md-4">
@@ -38,7 +37,9 @@
       <div class="col-md-4 mb-4">
         <div class="card h-100">
           <div class="card-body">
-            <h5 class="card-title">Quem é a Max Faxinas</h5>
+            <h5 class="card-title">
+               <i class="bi bi-house-door-fill"></i>Quem é a Max Faxinas
+              </h5>
             <p class="card-text">
               A Max Faxinas oferece serviços de limpeza e higienização residencial.
               A empresa se destaca pelo <strong>profissionalismo, responsabilidade e cuidado</strong>,
@@ -52,7 +53,9 @@
       <div class="col-md-4 mb-4">
         <div class="card h-100">
           <div class="card-body">
-            <h5 class="card-title">Nossa Missão</h5>
+            <h5 class="card-title">
+              <i class="bi bi-bullseye"></i>Nossa Missão Max
+            </h5>
             <p class="card-text">
              <strong>Nossa missão é proporcionar mais tempo livre e qualidade de vida</strong>, cuidando da limpeza do seu lar com
               atenção aos detalhes e total comprometimento.
@@ -65,7 +68,9 @@
       <div class="col-md-4 mb-4">
         <div class="card h-100">
           <div class="card-body">
-            <h5 class="card-title">Nosso Propósito</h5>
+            <h5 class="card-title">
+              <i class="bi bi-heart-fill"></i>Nosso Propósito Max
+              </h5>
             <p class="card-text">
               <strong>Max Faxinas: O cuidado que seu lar merece e o tempo livre que você precisa.</strong>
             </p>

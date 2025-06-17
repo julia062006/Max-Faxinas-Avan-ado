@@ -9,7 +9,7 @@
     <img src="imagens/404.webp" alt="404">
 </p>
 <p class="text-center">
-    <a href="home" title="Home" class="btn">
+    <a href="home.php" title="Home" class="btn">
         Página Inicial
     </a>
 </p>

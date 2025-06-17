@@ -1,7 +1,8 @@
 <main>
     <section class="inicio">
       <div class="inicio-slogan">
-        <h1 class="slogan titulo-slogan">O cuidado que seu lar merece e o tempo livre que você precisa.</h1>
+        <h1 class="titulo-slogan">O cuidado que seu lar merece e o tempo livre que você precisa.</h1>
+        <p class="btn" style="margin-top:20px">Agende agora</p>
       </div>
     </section>
     </section>    

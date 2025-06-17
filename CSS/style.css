@@ -139,11 +139,11 @@ header {
     display: inline-block;
 }*/
 
-/*erro no tamanho, burns disse q pode ser algo q esta centralizando*/
+
 .inicio {
   width: 100%;
   height: 100vh;
-  background-image: linear-gradient(to right, rgba(255, 248, 248, 0.6), rgba(0,0,0,0.6)), url('../imagens/sala-cozinha-redimensionada.png');
+ background-image: linear-gradient(to right, rgba(255, 255, 255, 2.8)30%, rgba(255, 255, 255, 0)), url('../imagens/sala-cozinha-redimensionada.png');
   background-size: cover;
   background-position: center;
   display: flex;
@@ -151,17 +151,21 @@ header {
   align-items: center;
 }
 
+
 .inicio-slogan {
     width: 30%;
     justify-content: left !important;
-    margin-right: 1000px;
+    margin-right: 950px;
+    margin-left: 48px;
+
 }
 
-.slogan {
+.titulo-slogan {
   color: black;
-  font-size: 3rem;
-  text-align: center;
+  font-size: 46px;
   font-family: sans-serif;
+  text-transform: uppercase;
+  font-weight: bold;
 }
 
 .quem-sou {

@@ -1,7 +1,7 @@
 
 
 RewriteEngine On
-RewriteBase /FaxinasMax/
+#RewriteBase /FaxinasMax/
 
 # Se o arquivo ou diretório não existir
 RewriteCond %{REQUEST_FILENAME} !-f

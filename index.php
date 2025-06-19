@@ -1,6 +1,6 @@
 <?php
   //print_r($_SERVER);
-  $base = $_SERVER['SERVER_NAME'] . $_SERVER['SCRIPT_NAME'];
+  $base = "http://{$_SERVER['SERVER_NAME']}{$_SERVER['SCRIPT_NAME']}";
   //SERVER_NAME -> localhost / www.uol.com.br (esse uol é um exemplo)
   //SCRIPT_NAME -> /Faxinas%Max/index.php
   //echo $base; (era so para ver se estava funcionando)
@@ -16,7 +16,7 @@
 
   <!-- Ícone da aba -->
   
-  <base href="http://<?=$base?>">
+  <base href="<?=$base?>">
 
   <link rel="shortcut icon" href="imagens/Casa max.png">
   <!-- Bootstrap CSS -->
@@ -50,16 +50,16 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="index.php?param=home">Home</a>
+              <a class="nav-link" aria-current="page" href="home">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="index.php?param=quemSou">Quem sou</a>
+              <a class="nav-link" href="quemsou">Quem sou</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="index.php?param=servico">Serviços</a>
+              <a class="nav-link" href="servico">Serviços</a>
             </li>
             <li class="nav-item">
-              <a class="btn" href="index.php?param=agendamento">Agendamento</a>
+              <a class="btn" href="agendamento">Agendamento</a>
             </li>
           </ul>
         </div>
@@ -70,17 +70,20 @@
 <main>
    
   <?php
-    //print_r($_GET);
-    //$param = $_GET["param"];
-
       //incluir o arquivo do array
         include "array.php";
-        
-      $pagina = $_GET["param"] ?? "home";
+      
+        $pagina = "home";
+        if(isset($_GET["param"])) {
+          $param = explode("/", $_GET["param"]);
+          $pagina = $param[0];
+        }
 
-      //produto/0 - produto 0
-      $param = explode("/", $pagina);
-     // print_r($param); teste
+
+    //$pagina = $_GET["param"] ?? "home";
+
+    // cometei  $param = explode("/", $pagina);
+     
      //$pagina = $param(0);
       $id = $param[1] ?? NULL;
 
@@ -125,10 +128,10 @@
         <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
           <h5 class="text-uppercase mb-3">Links Rápidos</h5>
           <ul class="list-unstyled">
-            <li><a href="home.php" class="text-dark text-decoration-none">Home</a></li>
-            <li><a href="quemSou.php" class="text-dark text-decoration-none">Quem Sou</a></li>
-            <li><a href="servico.php" class="text-dark text-decoration-none">Serviços</a></li>
-            <li><a href="agendamento.php" class="text-dark text-decoration-none">Agendamento</a></li>
+            <li><a href="home" class="text-dark text-decoration-none">Home</a></li>
+            <li><a href="quemSou" class="text-dark text-decoration-none">Quem Sou</a></li>
+            <li><a href="servico" class="text-dark text-decoration-none">Serviços</a></li>
+            <li><a href="agendamento" class="text-dark text-decoration-none">Agendamento</a></li>
           </ul>
         </div>
 

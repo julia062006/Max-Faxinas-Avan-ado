@@ -13,7 +13,7 @@
        ?>
       <div class="col-md-4">
         <div class="card">
-          <img src="<?= $servicoAtual['foto'] ?>" class="card-img-top" alt="<?= $s['nome'] ?>">
+          <img src="<?= $servicoAtual['foto'] ?>" class="card-img-top" alt="<?= $servicoAtual['nome'] ?>">
           <div class="card-body">
             <h5 class="card-title"><?= $servicoAtual['nome'] ?></h5>
             <p class="card-text"><?= $servicoAtual['descricao'] ?></p>
@@ -23,4 +23,6 @@
       </div>
     <?php endforeach; ?>
   </div>
+
+     
 </section>

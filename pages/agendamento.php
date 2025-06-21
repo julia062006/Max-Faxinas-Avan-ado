@@ -6,13 +6,13 @@
       <input type="text" id="name">
 
       <label for="email">E-mail:</label>
-      <input type="text" id="email">
+      <input type="email" id="email">
 
       <label for="telefone">Telefone:</label>
-      <input type="text" id="telefone" class="telefone">
+      <input type="tel" id="telefone" class="telefone">
 
       <label for="number">CEP:</label>
-      <input type="text" id="cep" class="cep"> 
+      <input type="tel" id="cep" class="cep"> 
 
       <label for="job">Você já usou nossos serviços antes?</label>
       <select name="job" id="job">

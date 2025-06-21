@@ -13,7 +13,7 @@
 
         <p class="container-texto p-texto">
           Sou casada há mais de 50 anos com o Pedro, fruto de uma união que gerou três filhos, hoje abençoados com cinco
-          netos que são minha alegria. Sempre fui aquela pessoa que abraça várias tarefas no dia a dia — além de cuidardo lar, também costuro com amor e produzo queijo artesanal, mantendo viva a tradição e o cuidado com cada
+          netos que são minha alegria. Sempre fui aquela pessoa que abraça várias tarefas no dia a dia — além de cuidar do lar, também costuro com amor e produzo queijo artesanal, mantendo viva a tradição e o cuidado com cada
           detalhe.
         </p>
 
@@ -22,7 +22,7 @@
         </p>
         </div>
         <div class="col-12 col-md-4">
-          <img class="imagem-home w-100" src="imagens/retrato-de-um-mulher-senior.jpg" alt="Foto da Maximina">
+          <img class="imagem-home w-100" src="imagens/retrato-de-um-mulher-senior.jpg" alt="Retrato de Maximina, fundadora da Max Faxinas">
         </div>
       </div>
      

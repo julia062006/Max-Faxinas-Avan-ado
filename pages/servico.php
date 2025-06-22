@@ -4,15 +4,15 @@
 ?>
 
 <section class="servico">
-  <h1 class="titulo titulo-mobile">Nossos Serviços</h1>
-  <div class="row">
+  <h1 class="titulo">Nossos Serviços</h1>
+  <div class="row justify-content-center">
     <?php foreach ($servico as $servicoAtual): ?>
        <?php
         $mensagem = urlencode($servicoAtual['mensagem']);
         $link = "https://wa.me/{$numero_whatsapp}?text={$mensagem}";
        ?>
-      <div class="col-md-4">
-        <div class="card">
+      <div class="col-md-4 mb-4 mobile-centralizado">
+        <div class="card text-center">
           <img src="<?= $servicoAtual['foto'] ?>" class="card-img-top" alt="<?= $servicoAtual['nome'] ?>">
           <div class="card-body">
             <h5 class="card-title"><?= $servicoAtual['nome'] ?></h5>

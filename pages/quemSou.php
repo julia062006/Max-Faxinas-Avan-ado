@@ -34,7 +34,7 @@
     <div class="row text-center">
 
       <!-- Card 1 - Quem é a Max Faxinas -->
-      <div class="col-md-4 mb-4">
+      <div class="col-md-4 mb-4 mobile-centralizado">
         <div class="card h-100">
           <div class="card-body">
             <h5 class="card-title">
@@ -50,7 +50,7 @@
       </div>
 
       <!-- Card 2 - Missão -->
-      <div class="col-md-4 mb-4">
+      <div class="col-md-4 mb-4 mobile-centralizado">
         <div class="card h-100">
           <div class="card-body">
             <h5 class="card-title">
@@ -65,7 +65,7 @@
       </div>
 
       <!-- Card 3 - Slogan -->
-      <div class="col-md-4 mb-4">
+      <div class="col-md-4 mb-4 mobile-centralizado">
         <div class="card h-100">
           <div class="card-body">
             <h5 class="card-title">

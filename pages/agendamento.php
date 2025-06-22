@@ -1,30 +1,44 @@
  <main>
    <section class="agendamento">
-    <h1 class="titulo">Formulário Max</h1> 
+    <h1 class="titulo mb-4">Formulário Max</h1> 
     <form id="form">
-      <label for="name">Nome:</label>
-      <input type="text" id="name">
+     <div class="mb-3">
+      <label for="name" class="form-label">Nome:</label>
+       <input type="text" id="name" class="form-control" placeholder="Digite seu nome">
+    </div>
 
-      <label for="email">E-mail:</label>
-      <input type="email" id="email">
+     <div class="mb-3">
+      <label for="email" class="form-label">E-mail:</label>
+      <input type="email" id="email" class="form-control" placeholder="Digite seu e-mail">
+    </div>
 
-      <label for="telefone">Telefone:</label>
-      <input type="tel" id="telefone" class="telefone">
+    <div class="mb-3">
+      <label for="telefone" class="form-label">Telefone:</label>
+      <input type="tel" id="telefone" class="form-control telefone" placeholder="(XX) XXXXX-XXXX">
+    </div>
 
-      <label for="number">CEP:</label>
-      <input type="tel" id="cep" class="cep"> 
+       <div class="mb-3">
+      <label for="cep" class="form-label">CEP:</label>
+      <input type="tel" id="cep" class="form-control cep" placeholder="XXXXX-XXX">
+    </div>
 
-      <label for="job">Você já usou nossos serviços antes?</label>
-      <select name="job" id="job">
+        <div class="mb-3">
+      <label for="job" class="form-label">Você já usou nossos serviços antes?</label>
+      <select name="job" id="job" class="form-select">
         <option value="">Selecione uma opção</option>
         <option value="yes">Sim</option>
         <option value="no">Não</option>
       </select>
+    </div>
 
-      <label for="message">Mensagem:</label>
-      <textarea name="message" id="message"></textarea>
+       <div class="col-12">
+      <label for="message" class="form-label">Mensagem:</label>
+      <textarea name="message" id="message" class="form-control" rows="4" placeholder="Escreva sua mensagem"></textarea>
+    </div>
 
-      <button class="btn-agendamento" type="submit">Enviar</button>
+    <div class="col-12">
+      <button class="btn btn-primary btn-agendamento" type="submit">Enviar</button>
+    </div>
     </form>
 
 

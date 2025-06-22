@@ -7,8 +7,10 @@
 
 body {
     font-family: 'Nunito', sans-serif;
-     padding-top: 70px;
+    padding-top: 70px;
 }
+
+
 
 /* INICIO DO HEADER*/
 header {
@@ -17,7 +19,8 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1000; /* Garante que fique acima de outros elementos */
+    z-index: 1000;
+    /* Garante que fique acima de outros elementos */
 }
 
 .logocabecalho {
@@ -28,14 +31,14 @@ header {
 
 .navbar {
     background-color: transparent !important;
-     margin-top: 0;
+    margin-top: 0;
     padding-top: 0;
 }
 
 .navbar-toggler {
-  width: auto !important;
-  padding: 5px 10px;
-  border: 1px solid #ccc;
+    width: auto !important;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
 }
 
 
@@ -116,23 +119,23 @@ header {
     /* Alinhamento do texto */
     text-align: justify;
     /* Alinha o texto nas bordas, criando um bloco mais limpo */
-     font-family: 'Poppins', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 /*Começa o site*/
 
 .inicio {
-  width: 100%;
-  /*height: 100vh;*/
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 2.8)30%, rgba(255, 255, 255, 0)), url('../imagens/sala-cozinha-redimensionada.png');
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  
-  justify-content: center;
-  align-items: center;
-  padding-top: 90px !important;
-  padding-bottom: 90px;
+    width: 100%;
+    /*height: 100vh;*/
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 2.8)30%, rgba(255, 255, 255, 0)), url('../imagens/sala-cozinha-redimensionada.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    padding-top: 90px !important;
+    padding-bottom: 90px;
 }
 
 
@@ -146,11 +149,11 @@ header {
 }
 
 .titulo-slogan {
-  color: #0b2545;
-  font-size: 46px;
-  font-family: sans-serif;
-  text-transform: uppercase;
-  font-weight: bold;
+    color:  #0b2545;
+    font-size: 46px;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
 .quem-sou {
@@ -165,21 +168,30 @@ header {
 }
 
 .valores {
-    background-color:#8DA9C4;
+    background-color: #8DA9C4;
 }
 
 .card-title {
-  font-family: 'Nunito', sans-serif;  /* usa a mesma fonte do body */
-  font-weight: 700;                    /* negrito consistente */
-  font-size: 1.3rem;                   /* tamanho destacado */
-  color: #13315c;                     /* azul escuro, mesma cor do botão */
-  text-transform: uppercase;           /* mantém uppercase */
-  letter-spacing: 1.2px;               /* espaçamento entre letras */
-  margin-bottom: 0.6rem;               /* espaço abaixo do título */
-  padding-bottom: 0.4rem;
-  display: flex;                      /* para alinhar texto + ícone */
-  align-items: center;
-  gap: 0.6rem;                       /* espaço entre ícone e texto */
+    font-family: 'Nunito', sans-serif;
+    /* usa a mesma fonte do body */
+    font-weight: 700;
+    /* negrito consistente */
+    font-size: 1.3rem;
+    /* tamanho destacado */
+    color: #13315c;
+    /* azul escuro, mesma cor do botão */
+    text-transform: uppercase;
+    /* mantém uppercase */
+    letter-spacing: 1.2px;
+    /* espaçamento entre letras */
+    margin-bottom: 0.6rem;
+    /* espaço abaixo do título */
+    padding-bottom: 0.4rem;
+    display: flex;
+    /* para alinhar texto + ícone */
+    align-items: center;
+    gap: 0.6rem;
+    /* espaço entre ícone e texto */
 }
 
 
@@ -187,7 +199,7 @@ header {
     border: none;
 }
 
-.servico{
+.servico {
     padding-left: 100px;
     padding-right: 100px;
     padding-bottom: 80px;
@@ -196,57 +208,71 @@ header {
 .feedback {
     display: flex;
     flex-direction: column;
-     gap: 20px; 
+    gap: 20px;
     align-items: center;
     margin: 0;
     width: 100%;
     background-color: #8DA9C4;
 }
 
- /* aq estava os item do carrossel */
- .carousel-inner { 
-  height: 300px; /* Defina a altura padrão do carrossel */
-  height: 100vh; 
+/* aq estava os item do carrossel */
+.carousel-inner {
+    height: 300px;
+    /* Defina a altura padrão do carrossel */
+    height: 100vh;
 }
 
 .carousel-item {
-  height: 100%;
-  transition: none !important;
-  animation: none !important;
-  position: absolute;
-   position: absolute;
-  inset: 0;
-  height: 100%;
-  width: 100%;
-  opacity: 0;
-  transition: none !important;
-} 
+    height: 100%;
+    transition: none !important;
+    animation: none !important;
+    position: absolute;
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: none !important;
+}
 
 .carousel-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  transition: none !important;
-  transform: scale(1) !important;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: none !important;
+    transform: scale(1) !important;
 }
 
 
 
 .agendamento {
+     width: 100%;
+    max-width: 100%;
     background-color: #8DA9C4;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    font-family: 'Nunito' , sans-serif;
+    font-family: 'Nunito', sans-serif;
     padding-right: 1rem;
     padding-left: 1rem;
+    
+  box-sizing: border-box;
+  
+}
+
+.agendamento input,
+.agendamento textarea,
+.agendamento select {
+  max-width: 100%;
+  width: 100%;
+   box-sizing: border-box;
 }
 
 .titulo-formulario::before {
-     margin-bottom: 25px;
+    margin-bottom: 25px;
     /*Aumenta o espaço para destacar o título*/
     padding-top: 25px;
     text-transform: uppercase;
@@ -264,24 +290,33 @@ form {
     font-size: 1.125rem;
 }
 
-label, input, textarea, button, select {
+label,
+input,
+textarea,
+button,
+select {
     display: block;
     width: 100%;
 }
 
 label {
     line-height: 1;
-    margin-bottom: 0.5rem; /* Corrigido: antes estava com espaço extra em '0.5 rem' */
+    margin-bottom: 0.5rem;
+    /* Corrigido: antes estava com espaço extra em '0.5 rem' */
 }
 
-input, textarea, select {
-     font: inherit;
+input,
+textarea,
+select {
+    font: inherit;
     padding: 0.5rem;
     margin-bottom: 1rem;
-    border: 2px solid #ccc; /* Borda inicial */
+    border: 2px solid #ccc;
+    /* Borda inicial */
     border-radius: 8px;
     transition: border-color 0.2s, box-shadow 0.2s;
-    outline: none; /* Remove o contorno azul padrão do navegador */
+    outline: none;
+    /* Remove o contorno azul padrão do navegador */
 }
 
 textarea {
@@ -289,8 +324,10 @@ textarea {
     resize: vertical;
 }
 
-input:hover, input:focus,
-textarea:hover, textarea:focus {
+input:hover,
+input:focus,
+textarea:hover,
+textarea:focus {
     outline: none;
     border-color: #134074;
     box-shadow: 0 0 0 0.3px #134074;
@@ -310,7 +347,8 @@ textarea:hover, textarea:focus {
     margin-bottom: 60px !important;
 }
 
-.btn-agendamento:hover, .btn-agendamento:focus{
+.btn-agendamento:hover,
+.btn-agendamento:focus {
     outline: none;
     background-color: #0b2545;
 }
@@ -327,7 +365,7 @@ footer h5 {
     margin-bottom: 20px;
 }
 
-footer p, 
+footer p,
 footer a {
     color: #444;
     font-size: 0.98em;
@@ -350,42 +388,87 @@ footer .text-center {
     font-size: 0.9em;
 }
 
+.pagina-404 {
+  padding: 40px 15px;
+}
+
+.pagina-404 h1 {
+  font-size: 3rem;
+  color: #13315c;
+  margin-bottom: 20px;
+}
+
+.pagina-404 h2 {
+  font-size: 1.5rem;
+  color: #444;
+  margin-bottom: 10px;
+}
+
+.pagina-404 img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.pagina-404 .btn {
+  padding: 10px 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
 
 .mobile-only {
-  display: none; /* Esconde por padrão */
-   background: none !important; /* REMOVE QUALQUER BACKGROUND VINDO DE OUTRO LUGAR */
-  background-image: none !important;
+    display: none;
+    /* Esconde por padrão */
+    background: none !important;
+    /* REMOVE QUALQUER BACKGROUND VINDO DE OUTRO LUGAR */
+    background-image: none !important;
 }
 
 
 @media screen and (max-width: 1200px) {
-   
-  .mobile-only {
-    display: block; /* Mostra só em telas menores */
-    background-color: #e6e9ebd6 !important;
-    padding: 15px;
-    text-align: center;
+
+
+    .mobile-only {
+        display: block;
+        /* Mostra só em telas menores */
+        background-color: #e6e9ebd6 !important;
+        padding: 15px;
+        text-align: center;
+    }
+
+    .mobile-only h1 {
+        font-size: 25px;
+        line-height: 1.2;
+        margin-bottom: 15px;
+    }
+
+    .mobile-only img {
+        width: 100%;
+        height: auto;
+        margin-bottom: 20px !important;
+        border-radius: 8px;
+    }
+
+    .mobile-only .btn {
+        display: inline-block;
+        padding: 12px 20px;
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+     .mobile-centralizado {
+    display: flex;
+    justify-content: center;
   }
 
-  .mobile-only h1 {
-    font-size: 25px;
-    line-height: 1.2;
-    margin-bottom: 15px;
+  .mobile-centralizado .card {
+    width: 100%;         /* Aumenta a largura */
+    padding: 10px;       /* Espaço interno extra */
+    border-radius: 12px; /* Se quiser cantos mais arredondados */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra leve pra dar destaque */
+
   }
-
-.mobile-only img {
-    width: 100%;
-    height: auto;
-    margin-bottom: 20px !important;
-    border-radius: 8px;
-}
-
-.mobile-only .btn {
-    display: inline-block;
-    padding: 12px 20px;
-    font-weight: bold;
-    font-size: 16px;
-}
 
     .quem-sou {
         flex-direction: column;
@@ -397,21 +480,7 @@ footer .text-center {
         max-width: 100%;
         border-radius: 10px !important;
     }
-
-.servico {
-    
-    align-items: center;
-}
-
-.titulo-mobile {
-    margin-left: 20px;
-}
-
- .card {
-    width: 300px;
-    align-items: center;   
- }
-
+  
     .titulo {
         max-width: 100%;
         margin-bottom: 25px;
@@ -432,16 +501,44 @@ footer .text-center {
         text-align: center;
     }
 
-    .feedback {
-        max-width: 100%;
-    }
+  
+  form {
+    width: 90%;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+
+ 
+   .btn-agendamento {
+    margin-bottom: 5px !important;
+  }
+
+ .agendamento {
+   max-width: 100%;         /* No mobile: máximo 90% da largura da tela */
+    min-height: auto;
+    padding-top: 30px;
+    padding-bottom: 40px;
+    
+  }
+
+
+
+  .agendamento input,
+  .agendamento textarea,
+  .agendamento select,
+  .agendamento button {
+    width: 100%;
+    max-width: 100%;
+  
+  }
 
     .row {
-        padding-bottom: 0px ;
+        padding-bottom: 0px;
     }
 
     .col-md-4 {
-        padding-bottom: 50px;
+        padding-bottom: 10px;
     }
 
     footer .row {

@@ -1,15 +1,15 @@
-<h1 class="text-center">
-    Erro 404
-</h1>
+<section class="pagina-404 text-center">
+  <h1>Erro 404</h1>
 
-<h2 class="text-center">
-        A página que você está tentando entrar não existe ou foi removida!
-</h2>
-<p class="text-center">
-    <img src="imagens/404.webp" alt="404">
-</p>
-<p class="text-center">
-    <a href="home" title="Home" class="btn">
-        Página Inicial
+  <h2>A página que você está tentando acessar não existe ou foi removida!</h2>
+
+  <p>
+    <img src="imagens/404.webp" alt="Erro 404 - Página não encontrada" style="max-width: 100%; height: auto;">
+  </p>
+
+  <p>
+    <a href="home" title="Página Inicial" class="btn btn-primary">
+      Voltar para a Página Inicial
     </a>
-</p>
+  </p>
+</section>

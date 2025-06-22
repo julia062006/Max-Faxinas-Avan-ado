@@ -22,7 +22,7 @@
         </p>
         </div>
         <div class="col-12 col-md-4">
-          <img class="imagem-home w-100" src="imagens/retrato-de-um-mulher-senior.jpg" alt="Retrato de Maximina, fundadora da Max Faxinas">
+          <img class="imagem-vo w-100" src="imagens/retrato-de-um-mulher-senior.jpg" alt="Retrato de Maximina, fundadora da Max Faxinas">
         </div>
       </div>
      

@@ -4,7 +4,7 @@
 ?>
 
 <section class="servico">
-  <h2 class="titulo">Nossos Serviços</h2>
+  <h1 class="titulo titulo-mobile">Nossos Serviços</h1>
   <div class="row">
     <?php foreach ($servico as $servicoAtual): ?>
        <?php

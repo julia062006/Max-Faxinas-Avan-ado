@@ -13,7 +13,7 @@
 <section class="mobile-only">
   <img src="imagens/sala-cozinha-da-casa.jpeg" alt="Imagem Mobile" style="width:100%; height:auto; margin-bottom:20px;">
   <h1 class="titulo-slogan">O cuidado que seu lar merece e o tempo livre que você precisa.</h1>
-  <a href="https://wa.me/554499444208?text=Olá! Tenho interesse nos serviços Max Faxinas." class="btn btn-primary" target="_blank">Agende agora</a>
+  <a href="https://wa.me/554499444208?text=Olá! Tenho interesse nos serviços Max Faxinas." class="btn btn-primary btn" target="_blank">Agende agora</a>
 </section>
 
 

@@ -32,6 +32,12 @@ header {
     padding-top: 0;
 }
 
+.navbar-toggler {
+  width: auto !important;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+}
+
 
 .container-fluid {
     background-color: #eef4ed;
@@ -51,7 +57,7 @@ header {
     background-color: #13315c;
     color: white;
     margin-right: 25px;
-
+    font-weight: bold;
 }
 
 .btn:hover {
@@ -225,11 +231,7 @@ header {
   transform: scale(1) !important;
 }
 
-.servico {
-    padding-left: 100px;
-    padding-right: 100px;
-    padding-bottom: 80px;
-}
+
 
 .agendamento {
     background-color: #8DA9C4;
@@ -359,8 +361,31 @@ footer .text-center {
 @media screen and (max-width: 1200px) {
    
   .mobile-only {
-    display: block; /* Mostra só em telas até 768px */
+    display: block; /* Mostra só em telas menores */
+    background-color: #e6e9ebd6 !important;
+    padding: 15px;
+    text-align: center;
   }
+
+  .mobile-only h1 {
+    font-size: 25px;
+    line-height: 1.2;
+    margin-bottom: 15px;
+  }
+
+.mobile-only img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px !important;
+    border-radius: 8px;
+}
+
+.mobile-only .btn {
+    display: inline-block;
+    padding: 12px 20px;
+    font-weight: bold;
+    font-size: 16px;
+}
 
     .quem-sou {
         flex-direction: column;
@@ -368,9 +393,24 @@ footer .text-center {
         gap: 30px;
     }
 
-    .imagem-container {
-        max-width: 90%;
+    .imagem-vo {
+        max-width: 100%;
+        border-radius: 10px !important;
     }
+
+.servico {
+    
+    align-items: center;
+}
+
+.titulo-mobile {
+    margin-left: 20px;
+}
+
+ .card {
+    width: 300px;
+    align-items: center;   
+ }
 
     .titulo {
         max-width: 100%;

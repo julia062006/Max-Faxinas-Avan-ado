@@ -81,11 +81,6 @@
           $param = explode("/", $_GET["param"]);
           $pagina = $param[0];
         }
-
-
-    //$pagina = $_GET["param"] ?? "home";
-
-    // cometei  $param = explode("/", $pagina);
      
      //$pagina = $param(0);
       $id = $param[1] ?? NULL;

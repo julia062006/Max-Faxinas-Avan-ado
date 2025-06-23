@@ -6,14 +6,13 @@
           <h1 class="titulo text-center">Quem sou</h1>
          <p class="container-texto p-texto">
            Me chamo Maximina, uma mulher batalhadora e apaixonada pela arte de cuidar do lar e transformar ambientes.
-          Minha paixão pela organização e limpeza virou missão: ajudar pessoas que, assim como eu, valorizam um lar
-          acolhedor. Sou detalhista, responsável e comprometida em levar conforto, leveza e bem-estar a cada casa que
+          Sou apaixonada pela organização, responsável e comprometida em levar conforto, leveza e bem-estar a cada casa que
           atendo.
         </p>
 
         <p class="container-texto p-texto">
           Sou casada há mais de 50 anos com o Pedro, fruto de uma união que gerou três filhos, hoje abençoados com cinco
-          netos que são minha alegria. Sempre fui aquela pessoa que abraça várias tarefas no dia a dia — além de cuidar do lar, também costuro com amor e produzo queijo artesanal, mantendo viva a tradição e o cuidado com cada
+          netos que são minha alegria. Sempre fui aquela pessoa que abraça várias tarefas no dia a dia — além de cuidar do lar, também costuro com amor, mantendo viva a tradição e o cuidado com cada
           detalhe.
         </p>
 
@@ -22,7 +21,7 @@
         </p>
         </div>
         <div class="col-12 col-md-4">
-          <img class="imagem-vo w-100" src="imagens/maximina-chat.png" alt="Retrato de Maximina, fundadora da Max Faxinas">
+          <img class="imagem-vo w-100" src="imagens/maximina.jpg" alt="Retrato de Maximina, fundadora da Max Faxinas">
         </div>
       </div>
      

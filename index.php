@@ -127,7 +127,7 @@
           <h5 class="text-uppercase mb-3">Links Rápidos</h5>
           <ul class="list-unstyled">
             <li><a href="home" class="text-dark text-decoration-none">Home</a></li>
-            <li><a href="quemSou" class="text-dark text-decoration-none">Quem Sou</a></li>
+            <li><a href="quemsou" class="text-dark text-decoration-none">Quem Sou</a></li>
             <li><a href="servico" class="text-dark text-decoration-none">Serviços</a></li>
             <li><a href="agendamento" class="text-dark text-decoration-none">Agendamento</a></li>
           </ul>

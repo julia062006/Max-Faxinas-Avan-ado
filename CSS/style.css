@@ -59,7 +59,7 @@ header {
 .btn {
     background-color: #13315c;
     color: white;
-    margin-right: 25px;
+    
     font-weight: bold;
 }
 
@@ -507,8 +507,6 @@ footer .text-center {
     max-width: 90%;
     margin: 0 auto;
   }
-
-
  
    .btn-agendamento {
     margin-bottom: 5px !important;

@@ -209,39 +209,27 @@ header {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    align-items: center;
     margin: 0;
     width: 100%;
     background-color: #8DA9C4;
 }
 
+.titulo-feedback {
+    margin-bottom: 0px;
+    /*Aumenta o espaço para destacar o título*/
+    padding-top: 30px;
+    text-transform: uppercase;
+    font-size: 2.5em;
+    /* Ajuste o tamanho para ser impactante */
+    font-weight: 700;
+    /* Mais encorpado para o título */
+    text-align: center;
+}
+
 /* aq estava os item do carrossel */
-.carousel-inner {
-    height: 300px;
-    /* Defina a altura padrão do carrossel */
-    height: 100vh;
-}
-
-.carousel-item {
-    height: 100%;
-    transition: none !important;
-    animation: none !important;
-    position: absolute;
-    position: absolute;
-    inset: 0;
-    height: 100%;
-    width: 100%;
-    opacity: 0;
-    transition: none !important;
-}
-
-.carousel-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    transition: none !important;
-    transform: scale(1) !important;
+#carouselExample {
+  max-width: 800px; /* Largura máxima no desktop */
+  margin: 0 auto;    /* Centralizar */
 }
 
 
@@ -258,8 +246,7 @@ header {
     font-family: 'Nunito', sans-serif;
     padding-right: 1rem;
     padding-left: 1rem;
-    
-  box-sizing: border-box;
+    box-sizing: border-box;
   
 }
 
@@ -428,7 +415,6 @@ footer .text-center {
 
 @media screen and (max-width: 1200px) {
 
-
     .mobile-only {
         display: block;
         /* Mostra só em telas menores */
@@ -470,6 +456,24 @@ footer .text-center {
 
   }
 
+  .titulo-feedback {
+    margin-bottom: 0px;
+    /*Aumenta o espaço para destacar o título*/
+    padding-top: 30px;
+    text-transform: uppercase;
+    font-size: 1.8em;
+    /* Ajuste o tamanho para ser impactante */
+    font-weight: 600;
+    /* Mais encorpado para o título */
+    text-align: center;
+}
+
+#carouselExample {
+  max-width: 800px; /* Largura máxima no desktop */
+  margin: 0 auto;    /* Centralizar */
+  padding-bottom: 80px;
+}
+
     .quem-sou {
         flex-direction: column;
         margin: 20px;
@@ -481,17 +485,6 @@ footer .text-center {
         border-radius: 10px !important;
     }
   
-    .titulo {
-        max-width: 100%;
-        margin-bottom: 25px;
-        /*Aumenta o espaço para destacar o título*/
-        text-transform: uppercase;
-        font-size: 25px;
-        /* Ajuste o tamanho para ser impactante */
-        font-weight: 700;
-        /* Mais encorpado para o título */
-    }
-
     .container-texto {
         align-items: center;
         text-align: center;
@@ -517,10 +510,7 @@ footer .text-center {
     min-height: auto;
     padding-top: 30px;
     padding-bottom: 40px;
-    
   }
-
-
 
   .agendamento input,
   .agendamento textarea,
@@ -554,12 +544,22 @@ footer .text-center {
     font-size: 1rem;
   }
 
-  .card {
-    margin: 0 auto;
-    width: 90%;
-  }
 
-  .card-body {
-    padding: 10px;
-  }
+   .titulo-feedback {
+    margin-bottom: 0px;
+    /*Aumenta o espaço para destacar o título*/
+    padding-top: 30px;
+    text-transform: uppercase;
+    font-size: 1.8em;
+    /* Ajuste o tamanho para ser impactante */
+    font-weight: 600;
+    /* Mais encorpado para o título */
+    text-align: center;
+}
+
+#carouselExample {
+  max-width: 800px; /* Largura máxima no desktop */
+  margin: 0 auto;    /* Centralizar */
+  padding-bottom: 80px;
+}
 }

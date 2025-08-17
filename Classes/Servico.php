@@ -13,6 +13,7 @@ class Servico
         $this->tipoDeServico = $tipoDeServico;
     }
 
+    // Getters (Serve para pegar os valores)
     public function getFormaDePagamento(): string
     {
         return $this->formaDePagamento;
@@ -26,6 +27,22 @@ class Servico
     public function getPreco(): float
     {
         return $this->preco;
+    }
+
+    // Setters (Serve para alterar os valores)
+    public function setFormaDePagamento(string $formaDePagamento): void
+    {
+        $this->formaDePagamento = $formaDePagamento;
+    }
+
+    public function setTipoDeServico(string $tipoDeServico): void
+    {
+        $this->tipoDeServico = $tipoDeServico;
+    }
+
+    public function setPreco(float $preco): void
+    {
+        $this->preco = $preco;
     }
 }
 

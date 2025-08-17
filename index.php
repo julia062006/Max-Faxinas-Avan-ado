@@ -1,9 +1,9 @@
 <?php
-  //print_r($_SERVER);
-  $base = "http://{$_SERVER['SERVER_NAME']}{$_SERVER['SCRIPT_NAME']}";
-  //SERVER_NAME -> localhost / www.uol.com.br (esse uol é um exemplo)
-  //SCRIPT_NAME -> /Faxinas%Max/index.php
-  //echo $base; (era so para ver se estava funcionando)
+//print_r($_SERVER);
+$base = "http://{$_SERVER['SERVER_NAME']}{$_SERVER['SCRIPT_NAME']}";
+//SERVER_NAME -> localhost / www.uol.com.br (esse uol é um exemplo)
+//SCRIPT_NAME -> /Faxinas%Max/index.php
+//echo $base; (era so para ver se estava funcionando)
 ?>
 
 <!DOCTYPE html>
@@ -15,15 +15,15 @@
   <title>Max Faxinas</title>
 
   <!-- Ícone da aba -->
-  
-  <base href="<?=$base?>">
+
+  <base href="<?= $base ?>">
 
   <link rel="shortcut icon" href="imagens/Casa max.png">
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
-     <!--   Bootstrap icones -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+  <!--   Bootstrap icones -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
   <!-- CSS personalizado -->
   <link rel="stylesheet" href="CSS/style.css">
   <!-- Bootstrap JS -->
@@ -35,9 +35,15 @@
   <!--Fonte letra-->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/pt.js"></script>
+
+    
 </head>
 
 <body>
@@ -70,43 +76,43 @@
     </nav>
   </header>
 
-<main>
-   
-  <?php
-      //incluir o arquivo do array
-        include "array.php";
-      
-        $pagina = "home";
-        if(isset($_GET["param"])) {
-          $param = explode("/", $_GET["param"]);
-          $pagina = $param[0];
-        }
-     
-     //$pagina = $param(0);
-      $id = $param[1] ?? NULL;
+  <main>
 
-      echo $id;
+    <?php
+    //incluir o arquivo do array
+    include "array.php";
 
-     // home -> pages/home.php
-      $pagina = "pages/{$pagina}.php";
+    $pagina = "home";
+    if (isset($_GET["param"])) {
+      $param = explode("/", $_GET["param"]);
+      $pagina = $param[0];
+    }
 
-     // verficar se a pagina existe
-      if (file_exists($pagina)) {
-        include $pagina;
-      } else {
-        include "pages/erro.php";
-      }
-  ?>
+    //$pagina = $param(0);
+    $id = $param[1] ?? NULL;
 
-</main>
+    echo $id;
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    // home -> pages/home.php
+    $pagina = "pages/{$pagina}.php";
 
- <footer class="bg-light text-center text-lg-start">
+    // verficar se a pagina existe
+    if (file_exists($pagina)) {
+      include $pagina;
+    } else {
+      include "pages/erro.php";
+    }
+    ?>
+
+  </main>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+
+  <footer class="bg-light text-center text-lg-start">
     <div class="container p-4">
       <div class="row">
 
-       <!-- Contato -->
+        <!-- Contato -->
         <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
           <h5 class="text-uppercase mb-3">Contato</h5>
           <p class="mb-2">
@@ -133,14 +139,14 @@
           </ul>
         </div>
 
-         <!-- Sobre -->
+        <!-- Sobre -->
         <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
           <h5 class="text-uppercase mb-3">Max Faxinas</h5>
           <p>
             Cuidamos da sua casa com carinho e dedicação, oferecendo serviços de limpeza para que você tenha mais tempo
             livre, conforto e bem-estar.
           </p>
-        </div>       
+        </div>
       </div>
     </div>
 
@@ -149,7 +155,6 @@
       © 2025 Max Faxinas — Todos os direitos reservados.
     </div>
   </footer>
-
 
 </body>
 

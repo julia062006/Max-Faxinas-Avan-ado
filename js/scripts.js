@@ -4,7 +4,7 @@ const emailInput = document.querySelector("#email");
 const jobSelect = document.querySelector("#job");
 const messageTextarea = document.querySelector("#message");
 
-form.addEventListener("sumbit", (event) => {
+form.addEventListener("submit", (event) => {
     event.preventDefault();
 
     //verifica se o nome está vazio

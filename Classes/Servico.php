@@ -27,6 +27,7 @@ class Servico
     }
 
     public function getPreco(): float
+    
     {
         return $this->preco;
     }

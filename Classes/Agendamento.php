@@ -9,12 +9,22 @@ class Agendamento {
         $this->status = $status;
     }
 
+    // Getters (Serve para pegar os valores)
     public function getData(): string {
         return $this->data;
     }
 
        public function getStatus(): string {
         return $this->status;
+    }
+
+    // Setters (Serve para alterar os valores)
+    public function setData(string $data): void {
+        $this->data = $data;
+    }
+
+    public function setStatus(string $status): void {
+        $this->status = $status;
     }
 
 

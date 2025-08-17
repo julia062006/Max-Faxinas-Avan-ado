@@ -7,9 +7,9 @@ class Servico
     private int $id_servico;
     private float $preco;
     private string $formaDePagamento;
-    private string $tipoDeServico;
+    private EnTipoServico $tipoDeServico;
 
-    public function __construct($formaDePagamento, $tipoDeServico)
+     public function __construct(string $formaDePagamento, EnTipoServico $tipoDeServico)
     {
         $this->formaDePagamento = $formaDePagamento;
         $this->tipoDeServico = $tipoDeServico;
@@ -21,7 +21,7 @@ class Servico
         return $this->formaDePagamento;
     }
 
-    public function getTipoDeServico(): string
+    public function getTipoDeServico(): EnTipoServico
     {
         return $this->tipoDeServico;
     }
@@ -38,7 +38,7 @@ class Servico
         $this->formaDePagamento = $formaDePagamento;
     }
 
-    public function setTipoDeServico(string $tipoDeServico): void
+    public function setTipoDeServico(EnTipoServico $tipoDeServico): void
     {
         $this->tipoDeServico = $tipoDeServico;
     }

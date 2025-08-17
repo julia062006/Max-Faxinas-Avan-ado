@@ -16,6 +16,7 @@ class Cliente {
         $this->endereco = $endereco;
     }
 
+    // Getters (Serve para pegar os valores)
     public function getCpf(): string {
         return $this->cpf;
     }
@@ -35,5 +36,38 @@ class Cliente {
     public function getEndereco(): string {
         return $this->endereco;
     }
+
+    // Setters (Serve para alterar os valores)
+    public function setCpf(string $cpf): void {
+        $this->cpf = $cpf;
+    }
+
+    public function setNome (string $nome): void {
+        $this->nome = $nome;
+    }
+
+    public function setEmail(string $email): void {
+        $this->email = $email;
+    }
+
+    public function setTelefone(string $telefone): void {
+        $this->telefone = $telefone;
+    }
+
+    public function setEndereco(string $endereco): void {
+        $this->endereco = $endereco;
+    }
+
+     
 }
+
+$cliente = new Cliente("12345678900", "Maria", "maria@email.com", "99999-9999", "Rua A, 123");
+
+// Alterando dados com setters
+$cliente->setNome("Maria Souza");
+$cliente->setTelefone("88888-8888");
+
+// Exibindo os valores atualizados
+echo $cliente->getNome();     // Maria Souza
+echo $cliente->getTelefone(); // 88888-8888
 

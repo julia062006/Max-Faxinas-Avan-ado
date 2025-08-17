@@ -23,11 +23,12 @@
     </div>
 
         <div class="mb-3">
-      <label for="job" class="form-label">Você já usou nossos serviços antes?</label>
+      <label for="job" class="form-label">Qual o serviço você quer contratar?</label>
       <select name="job" id="job" class="form-select">
         <option value="">Selecione uma opção</option>
-        <option value="yes">Sim</option>
-        <option value="no">Não</option>
+        <option value="Limpeza Comercial">Limpeza Comercial</option>
+        <option value="Limpeza Residencial">Limpeza Residencial</option>
+        <option value="Limpeza Pós-Obra">Limpeza Pós-Obra</option>
       </select>
     </div>
 

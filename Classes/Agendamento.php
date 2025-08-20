@@ -4,9 +4,9 @@ require_once 'classes/EnStatusAgendamento.php';
 
 class Agendamento {
     private string $data;
-    private EnStatusAgendamento $status;
+    private string $status;
 
-    public function __construct(string $data, EnStatusAgendamento $status) {
+    public function __construct(string $data, string $status) {
         $this->data = $data;
         $this->status = $status;
     }
@@ -16,7 +16,7 @@ class Agendamento {
         return $this->data;
     }
 
-       public function getStatus(): EnStatusAgendamento {
+       public function getStatus(): string {
         return $this->status;
     }
 
@@ -25,7 +25,7 @@ class Agendamento {
         $this->data = $data;
     }
 
-    public function setStatus(EnStatusAgendamento $status): void {
+    public function setStatus(string $status): void {
         $this->status = $status;
     }
 

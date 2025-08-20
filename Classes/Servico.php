@@ -1,15 +1,13 @@
 <?php
-require_once 'classes/EnTipoServico.php';
-
 
 class Servico
 {
     private int $id_servico;
     private float $preco;
     private string $formaDePagamento;
-    private EnTipoServico $tipoDeServico;
+    private string $tipoDeServico;
 
-     public function __construct(string $formaDePagamento, EnTipoServico $tipoDeServico)
+     public function __construct(string $formaDePagamento, string $tipoDeServico)
     {
         $this->formaDePagamento = $formaDePagamento;
         $this->tipoDeServico = $tipoDeServico;
@@ -21,7 +19,7 @@ class Servico
         return $this->formaDePagamento;
     }
 
-    public function getTipoDeServico(): EnTipoServico
+    public function getTipoDeServico(): string
     {
         return $this->tipoDeServico;
     }
@@ -38,7 +36,7 @@ class Servico
         $this->formaDePagamento = $formaDePagamento;
     }
 
-    public function setTipoDeServico(EnTipoServico $tipoDeServico): void
+    public function setTipoDeServico(string $tipoDeServico): void
     {
         $this->tipoDeServico = $tipoDeServico;
     }

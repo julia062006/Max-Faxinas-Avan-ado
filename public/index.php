@@ -80,7 +80,7 @@ $base = "http://{$_SERVER['SERVER_NAME']}{$_SERVER['SCRIPT_NAME']}";
 
     <?php
     //incluir o arquivo do array
-    include "array.php";
+    include __DIR__ . "/../src/array.php";
 
     $pagina = "home";
     if (isset($_GET["param"])) {
@@ -94,13 +94,13 @@ $base = "http://{$_SERVER['SERVER_NAME']}{$_SERVER['SCRIPT_NAME']}";
     echo $id;
 
     // home -> pages/home.php
-    $pagina = "pages/{$pagina}.php";
+    $pagina = __DIR__ . "/../src/pages/{$pagina}.php";  
 
     // verficar se a pagina existe
     if (file_exists($pagina)) {
       include $pagina;
     } else {
-      include "pages/erro.php";
+      include __DIR__ . "/../src/pages/erro.php";
     }
     ?>
 

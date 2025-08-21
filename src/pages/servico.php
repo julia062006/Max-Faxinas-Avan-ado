@@ -1,4 +1,4 @@
-<?php include 'array.php'; // o arquivo com seu array ?>
+<?php include __DIR__ . "/../array.php"; // o arquivo com seu array ?>
 <?php
   $numero_whatsapp = "554499444208"; // Número fixo com DDI + DDD
 ?>

@@ -68,6 +68,9 @@ $base = "http://{$_SERVER['SERVER_NAME']}{$_SERVER['SCRIPT_NAME']}";
               <a class="nav-link" href="servico">Serviços</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="administrador">Administrador</a>
+            </li>
+            <li class="nav-item">
               <a class="btn" href="agendamento">Agendamento</a>
             </li>
           </ul>

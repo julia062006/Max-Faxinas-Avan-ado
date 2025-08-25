@@ -1,6 +1,5 @@
 <?php
 
-require_once 'classes/EnStatusAgendamento.php';
 
 class Agendamento {
     private string $data;

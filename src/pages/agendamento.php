@@ -69,7 +69,7 @@
   const telefoneInput = document.querySelector("#telefone");
   const cepInput = document.querySelector("#cep");
   const jobSelect = document.querySelector("#job");
-  const messageTextarea = document.querySelector("#message");
+//COLOCAR VALIDAÇAO NA DATA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -127,11 +127,7 @@
       return;
     }
 
-    //verifica se a MENSSAGEM esta preenchida
-    if (messageTextarea.value === "") {
-      alert("Por favor, escreva uma mensagem");
-      return;
-    }
+   //COLCOAR VALIDAÇAO NA DATA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     alert("Formulário enviado com sucesso! Agora vamos te levar ao WhatsApp.");
 

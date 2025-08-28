@@ -69,7 +69,7 @@
   const telefoneInput = document.querySelector("#telefone");
   const cepInput = document.querySelector("#cep");
   const jobSelect = document.querySelector("#job");
-//COLOCAR VALIDAÇAO NA DATA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//todo: COLOCAR VALIDAÇAO NA DATA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();

@@ -1,5 +1,4 @@
 <?php
-require_once 'classes/EnTipoServico.php';
 
 class Servico
 {

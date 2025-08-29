@@ -1,17 +1,32 @@
 <?php
 
+require_once 'Clas-Cliente.php';
 
+use Doctrine\ORM\Mapping\Column;
+use Doctrine\ORM\Mapping\Entity;
+use Doctrine\ORM\Mapping\ManyToOne;
+
+#[Entity()]
 class Agendamento {
-    private string $data;
+    #[Column()]
+    private DateTime $data;
+
+    #[Column()]
     private string $status;
 
-    public function __construct(string $data, string $status) {
+    #[Column(), ManyToOne()]
+    private Cliente $id_cliente;
+
+    #[Column(), ManyToOne()]
+    private Servico $id_servico;
+
+    public function __construct(DateTime $data, string $status) {
         $this->data = $data;
         $this->status = $status;
     }
 
     // Getters (Serve para pegar os valores)
-    public function getData(): string {
+    public function getData(): DateTime {
         return $this->data;
     }
 
@@ -20,7 +35,7 @@ class Agendamento {
     }
 
     // Setters (Serve para alterar os valores)
-    public function setData(string $data): void {
+    public function setData(DateTime $data): void {
         $this->data = $data;
     }
 

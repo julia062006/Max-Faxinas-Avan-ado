@@ -1,11 +1,25 @@
-<?php 
+<?php
 
+use Doctrine\ORM\Mapping\Column;
+use Doctrine\ORM\Mapping\Entity;
+use Doctrine\ORM\Mapping\GeneratedValue;
+use Doctrine\ORM\Mapping\Id;
+
+#[Entity()]
 class Cliente {
 
+    #[Column(), Id, GeneratedValue() ]
+    private int $id_Cliente;
+
+    #[Column()]
     private string $cpf;
+    #[Column()]
     private string $nome;
+    #[Column()]
     private string $email;
+    #[Column()]
     private string $telefone;
+    #[Column()]
     private string $endereco;
 
     public function __construct(string $cpf, string $nome, string $email, string $telefone, string $endereco) {

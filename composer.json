@@ -1,5 +1,6 @@
 {
     "require": {
-        "nesbot/carbon": "^3.10"
+        "nesbot/carbon": "^3.10",
+        "doctrine/orm": "^3.5"
     }
 }

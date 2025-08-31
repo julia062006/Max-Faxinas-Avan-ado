@@ -32,8 +32,17 @@
         </select>
       </div>
 
-      <div>
-        <label for="">Selecione uma data</label>
+      <div class="mb-3">
+        <label for="job" class="form-label">Qual a forma de pagamento?</label>
+        <select name="job" id="job" class="form-select">
+          <option value="">Selecione uma opção</option>
+          <option value="Dinheiro">Dinheiro</option>
+          <option value="Pix">Pix</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="job" class="form-label">Escolha a data desejada: </label>
         <input type="text" id="calendario" placeholder="Selecione uma data">
       </div>
 

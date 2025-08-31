@@ -1,10 +1,23 @@
 <?php
+ 
+use Doctrine\ORM\Mapping\Column;
+use Doctrine\ORM\Mapping\Entity;
+use Doctrine\ORM\Mapping\GeneratedValue;
+use Doctrine\ORM\Mapping\Id;
 
+ #[Entity()]
 class Servico
 {
+     #[Column(), Id, GeneratedValue() ]
     private int $id_servico;
+
+    #[Column()]
     private float $preco;
+
+    #[Column()]
     private string $formaDePagamento;
+
+    #[Column()]
     private string $tipoDeServico;
 
      public function __construct(string $formaDePagamento, string $tipoDeServico)

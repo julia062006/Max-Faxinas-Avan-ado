@@ -26,9 +26,9 @@
         <label for="job" class="form-label">Qual o serviço você quer contratar?</label>
         <select name="job" id="job" class="form-select">
           <option value="">Selecione uma opção</option>
-          <option value="Limpeza Comercial">Limpeza Comercial</option>
-          <option value="Limpeza Residencial">Limpeza Residencial</option>
-          <option value="Limpeza Pós-Obra">Limpeza Pós-Obra</option>
+          <option value="Limpeza Comercial">Limpeza Comercial - 8H00 às 12H00 - R$150,00</option>
+          <option value="Limpeza Residencial">Limpeza Residencial - 8H00 às 14H00 - R$200,00</option>
+          <option value="Limpeza Pós-Obra">Limpeza Pós-Obra - 8H00 às 17H00 - R$300,00</option>
         </select>
       </div>
 

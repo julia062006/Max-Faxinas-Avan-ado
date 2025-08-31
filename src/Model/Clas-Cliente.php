@@ -1,5 +1,5 @@
 <?php
-
+namespace App\Model;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\GeneratedValue;
@@ -29,6 +29,10 @@ class Cliente {
         $this->email = $email;
         $this->telefone = $telefone;
         $this->endereco = $endereco;
+    }
+
+    public function getId() : int {
+        return $this->id_Cliente;
     }
 
     // Getters (Serve para pegar os valores)

@@ -1,6 +1,6 @@
 <?php
 
-require_once 'Clas-Cliente.php';
+use App\Model\Cliente;
 
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;

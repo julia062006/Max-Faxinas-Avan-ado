@@ -1,3 +1,11 @@
+<?php
+require_once __DIR__ . '/../../vendor/autoload.php';
+use App\Model\Cliente;
+use App\Core\Database;
+
+$users = [];
+?>
+
 <main>
   <section class="agendamento">
     <h1 class="titulo mb-4">Formulário Max</h1>
@@ -53,6 +61,22 @@
 
 
   </section>
+
+  <h3>Lista de Usuários</h3>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Email</th>
+        </tr>
+        <?php foreach($users as $user): ?>
+            <tr>
+                <td><?= $user->getId() ?></td>
+                <td><?= $user->getNome() ?></td>
+                <td><?= $user->getEmail() ?></td>
+            </tr>
+        <?php endforeach ?>
+    </table>
 </main>
 
 <script>

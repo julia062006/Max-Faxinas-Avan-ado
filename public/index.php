@@ -5,7 +5,22 @@ $base = "http://{$_SERVER['SERVER_NAME']}{$_SERVER['SCRIPT_NAME']}";
 //SCRIPT_NAME -> /Faxinas%Max/index.php
 //echo $base; (era so para ver se estava funcionando)
 
+require_once __DIR__ . '/../vendor/autoload.php';
+use App\Model\Cliente;
 
+if ($_POST) {
+    $user = new Cliente(
+        cpf: $_POST['user_cpf'] ?? '',
+        nome: $_POST['user_name'] ?? '',
+        email: $_POST['user_email'] ?? '',
+        telefone: $_POST['user_phone'] ?? '',
+        endereco: $_POST['user_address'] ?? ''
+    );
+    $user->save();
+
+    // Atualiza a lista de usuários para exibir na tabela
+    $users = Cliente::findAll() ?? [];
+}
 ?>
 
 <!DOCTYPE html>
@@ -40,12 +55,12 @@ $base = "http://{$_SERVER['SERVER_NAME']}{$_SERVER['SCRIPT_NAME']}";
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/pt.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/pt.js"></script>
 
-    
+
 </head>
 
 <body>
@@ -99,7 +114,7 @@ $base = "http://{$_SERVER['SERVER_NAME']}{$_SERVER['SCRIPT_NAME']}";
     echo $id;
 
     // home -> pages/home.php
-    $pagina = __DIR__ . "/../src/pages/{$pagina}.php";  
+    $pagina = __DIR__ . "/../src/pages/{$pagina}.php";
 
     // verficar se a pagina existe
     if (file_exists($pagina)) {

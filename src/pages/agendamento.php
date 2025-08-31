@@ -4,12 +4,12 @@
     <form id="form">
       <div class="mb-3">
         <label for="name" class="form-label">Nome:</label>
-        <input type="text" id="name" class="form-control" placeholder="Digite seu nome">
+        <input type="text" id="name" class="form-control" placeholder="Digite seu nome" name="user_name">
       </div>
 
       <div class="mb-3">
         <label for="email" class="form-label">E-mail:</label>
-        <input type="email" id="email" class="form-control" placeholder="Digite seu e-mail">
+        <input type="email" id="email" class="form-control" placeholder="Digite seu e-mail" name="user_email">
       </div>
 
       <div class="mb-3">

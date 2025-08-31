@@ -5,6 +5,7 @@ $base = "http://{$_SERVER['SERVER_NAME']}{$_SERVER['SCRIPT_NAME']}";
 //SCRIPT_NAME -> /Faxinas%Max/index.php
 //echo $base; (era so para ver se estava funcionando)
 
+
 ?>
 
 <!DOCTYPE html>
@@ -81,19 +82,6 @@ $base = "http://{$_SERVER['SERVER_NAME']}{$_SERVER['SCRIPT_NAME']}";
   </header>
 
   <main>
-<?php
-require __DIR__ . '/../vendor/autoload.php';
-
-use Dotenv\Dotenv;
-
-// carrega o .env que está na raiz do projeto
-$dotenv = Dotenv::createImmutable(dirname(__DIR__));
-$dotenv->load();
-
-require __DIR__ . '/../vendor/autoload.php';
-
-echo "Usuário do banco é: " . $_ENV['DB_USER'];
-?>
 
     <?php
     //incluir o arquivo do array

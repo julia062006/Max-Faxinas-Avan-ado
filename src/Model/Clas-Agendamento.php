@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping\ManyToOne;
 #[Entity()]
 class Agendamento {
 
-     #[Column(), Id, GeneratedValue() ]
+    #[Column(), Id, GeneratedValue() ]
     private int $id_agendamento;
 
     #[Column()]

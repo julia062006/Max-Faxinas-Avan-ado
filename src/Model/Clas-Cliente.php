@@ -4,6 +4,7 @@ use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\GeneratedValue;
 use Doctrine\ORM\Mapping\Id;
+use App\Core\Database;
 
 #[Entity()]
 class Cliente {
@@ -72,16 +73,20 @@ class Cliente {
         $this->endereco = $endereco;
     }
 
+    public function save(): void
+    {
+        $em = Database::getEntityManager();
+        $em->persist($this);
+        $em->flush();
+    }
+
+    public static function findAll(): array
+    {
+        $em = Database::getEntityManager();
+        $repository = $em->getRepository(Cliente::class);
+        return $repository->findAll();
+
+    } 
      
 }
-
-$cliente = new Cliente("12345678900", "Maria", "maria@email.com", "99999-9999", "Rua A, 123");
-
-// Alterando dados com setters
-$cliente->setNome("Maria Souza");
-$cliente->setTelefone("88888-8888");
-
-// Exibindo os valores atualizados
-echo $cliente->getNome();     // Maria Souza
-echo $cliente->getTelefone(); // 88888-8888
 

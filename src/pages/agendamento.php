@@ -16,18 +16,23 @@ $users = [];
       </div>
 
       <div class="mb-3">
+        <label for="name" class="form-label">CPF:</label>
+        <input type="text" id="name" class="form-control" placeholder="Digite seu CPF" name="user_cpf">
+      </div>
+
+      <div class="mb-3">
         <label for="email" class="form-label">E-mail:</label>
         <input type="email" id="email" class="form-control" placeholder="Digite seu e-mail" name="user_email">
       </div>
 
       <div class="mb-3">
         <label for="telefone" class="form-label">Telefone:</label>
-        <input type="tel" id="telefone" class="form-control telefone" placeholder="(XX) XXXXX-XXXX">
+        <input type="tel" id="telefone" class="form-control telefone" placeholder="(XX) XXXXX-XXXX" name="user_telefone">
       </div>
 
       <div class="mb-3">
-        <label for="cep" class="form-label">CEP:</label>
-        <input type="tel" id="cep" class="form-control cep" placeholder="XXXXX-XXX">
+        <label for="cep" class="form-label">Endereço:</label>
+        <input type="tel" id="cep" class="form-control cep" placeholder="XXXXX-XXX" name="user_endereco">
       </div>
 
       <div class="mb-3">
@@ -72,8 +77,12 @@ $users = [];
         <?php foreach($users as $user): ?>
             <tr>
                 <td><?= $user->getId() ?></td>
+                <td><?= $user->getCpf() ?></td>
                 <td><?= $user->getNome() ?></td>
                 <td><?= $user->getEmail() ?></td>
+                <td><?= $user->getTelefone() ?></td>
+                <td><?= $user->getEndereco() ?></td>
+                
             </tr>
         <?php endforeach ?>
     </table>

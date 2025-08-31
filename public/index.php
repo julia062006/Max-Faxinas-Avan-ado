@@ -11,16 +11,18 @@ use App\Model\Cliente;
 if ($_POST) {
     $user = new Cliente(
         cpf: $_POST['user_cpf'] ?? '',
-        nome: $_POST['user_name'] ?? '',
+        nome: $_POST['user_nome'] ?? '',
         email: $_POST['user_email'] ?? '',
-        telefone: $_POST['user_phone'] ?? '',
-        endereco: $_POST['user_address'] ?? ''
+        telefone: $_POST['user_telefone'] ?? '',
+        endereco: $_POST['user_endereco'] ?? ''
     );
     $user->save();
 
     // Atualiza a lista de usuários para exibir na tabela
     $users = Cliente::findAll() ?? [];
 }
+
+
 ?>
 
 <!DOCTYPE html>

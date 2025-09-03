@@ -2,6 +2,7 @@
 
 namespace App\Model;
 
+
 use DateTime;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;

@@ -87,6 +87,7 @@ $base = "http://{$_SERVER['SERVER_NAME']}{$_SERVER['SCRIPT_NAME']}";
     //incluir o arquivo do array
     include __DIR__ . "/../src/array.php";
 
+    
     $pagina = "home";
     if (isset($_GET["param"])) {
       $param = explode("/", $_GET["param"]);

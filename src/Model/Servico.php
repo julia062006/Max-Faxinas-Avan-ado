@@ -1,5 +1,7 @@
 <?php
+namespace App\Model;
  
+use App\Core\Database;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\GeneratedValue;
@@ -9,7 +11,7 @@ use Doctrine\ORM\Mapping\Id;
 class Servico
 {
      #[Column(), Id, GeneratedValue() ]
-    private int $id_servico;
+    private int $id;
 
     #[Column()]
     private float $preco;
@@ -20,12 +22,21 @@ class Servico
     #[Column()]
     private string $tipoDeServico;
 
-     public function __construct(string $formaDePagamento, string $tipoDeServico)
+    #[Column()]
+    private string $horario;
+
+     public function __construct(string $formaDePagamento, string $tipoDeServico, float $preco, string $horario)
     {
         $this->formaDePagamento = $formaDePagamento;
         $this->tipoDeServico = $tipoDeServico;
+        $this->preco = $preco;
+        $this->horario = $horario;
     }
 
+    public function getId() :int {
+        return $this->id;
+        
+    }
     // Getters (Serve para pegar os valores)
     public function getFormaDePagamento(): string
     {
@@ -56,6 +67,22 @@ class Servico
     public function setPreco(float $preco): void
     {
         $this->preco = $preco;
+    }
+
+    //findall lê todas as tabelas do banco de dados
+    public static function findAll(): array 
+    {
+        $entityManager = Database::getEntityManager();
+        $repository = $entityManager->getRepository(Servico::class);
+        return $repository->findAll();
+
+    }
+
+    public function save(): void
+    {
+        $em = Database::getEntityManager();
+        $em->persist($this);
+        $em->flush();
     }
 }
 

@@ -1,7 +1,8 @@
 <?php
 
-require_once 'Clas-Cliente.php';
+namespace App\Model;
 
+use DateTime;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\GeneratedValue;
@@ -11,8 +12,8 @@ use Doctrine\ORM\Mapping\ManyToOne;
 #[Entity()]
 class Agendamento {
 
-    #[Column(), Id, GeneratedValue() ]
-    private int $id_agendamento;
+    #[Column, Id, GeneratedValue ]
+    private int $id;
 
     #[Column()]
     private DateTime $data;
@@ -20,11 +21,11 @@ class Agendamento {
     #[Column()]
     private string $status;
 
-    #[Column(), ManyToOne()]
-    private Cliente $id_cliente;
+    #[ManyToOne()]
+    private Cliente $cliente;
 
-    #[Column(), ManyToOne()]
-    private Servico $id_servico;
+    #[ManyToOne()]
+    private Servico $servico;
 
     public function __construct(DateTime $data, string $status) {
         $this->data = $data;

@@ -26,9 +26,12 @@
         <label for="job" class="form-label">Qual o serviço você quer contratar?</label>
         <select name="job" id="job" class="form-select">
           <option value="">Selecione uma opção</option>
-          <option value="Limpeza Comercial">Limpeza Comercial - 8H00 às 12H00 - R$150,00</option>
-          <option value="Limpeza Residencial">Limpeza Residencial - 8H00 às 14H00 - R$200,00</option>
-          <option value="Limpeza Pós-Obra">Limpeza Pós-Obra - 8H00 às 17H00 - R$300,00</option>
+          <?php foreach ($servicos as $servico): ?> <!-- ele vai percorrer o meus 3 serviços -->
+            <option value="<?= $servico->getId() ?> - 8H00 às 14H00"><?= $servico->getTipoDeServico() ?>  </option>
+          <?php endforeach ?>
+          <!-- <option value="Limpeza Residencial">Limpeza Residencial - R$150,00</option> -->
+           <!-- <option value="Limpeza Comercial">Limpeza Comercial - R$200,00</option> -->
+          <!-- <option value="Limpeza Pós-Obra">Limpeza Pós-Obra - R$300,00</option> -->
         </select>
       </div>
 
@@ -42,7 +45,7 @@
       </div>
 
       <div class="mb-3">
-        <label for="job" class="form-label">Escolha a data desejada: </label>
+        <label for="calendario" class="form-label">Escolha a data desejada: </label>
         <input type="text" id="calendario" placeholder="Selecione uma data">
       </div>
 
@@ -78,6 +81,7 @@
   const telefoneInput = document.querySelector("#telefone");
   const cepInput = document.querySelector("#cep");
   const jobSelect = document.querySelector("#job");
+  const calendarioInput = document.querySelector("#calendario");
 //todo: COLOCAR VALIDAÇAO NA DATA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
   form.addEventListener("submit", (event) => {
@@ -132,19 +136,21 @@
 
     //verifica se a SITUAÇÃO foi selecionada
     if (jobSelect.value === "") {
-      alert("Por favor, selecione uma das duas opções");
+      alert("Por favor, selecione uma das três opções");
       return;
     }
 
+   
+
    //COLCOAR VALIDAÇAO NA DATA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-    alert("Formulário enviado com sucesso! Agora vamos te levar ao WhatsApp.");
+    //alert("Formulário enviado com sucesso! Agora vamos te levar ao WhatsApp.");
 
     // Mensagem padrão para o WhatsApp
-    const mensagem = "Tenho interesse nos serviços Max Faxinas.";
+    //const mensagem = "Tenho interesse nos serviços Max Faxinas.";
 
     // Redireciona para o WhatsApp com a mensagem
-    window.location.href = `https://wa.me/554499444208?text=${encodeURIComponent(mensagem)}`;
+   // window.location.href = `https://wa.me/554499444208?text=${encodeURIComponent(mensagem)}`;
 
     // Limpa o formulário
     form.reset();

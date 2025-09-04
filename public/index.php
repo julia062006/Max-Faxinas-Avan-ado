@@ -10,17 +10,16 @@ use App\Model\Cliente;
 
 if ($_POST) {
     $user = new Cliente(
-        cpf: $_POST['user_cpf'] ?? '',
-        nome: $_POST['user_nome'] ?? '',
-        email: $_POST['user_email'] ?? '',
-        telefone: $_POST['user_telefone'] ?? '',
-        endereco: $_POST['user_endereco'] ?? ''
+        cpf: $_POST['user_cpf'],
+        nome: $_POST['user_nome'],
+        email: $_POST['user_email'],
+        telefone: $_POST['user_telefone'],
+        endereco: $_POST['user_endereco']
     );
     $user->save();
-
-    // Atualiza a lista de usuários para exibir na tabela
-    $users = Cliente::findAll() ?? [];
 }
+// Atualiza a lista de usuários para exibir na tabela
+    $users = Cliente::findAll();
 
 
 ?>
@@ -117,13 +116,13 @@ if ($_POST) {
     echo $id;
 
     // home -> pages/home.php
-    $pagina = __DIR__ . "/../src/pages/{$pagina}.php";
+    $pagina = __DIR__ . "/../src/View/{$pagina}.php";
 
     // verficar se a pagina existe
     if (file_exists($pagina)) {
       include $pagina;
     } else {
-      include __DIR__ . "/../src/pages/erro.php";
+      include __DIR__ . "/../src/View/erro.php";
     }
     ?>
 

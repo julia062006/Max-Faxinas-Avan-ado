@@ -1,0 +1,26 @@
+<?php
+$users = [];
+?>
+<h1>Área do Administrador</h1>
+<h3>Lista de Usuários</h3>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>CPF</th>
+        <th>Nome</th>
+        <th>Email</th>
+        <th>Telefone</th>
+        <th>Endereço</th>
+    </tr>
+    <?php foreach ($users as $user): ?>
+        <tr>
+            <td><?= $user->getId() ?></td>
+            <td><?= $user->getCpf() ?></td>
+            <td><?= $user->getNome() ?></td>
+            <td><?= $user->getEmail() ?></td>
+            <td><?= $user->getTelefone() ?></td>
+            <td><?= $user->getEndereco() ?></td>
+
+        </tr>
+    <?php endforeach ?>
+</table>

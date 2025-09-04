@@ -36,7 +36,7 @@ class Cliente {
     }
 
     public function getId() : int {
-        return $this->id_Cliente;
+        return $this->id;
     }
 
     // Getters (Serve para pegar os valores)

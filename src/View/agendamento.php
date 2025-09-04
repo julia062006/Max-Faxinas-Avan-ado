@@ -1,9 +1,9 @@
 <?php
 require_once __DIR__ . '/../../vendor/autoload.php';
+
 use App\Model\Cliente;
 use App\Core\Database;
 
-$users = [];
 ?>
 
 <main>
@@ -12,7 +12,7 @@ $users = [];
     <form id="form">
       <div class="mb-3">
         <label for="name" class="form-label">Nome:</label>
-        <input type="text" id="name" class="form-control" placeholder="Digite seu nome" name="user_name">
+        <input type="text" id="name" class="form-control" placeholder="Digite seu nome" name="user_nome">
       </div>
 
       <div class="mb-3">
@@ -40,10 +40,10 @@ $users = [];
         <select name="job" id="job" class="form-select">
           <option value="">Selecione uma opção</option>
           <?php foreach ($servicos as $servico): ?> <!-- ele vai percorrer o meus 3 serviços -->
-            <option value="<?= $servico->getId() ?> - 8H00 às 14H00"><?= $servico->getTipoDeServico() ?>  </option>
+            <option value="<?= $servico->getId() ?> - 8H00 às 14H00"><?= $servico->getTipoDeServico() ?> </option>
           <?php endforeach ?>
           <!-- <option value="Limpeza Residencial">Limpeza Residencial - R$150,00</option> -->
-           <!-- <option value="Limpeza Comercial">Limpeza Comercial - R$200,00</option> -->
+          <!-- <option value="Limpeza Comercial">Limpeza Comercial - R$200,00</option> -->
           <!-- <option value="Limpeza Pós-Obra">Limpeza Pós-Obra - R$300,00</option> -->
         </select>
       </div>
@@ -69,26 +69,6 @@ $users = [];
 
 
   </section>
-
-  <h3>Lista de Usuários</h3>
-    <table>
-        <tr>
-            <th>Id</th>
-            <th>Nome</th>
-            <th>Email</th>
-        </tr>
-        <?php foreach($users as $user): ?>
-            <tr>
-                <td><?= $user->getId() ?></td>
-                <td><?= $user->getCpf() ?></td>
-                <td><?= $user->getNome() ?></td>
-                <td><?= $user->getEmail() ?></td>
-                <td><?= $user->getTelefone() ?></td>
-                <td><?= $user->getEndereco() ?></td>
-                
-            </tr>
-        <?php endforeach ?>
-    </table>
 </main>
 
 <script>
@@ -115,7 +95,7 @@ $users = [];
   const cepInput = document.querySelector("#cep");
   const jobSelect = document.querySelector("#job");
   const calendarioInput = document.querySelector("#calendario");
-//todo: COLOCAR VALIDAÇAO NA DATA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  //todo: COLOCAR VALIDAÇAO NA DATA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -173,9 +153,9 @@ $users = [];
       return;
     }
 
-   
 
-   //COLCOAR VALIDAÇAO NA DATA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+    //COLCOAR VALIDAÇAO NA DATA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     //alert("Formulário enviado com sucesso! Agora vamos te levar ao WhatsApp.");
 
@@ -183,7 +163,7 @@ $users = [];
     //const mensagem = "Tenho interesse nos serviços Max Faxinas.";
 
     // Redireciona para o WhatsApp com a mensagem
-   // window.location.href = `https://wa.me/554499444208?text=${encodeURIComponent(mensagem)}`;
+    // window.location.href = `https://wa.me/554499444208?text=${encodeURIComponent(mensagem)}`;
 
     // Limpa o formulário
     form.reset();

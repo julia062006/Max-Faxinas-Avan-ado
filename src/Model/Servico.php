@@ -21,16 +21,13 @@ class Servico
 
     #[Column()]
     private string $tipoDeServico;
+   
 
-    #[Column()]
-    private string $horario;
-
-     public function __construct(string $formaDePagamento, string $tipoDeServico, float $preco, string $horario)
+     public function __construct(string $formaDePagamento, string $tipoDeServico, float $preco)
     {
         $this->formaDePagamento = $formaDePagamento;
         $this->tipoDeServico = $tipoDeServico;
         $this->preco = $preco;
-        $this->horario = $horario;
     }
 
     public function getId() :int {
@@ -84,5 +81,8 @@ class Servico
         $em->persist($this);
         $em->flush();
     }
+    
 }
+
+
 

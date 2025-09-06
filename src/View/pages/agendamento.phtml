@@ -1,15 +1,15 @@
 <?php
-require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../../../vendor/autoload.php';
 
 use App\Model\Cliente;
 use App\Core\Database;
-
+use App\Model\Servico;
 ?>
 
 <main>
   <section class="agendamento">
     <h1 class="titulo mb-4">Formulário Max</h1>
-    <form id="form">
+    <form id="form" method="POST" action="/enviar">
       <div class="mb-3">
         <label for="name" class="form-label">Nome:</label>
         <input type="text" id="name" class="form-control" placeholder="Digite seu nome" name="user_nome">
@@ -32,25 +32,29 @@ use App\Core\Database;
 
       <div class="mb-3">
         <label for="cep" class="form-label">Endereço:</label>
-        <input type="tel" id="cep" class="form-control cep" placeholder="XXXXX-XXX" name="user_endereco">
+        <input type="text" id="endereco" class="form-control" placeholder="Digite seu endereço" name="user_endereco">
       </div>
 
       <div class="mb-3">
         <label for="job" class="form-label">Qual o serviço você quer contratar?</label>
         <select name="job" id="job" class="form-select">
           <option value="">Selecione uma opção</option>
-          <?php foreach ($servicos as $servico): ?> <!-- ele vai percorrer o meus 3 serviços -->
-            <option value="<?= $servico->getId() ?> - 8H00 às 14H00"><?= $servico->getTipoDeServico() ?> </option>
+          <?php
+          $servicos = [
+            (object)['id' => 1, 'tipoDeServico' => 'Limpeza Residencial - R$150,00'],
+            (object)['id' => 2, 'tipoDeServico' => 'Limpeza Comercial - R$200,00'],
+            (object)['id' => 3, 'tipoDeServico' => 'Limpeza Pós-Obra - R$300,00'],
+          ];
+          ?>
+          <?php foreach ($servicos as $servico): ?>
+            <option value="<?= $servico->id ?>"><?= $servico->tipoDeServico ?></option>
           <?php endforeach ?>
-          <!-- <option value="Limpeza Residencial">Limpeza Residencial - R$150,00</option> -->
-          <!-- <option value="Limpeza Comercial">Limpeza Comercial - R$200,00</option> -->
-          <!-- <option value="Limpeza Pós-Obra">Limpeza Pós-Obra - R$300,00</option> -->
         </select>
       </div>
 
       <div class="mb-3">
         <label for="job" class="form-label">Qual a forma de pagamento?</label>
-        <select name="job" id="job" class="form-select">
+        <select name="pagamento" id="pagamento" class="form-select">
           <option value="">Selecione uma opção</option>
           <option value="Dinheiro">Dinheiro</option>
           <option value="Pix">Pix</option>
@@ -59,7 +63,7 @@ use App\Core\Database;
 
       <div class="mb-3">
         <label for="calendario" class="form-label">Escolha a data desejada: </label>
-        <input type="text" id="calendario" placeholder="Selecione uma data">
+        <input type="text" id="calendario" placeholder="Selecione uma data" name="data">
       </div>
 
       <div class="col-12">

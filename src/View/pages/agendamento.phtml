@@ -41,22 +41,14 @@ use App\Model\Servico;
           <option value="">Selecione uma opção</option>
           <?php
           $servicos = [
-            (object)['id' => 1, 'tipoDeServico' => 'Limpeza Residencial - R$150,00'],
-            (object)['id' => 2, 'tipoDeServico' => 'Limpeza Comercial - R$200,00'],
-            (object)['id' => 3, 'tipoDeServico' => 'Limpeza Pós-Obra - R$300,00'],
+            (object)['id' => 1, 'tipoDeServico' => 'Limpeza Residencial - R$150,00', 'formaDePagamento' => ' - Pix'],
+            (object)['id' => 2, 'tipoDeServico' => 'Limpeza Comercial - R$200,00', 'formaDePagamento' => ' - Pix'],
+            (object)['id' => 3, 'tipoDeServico' => 'Limpeza Pós-Obra - R$300,00', 'formaDePagamento' => ' - Pix'],
           ];
           ?>
           <?php foreach ($servicos as $servico): ?>
-            <option value="<?= $servico->id ?>"><?= $servico->tipoDeServico ?></option>
+            <option value="<?= $servico->id ?>"><?= $servico->tipoDeServico ?><?= $servico-> formaDePagamento?></option>
           <?php endforeach ?>
-        </select>
-      </div>
-
-      <div class="mb-3">
-        <label for="job" class="form-label">Qual a forma de pagamento?</label>
-        <select name="pagamento" id="pagamento" class="form-select">
-          <option value="">Selecione uma opção</option>
-          <option value="Pix">Pix</option>
         </select>
       </div>
 
@@ -101,7 +93,7 @@ use App\Model\Servico;
   //todo: COLOCAR VALIDAÇAO NA DATA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
   form.addEventListener("submit", (event) => {
-    event.preventDefault();
+
 
     //verifica se o NOME está vazio
     if (nameInput.value === "") {
@@ -169,7 +161,8 @@ use App\Model\Servico;
     // window.location.href = `https://wa.me/554499444208?text=${encodeURIComponent(mensagem)}`;
 
     // Limpa o formulário
-    form.reset();
+   // form.reset();
+    
   });
 
   //Função que válida o NOME

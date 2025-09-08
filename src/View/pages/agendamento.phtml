@@ -39,15 +39,8 @@ use App\Model\Servico;
         <label for="job" class="form-label">Qual o serviço você quer contratar?</label>
         <select name="job" id="job" class="form-select">
           <option value="">Selecione uma opção</option>
-          <?php
-          $servicos = [
-            (object)['id' => 1, 'tipoDeServico' => 'Limpeza Residencial - R$150,00', 'formaDePagamento' => ' - Pix'],
-            (object)['id' => 2, 'tipoDeServico' => 'Limpeza Comercial - R$200,00', 'formaDePagamento' => ' - Pix'],
-            (object)['id' => 3, 'tipoDeServico' => 'Limpeza Pós-Obra - R$300,00', 'formaDePagamento' => ' - Pix'],
-          ];
-          ?>
           <?php foreach ($servicos as $servico): ?>
-            <option value="<?= $servico->id ?>"><?= $servico->tipoDeServico ?><?= $servico-> formaDePagamento?></option>
+            <option value="<?= $servico->getId() ?>"><?= $servico->getTipoDeServico() ?> <?= $servico->getFormaDePagamento() ?></option>
           <?php endforeach ?>
         </select>
       </div>

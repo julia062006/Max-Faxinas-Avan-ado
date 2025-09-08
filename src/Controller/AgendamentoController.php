@@ -11,10 +11,12 @@ class AgendamentoController {
       public function index(): void
     {
         $page = 'agendamento';
+        $servicos = Servico::findAll();
         include __DIR__ . '/../View/components/layout.phtml';
     }
 
     public function criarAgendamento(): void {
+        echo var_dump($_POST);
         $nome = $_POST['user_nome'] ?? '';
         $cpf = $_POST['user_cpf'] ?? '';
         $email = $_POST['user_email'] ?? '';
@@ -31,6 +33,6 @@ class AgendamentoController {
 
         $agendamento = new Agendamento(new \DateTime($dataEscolhida), "pendente", $cliente, $servico);
         $agendamento->save();
-         $this->index();
+        $this->index();
     }
 }

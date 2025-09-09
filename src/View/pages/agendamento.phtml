@@ -40,7 +40,7 @@ use App\Model\Servico;
         <select name="job" id="job" class="form-select">
           <option value="">Selecione uma opção</option>
           <?php foreach ($servicos as $servico): ?>
-            <option value="<?= $servico->getId() ?>"><?= $servico->getTipoDeServico() ?> <?= $servico->getFormaDePagamento() ?></option>
+            <option value="<?= $servico->getId() ?>"><?= $servico->getTipoDeServico() ?> <?= $servico->getpreco() ?> <?= $servico->getFormaDePagamento() ?></option>
           <?php endforeach ?>
         </select>
       </div>

@@ -20,7 +20,7 @@ $routes = [
 ];
 
 
-$controller = $routes[$uri] ?? [new NotFoundController, 'index'];
+$controller = $routes[$uri] ?? [new HomeController, 'erro'];
 
 
 call_user_func($controller);

@@ -14,6 +14,7 @@ class AgendamentoController {
         $servicos = Servico::findAll();
         include __DIR__ . '/../View/components/layout.phtml';
     }
+    
 
     public function criarAgendamento(): void {
         //echo var_dump($_POST);

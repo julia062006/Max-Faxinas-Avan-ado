@@ -1,27 +1,24 @@
-<?php
-$agendamentos = [];
-?>
 <h1>Área do Administrador</h1>
-<h3>Lista de Usuários</h3>
-<table>
+<h3>Lista de Agendamentos</h3>
+<table class="table table-striped">
+  <thead>
     <tr>
-        <th>Id</th>
-        <th>CPF</th>
-        <th>Nome</th>
-        <th>Email</th>
-        <th>Telefone</th>
-        <th>Endereço</th>
+      <th scope="col">Id</th>
+      <th scope="col">Data</th>
+      <th scope="col">Status</th>
+      <th scope="col">Cliente</th>
+      <th scope="col">Serviço</th>
     </tr>
-    <?php foreach ($agendamentos as $agedamento): ?>
-        <tr>
-            <td><?= $agedamento->getId() ?></td>
-            <td><?= $agedamento->getCpf() ?></td>
-            <td><?= $agedamento->getNome() ?></td>
-            <td><?= $agedamento->getEmail() ?></td>
-            <td><?= $agedamento->getTelefone() ?></td>
-            <td><?= $agedamento->getEndereco() ?></td>
-
-        </tr>
-    <?php endforeach ?>
+  </thead>
+  <tbody>
+     <?php foreach ($agendamentos as $agendamento): ?>
+    <tr>
+      <td><?= $agendamento->getId() ?></td>
+      <td><?= $agendamento->getData() ?></td>
+      <td><?= $agendamento->getStatus() ?></td>
+      <td><?= $agendamento->getCliente()->getNome() ?></td>
+      <td><?= $agendamento->getServico()->getNome() ?></td>
+    </tr>
+     <?php endforeach ?>
+  </tbody>
 </table>
-

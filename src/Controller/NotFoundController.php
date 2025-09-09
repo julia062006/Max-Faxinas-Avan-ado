@@ -5,8 +5,9 @@ namespace App\Controller;
 
 class NotFoundController
 {
-    public function index(): void
+    public function erro(): void
     {
-        include_once __DIR__ . '/../View/pages/erro.phtml';
+        $page = 'erro';
+        include_once __DIR__ . '/../View/pages/layout.phtml';
     }
 }

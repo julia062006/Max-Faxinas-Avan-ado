@@ -32,7 +32,7 @@ use App\Model\Servico;
 
       <div class="mb-3">
         <label for="cep" class="form-label">Endereço:</label>
-        <input type="text" id="endereco" class="form-control" placeholder="Digite seu endereço" name="user_endereco">
+        <input type="text" id="endereco" class="form-control" placeholder="Digite seu endereço completo: Rua Flores, 1021, Bairro Solar" name="user_endereco">
       </div>
 
       <div class="mb-3">
@@ -123,7 +123,6 @@ use App\Model\Servico;
       return;
     }
 
-
     // verifica se o CEP esta vazio
     if (cepInput.value === "") {
       alert("Por favor, prencha o CEP");
@@ -206,11 +205,5 @@ use App\Model\Servico;
     //essa funçao aceita: (11) 91234-5678
     // 11 91234-5678
     // (11) 1234-5678
-  }
-
-  //Função que valida o CEP
-  function isCepValid(cep) {
-    const cepRegex = /^\d{5}-\d{3}$/;
-    return cepRegex.test(cep);
   }
 </script>

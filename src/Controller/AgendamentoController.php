@@ -16,7 +16,7 @@ class AgendamentoController {
     }
 
     public function criarAgendamento(): void {
-        echo var_dump($_POST);
+        //echo var_dump($_POST);
         $nome = $_POST['user_nome'] ?? '';
         $cpf = $_POST['user_cpf'] ?? '';
         $email = $_POST['user_email'] ?? '';

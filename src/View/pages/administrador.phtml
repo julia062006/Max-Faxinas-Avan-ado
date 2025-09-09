@@ -1,5 +1,5 @@
 <?php
-$users = [];
+$agendamentos = [];
 ?>
 <h1>Área do Administrador</h1>
 <h3>Lista de Usuários</h3>
@@ -12,14 +12,14 @@ $users = [];
         <th>Telefone</th>
         <th>Endereço</th>
     </tr>
-    <?php foreach ($users as $user): ?>
+    <?php foreach ($agendamentos as $agedamento): ?>
         <tr>
-            <td><?= $user->getId() ?></td>
-            <td><?= $user->getCpf() ?></td>
-            <td><?= $user->getNome() ?></td>
-            <td><?= $user->getEmail() ?></td>
-            <td><?= $user->getTelefone() ?></td>
-            <td><?= $user->getEndereco() ?></td>
+            <td><?= $agedamento->getId() ?></td>
+            <td><?= $agedamento->getCpf() ?></td>
+            <td><?= $agedamento->getNome() ?></td>
+            <td><?= $agedamento->getEmail() ?></td>
+            <td><?= $agedamento->getTelefone() ?></td>
+            <td><?= $agedamento->getEndereco() ?></td>
 
         </tr>
     <?php endforeach ?>

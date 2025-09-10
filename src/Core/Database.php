@@ -30,7 +30,7 @@ class Database
     private static function getConfig(): Configuration
     {
         $paths = [__DIR__ . '/../Model'];
-        $isDevMode = false;
+        $isDevMode = true;
 
         return ORMSetup::createAttributeMetadataConfiguration(
             $paths, 

@@ -17,7 +17,7 @@ use App\Model\Servico;
 
       <div class="mb-3">
         <label for="name" class="form-label">CPF:</label>
-        <input type="text" id="name" class="form-control" placeholder="Digite seu CPF" name="user_cpf">
+        <input type="text" id="cpf" class="form-control" placeholder="Digite seu CPF" name="user_cpf">
       </div>
 
       <div class="mb-3">
@@ -80,13 +80,12 @@ use App\Model\Servico;
   const nameInput = document.querySelector("#name");
   const emailInput = document.querySelector("#email");
   const telefoneInput = document.querySelector("#telefone");
-  const cepInput = document.querySelector("#cep");
+  const enderecoInput = document.querySelector("#endereco");
   const jobSelect = document.querySelector("#job");
   const calendarioInput = document.querySelector("#calendario");
   //todo: COLOCAR VALIDAÇAO NA DATA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
   form.addEventListener("submit", (event) => {
-
 
     //verifica se o NOME está vazio
     if (nameInput.value === "") {
@@ -124,8 +123,8 @@ use App\Model\Servico;
     }
 
     // verifica se o CEP esta vazio
-    if (cepInput.value === "") {
-      alert("Por favor, prencha o CEP");
+    if (enderecoInput.value === "") {
+      alert("Por favor, prencha o endereço");
       return;
     }
     //verifica se o CEP foi preenchido corretamente
@@ -153,8 +152,8 @@ use App\Model\Servico;
     // window.location.href = `https://wa.me/554499444208?text=${encodeURIComponent(mensagem)}`;
 
     // Limpa o formulário
-   // form.reset();
-    
+     
+    form.reset();
   });
 
   //Função que válida o NOME

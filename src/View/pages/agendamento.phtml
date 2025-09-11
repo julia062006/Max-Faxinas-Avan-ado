@@ -93,14 +93,17 @@ use App\Model\Servico;
   //todo: COLOCAR VALIDAÇAO NA DATA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
   form.addEventListener("submit", (event) => {
-
     //verifica se o NOME está vazio
     if (nameInput.value === "") {
+      event.preventDefault();
+
       alert("Por favor, preencha seu nome")
       return;
     }
     //verifica se o NOME esta escrito corretamente
     if (!isNomeValid(nameInput.value)) {
+      event.preventDefault();
+
       alert("Por favor, preencha seu nome corretamente (somente letras e espaços).");
       return;
     }
@@ -108,11 +111,15 @@ use App\Model\Servico;
 
     //verifica se o EMAIL esta prenchido e se é valido
     if (emailInput.value === "") {
+      event.preventDefault();
+
       alert("Por favor, preencha seu email");
       return;
     }
     //verifica se o EMAIL esta escrito corretamente
     if (!isEmailValid(emailInput.value.trim())) {
+      event.preventDefault();
+
       alert("Por favor, preencha seu email corretamente")
       return;
     }
@@ -120,28 +127,38 @@ use App\Model\Servico;
 
     //verifica o TELEFONE está vazio
     if (telefoneInput.value === "") {
+      event.preventDefault();
+
       alert("Por favor, preencha seu telefone")
       return;
     }
     //verifica se o TELEFONE esta escrito corretamente
     if (!isTelefoneValid(telefoneInput.value)) {
+      event.preventDefault();
+
       alert("Por favor, preencha seu telefone corretamente")
       return;
     }
 
     // verifica se o CEP esta vazio
     if (enderecoInput.value === "") {
+      event.preventDefault();
+
       alert("Por favor, prencha o endereço");
       return;
     }
     //verifica se o CEP foi preenchido corretamente
     if (!isCepValid(cepInput.value)) {
+      event.preventDefault();
+
       alert("Por favor, preencha um CEP válido (formato 00000-000)");
       return;
     }
 
     //verifica se a SITUAÇÃO foi selecionada
     if (jobSelect.value === "") {
+      event.preventDefault();
+
       alert("Por favor, selecione uma das três opções");
       return;
     }
@@ -159,7 +176,7 @@ use App\Model\Servico;
     // window.location.href = `https://wa.me/554499444208?text=${encodeURIComponent(mensagem)}`;
 
     // Limpa o formulário
-     
+
     form.reset();
   });
 

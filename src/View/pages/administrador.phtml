@@ -16,9 +16,21 @@
         <tr>
           <td><?= $agendamento->getId() ?></td>
           <td><?= $agendamento->getData()->format('d/m/Y') ?></td>
-          <td><?= $agendamento->getStatus() ?></td>
+          <td class="<?= 'status-' . $agendamento->getStatus() ?>"><?= $agendamento->getStatus() ?></td>
           <td><?= $agendamento->getCliente()->getNome() ?></td>
           <td><?= $agendamento->getServico()->getTipoDeServico() ?></td>
+           <td>
+          <form method="POST" action="/mudarStatus" class="d-flex align-items-center gap-2">
+            <input type="hidden" name="id" value="<?= $agendamento->getId() ?>">
+            <select name="status" class="form-select form-select-sm">
+              <option value="pendente" <?= $agendamento->getStatus()=='pendente'?'selected':'' ?>>Pendente</option>
+              <option value="confirmado" <?= $agendamento->getStatus()=='confirmado'?'selected':'' ?>>Confirmado</option>
+              <option value="concluido" <?= $agendamento->getStatus()=='concluido'?'selected':'' ?>>Concluído</option>
+              <option value="cancelado" <?= $agendamento->getStatus()=='cancelado'?'selected':'' ?>>Cancelado</option>
+            </select>
+            <button type="submit" class="btn btn-sm btn-primary">Salvar</button>
+          </form>
+        </td>
         </tr>
       <?php endforeach ?>
     <?php else: ?>

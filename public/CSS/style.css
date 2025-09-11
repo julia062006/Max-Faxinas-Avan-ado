@@ -10,6 +10,11 @@ body {
     padding-top: 70px;
 }
 
+td.status-pendente { color: orange; font-weight: bold; }
+td.status-confirmado { color: green; font-weight: bold; }
+td.status-concluido { color: blue; font-weight: bold; }
+td.status-cancelado { color: red; font-weight: bold; }
+
 
 /* INICIO DO HEADER*/
 header {

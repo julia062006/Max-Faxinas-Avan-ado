@@ -16,19 +16,33 @@ class AgendamentoController
         $servicos = Servico::findAll();
 
         $em = Database::getEntityManager();
-        $query = $em->createQuery("SELECT a.data FROM App\Model\Agendamento a WHERE a.status = 'pendente'");
+        $query = $em->createQuery("SELECT a.data FROM App\Model\Agendamento a WHERE a.status != 'cancelado'");
         $datas = $query->getResult();
 
         // transformar em array simples de strings
         $datasIndisponiveis = array_map(function ($d) {
-            return $d['data']->format('d-m-Y'); // Doctrine já retorna DateTime
+            return $d['data']->format('d-m-Y');
         }, $datas);
 
 
         include __DIR__ . '/../View/components/layout.phtml';
     }
 
+public function mudarStatus(): void {
+    $id = $_POST['id'] ?? null;
+    $novoStatus = $_POST['status'] ?? null;
 
+    if ($id && $novoStatus) {
+        $em = Database::getEntityManager();
+        $agendamento = $em->find(Agendamento::class, $id);
+        if ($agendamento) {
+            $agendamento->setStatus($novoStatus);
+            $agendamento->save();
+        }
+    }
+    header("Location: /administrador");
+    exit;
+}
     public function criarAgendamento(): void
     {
         //echo var_dump($_POST);

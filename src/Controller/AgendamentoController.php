@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Controller;
 
 use App\Model\Cliente;
@@ -6,17 +7,30 @@ use App\Model\Servico;
 use App\Model\Agendamento;
 use App\Core\Database;
 
-class AgendamentoController {
+class AgendamentoController
+{
 
-      public function index(): void
+    public function index(): void
     {
         $page = 'agendamento';
         $servicos = Servico::findAll();
+
+        $em = Database::getEntityManager();
+        $query = $em->createQuery("SELECT a.data FROM App\Model\Agendamento a WHERE a.status = 'pendente'");
+        $datas = $query->getResult();
+
+        // transformar em array simples de strings
+        $datasIndisponiveis = array_map(function ($d) {
+            return $d['data']->format('d-m-Y'); // Doctrine já retorna DateTime
+        }, $datas);
+
+
         include __DIR__ . '/../View/components/layout.phtml';
     }
-    
 
-    public function criarAgendamento(): void {
+
+    public function criarAgendamento(): void
+    {
         //echo var_dump($_POST);
         $nome = $_POST['user_nome'] ?? '';
         $cpf = $_POST['user_cpf'] ?? '';

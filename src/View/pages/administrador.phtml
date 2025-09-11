@@ -15,10 +15,10 @@
       <?php foreach ($agendamentos as $agendamento): ?>
         <tr>
           <td><?= $agendamento->getId() ?></td>
-          <td><?= $agendamento->getData() ?></td>
+          <td><?= $agendamento->getData()->format('d/m/Y') ?></td>
           <td><?= $agendamento->getStatus() ?></td>
           <td><?= $agendamento->getCliente()->getNome() ?></td>
-          <td><?= $agendamento->getServico()->getNome() ?></td>
+          <td><?= $agendamento->getServico()->getTipoDeServico() ?></td>
         </tr>
       <?php endforeach ?>
     <?php else: ?>

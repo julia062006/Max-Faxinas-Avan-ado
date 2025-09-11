@@ -58,13 +58,20 @@ use App\Model\Servico;
 
   </section>
 </main>
-
+<?php if (isset($datasIndisponiveis)) : ?>
+  <script>
+    var datasIndisponiveis = <?= json_encode($datasIndisponiveis) ?>;
+  </script>
+<?php endif; ?>
 <script>
   flatpickr("#calendario", {
     locale: "pt",
     altInput: true,
     altFormat: "j F, Y",
     dateFormat: "d-m-Y",
+    disable: datasIndisponiveis,
+    minDate: "today",
+    monthSelectorType: "static",
   });
 </script>
 

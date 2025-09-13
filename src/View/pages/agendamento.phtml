@@ -17,7 +17,7 @@ use App\Model\Servico;
 
       <div class="mb-3">
         <label for="name" class="form-label">CPF:</label>
-        <input type="text" id="cpf" class="form-control" placeholder="Digite seu CPF" name="user_cpf">
+        <input type="text" id="cpf" class="form-control cpf" placeholder="Digite seu CPF" name="user_cpf">
       </div>
 
       <div class="mb-3">
@@ -54,10 +54,31 @@ use App\Model\Servico;
         <button class="btn btn-primary btn-agendamento" type="submit">Enviar</button>
       </div>
     </form>
-
-
   </section>
+
+  <div class="modal fade" id="sucessoModal" tabindex="-1" aria-labelledby="sucessoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-body text-center">
+          Seu agendamento foi enviado com sucesso
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-bs-dismiss="modal">Ok</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </main>
+<?php if (isset($sucesso) && $sucesso): ?>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var sucessoModal = new bootstrap.Modal(document.getElementById('sucessoModal'));
+      sucessoModal.show();
+    });
+  </script>
+<?php endif; ?>
+
 <?php if (isset($datasIndisponiveis)) : ?>
   <script>
     var datasIndisponiveis = <?= json_encode($datasIndisponiveis) ?>;
@@ -81,10 +102,12 @@ use App\Model\Servico;
   $(document).ready(function() {
     $('.cep').mask('00000-000');
     $('.telefone').mask('(00) 00000-0000');
+    $('.cpf').mask('000.000.000-00');
   });
 
   const form = document.querySelector("#form");
   const nameInput = document.querySelector("#name");
+  const cpfInput = document.querySelector("#cpf");
   const emailInput = document.querySelector("#email");
   const telefoneInput = document.querySelector("#telefone");
   const enderecoInput = document.querySelector("#endereco");
@@ -108,6 +131,17 @@ use App\Model\Servico;
       return;
     }
 
+    if (cpfInput.value === "") {
+      event.preventDefault();
+      alert("Por favor, preencha seu CPF");
+      return;
+    }
+
+    if (!isCpfValid(cpfInput.value)) {
+      event.preventDefault();
+      alert("Por favor, preencha um CPF válido");
+      return;
+    }
 
     //verifica se o EMAIL esta prenchido e se é valido
     if (emailInput.value === "") {
@@ -148,12 +182,12 @@ use App\Model\Servico;
       return;
     }
     //verifica se o CEP foi preenchido corretamente
-    if (!isCepValid(cepInput.value)) {
+     if (!isCepValid(cepInput.value)) {
       event.preventDefault();
 
       alert("Por favor, preencha um CEP válido (formato 00000-000)");
       return;
-    }
+     }
 
     //verifica se a SITUAÇÃO foi selecionada
     if (jobSelect.value === "") {
@@ -163,9 +197,12 @@ use App\Model\Servico;
       return;
     }
 
+    if (calendarioInput.value === "") {
+      event.preventDefault();
+      alert("Por favor, selecione uma data");
+      return;
+    }
 
-
-    //COLCOAR VALIDAÇAO NA DATA!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     //alert("Formulário enviado com sucesso! Agora vamos te levar ao WhatsApp.");
 
@@ -190,6 +227,16 @@ use App\Model\Servico;
     if (nomeRegex.test(nome) && nome.trim().length >= 3) {
       return true;
     }
+    return false;
+  }
+
+  function isCpfValid(cpf) {
+    cpf = cpf.replace(/[^\d]/g, '');
+
+    if (cpf.length === 11) {
+      return true;
+    }
+
     return false;
   }
 

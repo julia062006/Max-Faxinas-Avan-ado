@@ -10,7 +10,7 @@ use App\Core\Database;
 class AgendamentoController
 {
 
-    public function index(): void
+    public function index(bool $sucesso = false): void
     {
         $page = 'agendamento';
         $servicos = Servico::findAll();
@@ -28,21 +28,22 @@ class AgendamentoController
         include __DIR__ . '/../View/components/layout.phtml';
     }
 
-public function mudarStatus(): void {
-    $id = $_POST['id'] ?? null;
-    $novoStatus = $_POST['status'] ?? null;
+    public function mudarStatus(): void
+    {
+        $id = $_POST['id'] ?? null;
+        $novoStatus = $_POST['status'] ?? null;
 
-    if ($id && $novoStatus) {
-        $em = Database::getEntityManager();
-        $agendamento = $em->find(Agendamento::class, $id);
-        if ($agendamento) {
-            $agendamento->setStatus($novoStatus);
-            $agendamento->save();
+        if ($id && $novoStatus) {
+            $em = Database::getEntityManager();
+            $agendamento = $em->find(Agendamento::class, $id);
+            if ($agendamento) {
+                $agendamento->setStatus($novoStatus);
+                $agendamento->save();
+            }
         }
+        header("Location: /administrador");
+        exit;
     }
-    header("Location: /administrador");
-    exit;
-}
     public function criarAgendamento(): void
     {
         //echo var_dump($_POST);
@@ -62,6 +63,8 @@ public function mudarStatus(): void {
 
         $agendamento = new Agendamento(new \DateTime($dataEscolhida), "pendente", $cliente, $servico);
         $agendamento->save();
-        $this->index();
+
+        $sucesso = true;
+        $this->index($sucesso);
     }
 }

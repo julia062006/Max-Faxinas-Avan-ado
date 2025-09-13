@@ -10,6 +10,32 @@ body {
     padding-top: 70px;
 }
 
+/* INICIO DO ADMINSTRADOR */
+.administrador {
+    background-color: #8DA9C4 !important;
+    padding: 20px;
+    width: 100%;
+}
+
+.admin-header {
+  background-color: #8DA9C4; /* azul */
+  padding: 15px 20px;
+  margin-bottom: 20px;
+}
+
+.subtitulo {
+    margin-bottom: 25px;
+    /*Aumenta o espaço para destacar o título*/
+    padding-top: 25px;
+    padding-bottom: 30px;
+    text-transform: uppercase;
+    font-size: 1.0em;
+    /* Ajuste o tamanho para ser impactante */
+    font-weight: 800;
+    
+}
+
+
 td.status-pendente { color: orange; font-weight: bold; }
 td.status-confirmado { color: green; font-weight: bold; }
 td.status-concluido { color: blue; font-weight: bold; }

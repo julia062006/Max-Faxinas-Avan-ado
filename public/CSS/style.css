@@ -15,6 +15,22 @@ body {
     background-color: #8DA9C4 !important;
     padding: 20px;
     width: 100%;
+    .table{
+        table-layout: fixed;
+        width: 100%;
+    }
+}
+
+.w-Id{
+    width: 6%;
+}
+
+.w-Data{
+    width: 11%;
+}
+
+.w-Status{
+    width: 11%;
 }
 
 .admin-header {

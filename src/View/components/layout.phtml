@@ -38,6 +38,16 @@ require_once __DIR__ . '/../../../vendor/autoload.php';
   <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
   <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/pt.js"></script>
 
+  <script>
+    function mostrarSenha() {
+      var campo = document.getElementById("senha");
+      if (campo.type == "password") {
+        campo.type = "text";
+      } else {
+        campo.type = "password";
+      }
+    }
+  </script>
 
 </head>
 
@@ -68,6 +78,9 @@ require_once __DIR__ . '/../../../vendor/autoload.php';
             <li class="nav-item">
               <a class="btn" href="agendamento">Agendamento</a>
             </li>
+            <li class="nav-item">
+              <a class="btn" href="login">Login</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -75,13 +88,13 @@ require_once __DIR__ . '/../../../vendor/autoload.php';
   </header>
 
   <main>
-<?php
+    <?php
 
 
     //incluir o arquivo do array
     // include __DIR__ . "/../../array.php";
 
-    
+
     // $pagina = "home";
     // if (isset($_GET["param"])) {
     //   $param = explode("/", $_GET["param"]);
@@ -98,9 +111,9 @@ require_once __DIR__ . '/../../../vendor/autoload.php';
 
     // // verficar se a pagina existe
     if (file_exists($pagina)) {
-       include $pagina;
+      include $pagina;
     } else {
-       include __DIR__ . "/../pages/erro.phtml";
+      include __DIR__ . "/../pages/erro.phtml";
     }
     ?>
 

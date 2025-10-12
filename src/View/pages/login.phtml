@@ -1,0 +1,28 @@
+<main>
+    <section class="agendamento backgroundLogin">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="titulo">Login</h2>
+            </div>
+            <div class="card-body">
+                <form name="form1" method="post" class="formLogin">
+                    <label for="email">Digite seu e-mail:</label>
+                    <input type="email" name="email" id="email">
+
+                    <label for="senha">Digite sua senha:</label>
+                    <div class="input-group mb-3 senhaLogin">
+                        <input type="password" name="senha" id="senha">
+                        <button type="button" class="btn btn-primary" onclick="mostrarSenha()">
+                            <i class="bi bi-eye"></i>
+                        </button>
+                    </div>
+
+                    <button type="submit" class="btn btnLogin">
+                        Fazer Login
+                    </button>
+                </form>
+                <a class="linkCadastro" href="cadastro">Não tem uma conta? Cadastre-se</a>
+            </div>
+        </div>
+    </section>
+</main>

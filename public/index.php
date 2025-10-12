@@ -15,7 +15,9 @@ $routes = [
     '/quemsou'       => [new HomeController, 'quemsou'],
     '/servico'       => [new HomeController, 'servico'],
     '/administrador' => [new HomeController, 'administrador'],
-    '/agendamento'   => [new AgendamentoController , 'index'],
+    '/login'         => [new HomeController, 'login'],
+    '/cadastro'      => [new HomeController, 'cadastro'],
+    '/agendamento'   => [new AgendamentoController, 'index'],
     '/enviar'        => [new AgendamentoController, 'criarAgendamento'],
     '/mudarStatus'   => [new AgendamentoController, 'mudarStatus']
 ];

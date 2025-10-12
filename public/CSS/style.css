@@ -15,28 +15,30 @@ body {
     background-color: #8DA9C4 !important;
     padding: 20px;
     width: 100%;
-    .table{
+
+    .table {
         table-layout: fixed;
         width: 100%;
     }
 }
 
-.w-Id{
+.w-Id {
     width: 6%;
 }
 
-.w-Data{
+.w-Data {
     width: 11%;
 }
 
-.w-Status{
+.w-Status {
     width: 11%;
 }
 
 .admin-header {
-  background-color: #8DA9C4; /* azul */
-  padding: 15px 20px;
-  margin-bottom: 20px;
+    background-color: #8DA9C4;
+    /* azul */
+    padding: 15px 20px;
+    margin-bottom: 20px;
 }
 
 .subtitulo {
@@ -48,14 +50,29 @@ body {
     font-size: 1.0em;
     /* Ajuste o tamanho para ser impactante */
     font-weight: 800;
-    
+
 }
 
 
-td.status-pendente { color: orange; font-weight: bold; }
-td.status-confirmado { color: green; font-weight: bold; }
-td.status-concluido { color: blue; font-weight: bold; }
-td.status-cancelado { color: red; font-weight: bold; }
+td.status-pendente {
+    color: orange;
+    font-weight: bold;
+}
+
+td.status-confirmado {
+    color: green;
+    font-weight: bold;
+}
+
+td.status-concluido {
+    color: blue;
+    font-weight: bold;
+}
+
+td.status-cancelado {
+    color: red;
+    font-weight: bold;
+}
 
 
 /* INICIO DO HEADER*/
@@ -105,7 +122,7 @@ header {
 .btn {
     background-color: #13315c;
     color: white;
-    
+
     font-weight: bold;
 }
 
@@ -193,7 +210,7 @@ header {
 }
 
 .titulo-slogan {
-    color:  #0b2545;
+    color: #0b2545;
     font-size: 46px;
     font-family: sans-serif;
     text-transform: uppercase;
@@ -272,14 +289,16 @@ header {
 
 /* aq estava os item do carrossel */
 #carouselExample {
-  max-width: 800px; /* Largura máxima no desktop */
-  margin: 0 auto;    /* Centralizar */
+    max-width: 800px;
+    /* Largura máxima no desktop */
+    margin: 0 auto;
+    /* Centralizar */
 }
 
 
 
 .agendamento {
-     width: 100%;
+    width: 100%;
     max-width: 100%;
     background-color: #8DA9C4;
     min-height: 100vh;
@@ -291,15 +310,15 @@ header {
     padding-right: 1rem;
     padding-left: 1rem;
     box-sizing: border-box;
-  
+
 }
 
 .agendamento input,
 .agendamento textarea,
 .agendamento select {
-  max-width: 100%;
-  width: 100%;
-   box-sizing: border-box;
+    max-width: 100%;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .titulo-formulario::before {
@@ -315,10 +334,35 @@ header {
     display: block;
 }
 
+
 form {
     width: 800px;
     max-width: 32rem;
     font-size: 1.125rem;
+}
+
+.senhaLogin {
+    display: flex;
+}
+
+.senhaLogin input,
+.senhaLogin button {
+    flex: 1 1 auto;
+    width: auto;
+    margin-bottom: 10px;
+    height: 100%;
+}
+
+.senhaLogin .btn {
+    display: inline-flex;
+    width: auto;
+    padding: 0.5rem 0.75rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.btnLogin{
+    margin-bottom: 20px;
 }
 
 label,
@@ -384,6 +428,14 @@ textarea:focus {
     background-color: #0b2545;
 }
 
+.backgroundLogin {
+    background: linear-gradient(100deg, #0b2545, #163561, #2a65a9);
+    min-height: 100vh;
+}
+
+.linkCadastro {
+    text-decoration: none;
+}
 
 footer {
     background-color: #eef4ed;
@@ -420,31 +472,31 @@ footer .text-center {
 }
 
 .pagina-404 {
-  padding: 40px 15px;
+    padding: 40px 15px;
 }
 
 .pagina-404 h1 {
-  font-size: 3rem;
-  color: #13315c;
-  margin-bottom: 20px;
+    font-size: 3rem;
+    color: #13315c;
+    margin-bottom: 20px;
 }
 
 .pagina-404 h2 {
-  font-size: 1.5rem;
-  color: #444;
-  margin-bottom: 10px;
+    font-size: 1.5rem;
+    color: #444;
+    margin-bottom: 10px;
 }
 
 .pagina-404 img {
-  max-width: 100%;
-  height: auto;
-  margin-bottom: 10px;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
 }
 
 .pagina-404 .btn {
-  padding: 10px 20px;
-  font-weight: bold;
-  text-transform: uppercase;
+    padding: 10px 20px;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 
@@ -487,36 +539,42 @@ footer .text-center {
         font-size: 16px;
     }
 
-     .mobile-centralizado {
-    display: flex;
-    justify-content: center;
-  }
+    .mobile-centralizado {
+        display: flex;
+        justify-content: center;
+    }
 
-  .mobile-centralizado .card {
-    width: 100%;         /* Aumenta a largura */
-    padding: 10px;       /* Espaço interno extra */
-    border-radius: 12px; /* Se quiser cantos mais arredondados */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra leve pra dar destaque */
+    .mobile-centralizado .card {
+        width: 100%;
+        /* Aumenta a largura */
+        padding: 10px;
+        /* Espaço interno extra */
+        border-radius: 12px;
+        /* Se quiser cantos mais arredondados */
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        /* Sombra leve pra dar destaque */
 
-  }
+    }
 
-  .titulo-feedback {
-    margin-bottom: 0px;
-    /*Aumenta o espaço para destacar o título*/
-    padding-top: 30px;
-    text-transform: uppercase;
-    font-size: 1.8em;
-    /* Ajuste o tamanho para ser impactante */
-    font-weight: 600;
-    /* Mais encorpado para o título */
-    text-align: center;
-}
+    .titulo-feedback {
+        margin-bottom: 0px;
+        /*Aumenta o espaço para destacar o título*/
+        padding-top: 30px;
+        text-transform: uppercase;
+        font-size: 1.8em;
+        /* Ajuste o tamanho para ser impactante */
+        font-weight: 600;
+        /* Mais encorpado para o título */
+        text-align: center;
+    }
 
-#carouselExample {
-  max-width: 800px; /* Largura máxima no desktop */
-  margin: 0 auto;    /* Centralizar */
-  padding-bottom: 80px;
-}
+    #carouselExample {
+        max-width: 800px;
+        /* Largura máxima no desktop */
+        margin: 0 auto;
+        /* Centralizar */
+        padding-bottom: 80px;
+    }
 
     .quem-sou {
         flex-direction: column;
@@ -528,7 +586,7 @@ footer .text-center {
         max-width: 100%;
         border-radius: 10px !important;
     }
-  
+
     .container-texto {
         align-items: center;
         text-align: center;
@@ -538,32 +596,33 @@ footer .text-center {
         text-align: center;
     }
 
-  
-  form {
-    width: 90%;
-    max-width: 90%;
-    margin: 0 auto;
-  }
- 
-   .btn-agendamento {
-    margin-bottom: 5px !important;
-  }
 
- .agendamento {
-   max-width: 100%;         /* No mobile: máximo 90% da largura da tela */
-    min-height: auto;
-    padding-top: 30px;
-    padding-bottom: 40px;
-  }
+    form {
+        width: 90%;
+        max-width: 90%;
+        margin: 0 auto;
+    }
 
-  .agendamento input,
-  .agendamento textarea,
-  .agendamento select,
-  .agendamento button {
-    width: 100%;
-    max-width: 100%;
-  
-  }
+    .btn-agendamento {
+        margin-bottom: 5px !important;
+    }
+
+    .agendamento {
+        max-width: 100%;
+        /* No mobile: máximo 90% da largura da tela */
+        min-height: auto;
+        padding-top: 30px;
+        padding-bottom: 40px;
+    }
+
+    .agendamento input,
+    .agendamento textarea,
+    .agendamento select,
+    .agendamento button {
+        width: 100%;
+        max-width: 100%;
+
+    }
 
     .row {
         padding-bottom: 0px;
@@ -584,26 +643,28 @@ footer .text-center {
 }
 
 @media (max-width: 430px) {
-  .card-title {
-    font-size: 1rem;
-  }
+    .card-title {
+        font-size: 1rem;
+    }
 
 
-   .titulo-feedback {
-    margin-bottom: 0px;
-    /*Aumenta o espaço para destacar o título*/
-    padding-top: 30px;
-    text-transform: uppercase;
-    font-size: 1.8em;
-    /* Ajuste o tamanho para ser impactante */
-    font-weight: 600;
-    /* Mais encorpado para o título */
-    text-align: center;
-}
+    .titulo-feedback {
+        margin-bottom: 0px;
+        /*Aumenta o espaço para destacar o título*/
+        padding-top: 30px;
+        text-transform: uppercase;
+        font-size: 1.8em;
+        /* Ajuste o tamanho para ser impactante */
+        font-weight: 600;
+        /* Mais encorpado para o título */
+        text-align: center;
+    }
 
-#carouselExample {
-  max-width: 800px; /* Largura máxima no desktop */
-  margin: 0 auto;    /* Centralizar */
-  padding-bottom: 80px;
-}
+    #carouselExample {
+        max-width: 800px;
+        /* Largura máxima no desktop */
+        margin: 0 auto;
+        /* Centralizar */
+        padding-bottom: 80px;
+    }
 }

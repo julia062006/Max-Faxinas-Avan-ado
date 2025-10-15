@@ -11,9 +11,10 @@ use Doctrine\ORM\Mapping\Id;
 use App\Core\Database;
 
 #[Entity()]
-class Cliente {
+class Cliente
+{
 
-    #[Column(), Id, GeneratedValue() ]
+    #[Column(), Id, GeneratedValue()]
     private int $id;
 
     #[Column()]
@@ -26,58 +27,83 @@ class Cliente {
     private string $telefone;
     #[Column()]
     private string $endereco;
+    #[Column()]
+    private string $senha;
 
-    public function __construct(string $cpf, string $nome, string $email, string $telefone, string $endereco) {
+    public function __construct(string $cpf, string $nome, string $email, string $telefone, string $endereco, string $senha)
+    {
         $this->cpf = $cpf;
         $this->nome = $nome;
         $this->email = $email;
         $this->telefone = $telefone;
         $this->endereco = $endereco;
+        $this->senha = password_hash($senha, PASSWORD_DEFAULT);
     }
 
-    public function getId() : int {
+    public function getId(): int
+    {
         return $this->id;
     }
 
     // Getters (Serve para pegar os valores)
-    public function getCpf(): string {
+    public function getCpf(): string
+    {
         return $this->cpf;
     }
 
-    public function getNome(): string {
+    public function getNome(): string
+    {
         return $this->nome;
     }
 
-    public function getEmail(): string {
+    public function getEmail(): string
+    {
         return $this->email;
     }
 
-    public function getTelefone(): string {
+    public function getTelefone(): string
+    {
         return $this->telefone;
     }
 
-    public function getEndereco(): string {
+    public function getEndereco(): string
+    {
         return $this->endereco;
     }
 
+    public function getSenha(): string
+    {
+        return $this->senha;
+    }
+
+    public function setSenha(string $senha): void
+    {
+        $this->senha = password_hash($senha, PASSWORD_DEFAULT);
+    }
+
     // Setters (Serve para alterar os valores)
-    public function setCpf(string $cpf): void {
+    public function setCpf(string $cpf): void
+    {
         $this->cpf = $cpf;
     }
 
-    public function setNome (string $nome): void {
+    public function setNome(string $nome): void
+    {
         $this->nome = $nome;
     }
 
-    public function setEmail(string $email): void {
+    public function setEmail(string $email): void
+    {
         $this->email = $email;
     }
 
-    public function setTelefone(string $telefone): void {
+    public function setTelefone(string $telefone): void
+    {
         $this->telefone = $telefone;
     }
 
-    public function setEndereco(string $endereco): void {
+    public function setEndereco(string $endereco): void
+    {
         $this->endereco = $endereco;
     }
 
@@ -93,8 +119,5 @@ class Cliente {
         $em = Database::getEntityManager();
         $repository = $em->getRepository(Cliente::class);
         return $repository->findAll();
-
-    } 
-     
+    }
 }
-

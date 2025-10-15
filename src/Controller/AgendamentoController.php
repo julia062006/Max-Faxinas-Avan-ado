@@ -54,8 +54,9 @@ class AgendamentoController
         $endereco = $_POST['user_endereco'] ?? '';
         $servicoId = $_POST['job'] ?? '';
         $dataEscolhida = $_POST['data'] ?? date('Y-m-d');
+        $senha = $_POST['user_senha'] ;
 
-        $cliente = new Cliente($cpf, $nome, $email, $telefone, $endereco);
+        $cliente = new Cliente($cpf, $nome, $email, $telefone, $endereco, $senha);
         $cliente->save();
 
         $em = Database::getEntityManager();

@@ -361,7 +361,7 @@ form {
     justify-content: center;
 }
 
-.btnLogin{
+.btnLogin {
     margin-bottom: 20px;
 }
 
@@ -435,6 +435,13 @@ textarea:focus {
 
 .linkCadastro {
     text-decoration: none;
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+
+    &:hover {
+        text-decoration: underline;
+    }
 }
 
 footer {

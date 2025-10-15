@@ -1,5 +1,8 @@
 <?php
-//print_r($_SERVER);
+session_start();
+
+use App\Controller\IndexController;
+
 require_once __DIR__ . '/../../../vendor/autoload.php';
 
 #$base = "http://{$_SERVER['SERVER_NAME']}{$_SERVER['SCRIPT_NAME']}"
@@ -53,68 +56,60 @@ require_once __DIR__ . '/../../../vendor/autoload.php';
 
 <body>
   <header>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
-      <div class="container-fluid">
-        <img class="logocabecalho" src="/imagens/Max faxinas.png" alt="Logo Max Faxinas">
-        <!--    <a class="navbar-brand" href="#">Navbar</a> -->
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="home">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="quemsou">Quem sou</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="servico">Serviços</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="administrador">Administrador</a>
-            </li>
-            <li class="nav-item">
-              <a class="btn" href="agendamento">Agendamento</a>
-            </li>
-            <li class="nav-item">
-              <a class="btn" href="login">Login</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </header>
+    <?php
+    if (isset($_SESSION['admin'])) {
+        include __DIR__ . '/../partials/menu_admin.phtml';
+    } else if (isset($_SESSION['cliente'])) {
+        include __DIR__ . '/../partials/menu_cliente.phtml';
+    } else {
+        include __DIR__ . '/../partials/menu.phtml';
+    }
+    ?>
+</header>
 
   <main>
     <?php
 
-
-    //incluir o arquivo do array
-    // include __DIR__ . "/../../array.php";
-
-
-    // $pagina = "home";
-    // if (isset($_GET["param"])) {
-    //   $param = explode("/", $_GET["param"]);
-    //   $pagina = $param[0];
-    // }
-
-    // //$pagina = $param(0);
-    // $id = $param[1] ?? NULL;
-
-    // echo $id;
-
-    // // home -> pages/home.php
     $pagina = __DIR__ . "/../pages/{$page}.phtml";
 
-    // // verficar se a pagina existe
+    //verficar se a pagina existe
     if (file_exists($pagina)) {
       include $pagina;
     } else {
       include __DIR__ . "/../pages/erro.phtml";
     }
+
+    //login
+    if (($_POST) && (!isset($_SESSION["cliente"]))) {
+
+      $controlPagina = new IndexController();
+      $controlPagina->verificar($_POST);
+    } else if (!isset($_SESSION["cliente"])) {
+
+      require "../views/pages/login.php";
+    } else if (isset($_SESSION["cliente"])) {
+      // mostrar o menu
+      // require "../pages/menu.php";
+
+      //rotas
+      if (isset($_GET["param"])) {
+        $param = explode("/", $_GET["param"]);
+      }
+
+      $controller = ucfirst($param[0] ?? "index") . "Controller";
+      $view = $param[1] ?? "index";
+      $id = $param[2] ?? null;
+
+      //incluir o controller
+      if (file_exists("../Controller/{$controller}.php")) {
+        require "../Controller/{$controller}.php";
+
+        $control = new $controller();
+        $control->$view($id);
+      } else {
+        require "../View/pages/erro.phtml";
+      }
+    } 
     ?>
 
 

@@ -6,6 +6,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 use App\Controller\HomeController;
 use App\Controller\AgendamentoController;
 use App\Controller\CadastroController;
+use App\Controller\SairController;
 use App\Controller\NotFoundController;
 
 // pega só o caminho da URL, sem query string
@@ -22,8 +23,9 @@ $routes = [
     '/cadastro'      => [new HomeController, 'cadastro'],
     '/agendamento'   => [new AgendamentoController, 'index'],
     '/enviar'        => [new AgendamentoController, 'criarAgendamento'],
-    '/cadastrar'        => [new CadastroController, 'cadastrar'],
-    '/mudarStatus'   => [new AgendamentoController, 'mudarStatus']
+    '/cadastrar'     => [new CadastroController, 'cadastrar'],
+    '/mudarStatus'   => [new AgendamentoController, 'mudarStatus'],
+    '/sair'          => [new SairController, 'index']
 ];
 
 

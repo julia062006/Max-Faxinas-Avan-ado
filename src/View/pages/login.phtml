@@ -6,15 +6,15 @@
             </div>
             <div class="card-body">
                 <form name="form1" method="post" class="formLogin">
-                    <label for="email">Digite seu e-mail:</label>
-                    <input type="email" name="email" id="email">
+                    <label for="email" class="form-label">Digite seu e-mail:</label>
+                    <input type="email" name="email" id="email" class="form-control">
 
-                    <label for="senha">Digite sua senha:</label>
-                    <div class="input-group mb-3 senhaLogin">
-                        <input type="password" name="senha" id="senha">
-                        <button type="button" class="btn btn-primary" onclick="mostrarSenha()">
+                    <label for="senha" class="form-label">Digite sua senha:</label>
+                    <div class="input-group senhaLogin">
+                        <input type="password" name="user_senha" id="senha" class="form-control">
+                        <span type="button" class="btn" onclick="mostrarSenha()">
                             <i class="bi bi-eye"></i>
-                        </button>
+                        </span>
                     </div>
 
                     <button type="submit" class="btn btnLogin">

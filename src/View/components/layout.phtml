@@ -41,31 +41,20 @@ require_once __DIR__ . '/../../../vendor/autoload.php';
   <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/material_blue.css">
   <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/pt.js"></script>
 
-  <script>
-    function mostrarSenha() {
-      var campo = document.getElementById("senha");
-      if (campo.type == "password") {
-        campo.type = "text";
-      } else {
-        campo.type = "password";
-      }
-    }
-  </script>
-
 </head>
 
 <body>
   <header>
     <?php
     if (isset($_SESSION['admin'])) {
-        include __DIR__ . '/../partials/menu_admin.phtml';
+      include __DIR__ . '/../menus/menu_admin.phtml';
     } else if (isset($_SESSION['cliente'])) {
-        include __DIR__ . '/../partials/menu_cliente.phtml';
+      include __DIR__ . '/../menus/menu_cliente.phtml';
     } else {
-        include __DIR__ . '/../partials/menu.phtml';
+      include __DIR__ . '/../menus/menu.phtml';
     }
     ?>
-</header>
+  </header>
 
   <main>
     <?php
@@ -87,7 +76,6 @@ require_once __DIR__ . '/../../../vendor/autoload.php';
     } else if (!isset($_SESSION["cliente"])) {
 
       include __DIR__ . "../pages/login.phtml";
-
     } else if (isset($_SESSION["cliente"])) {
       // mostrar o menu
       // require "../pages/menu.php";
@@ -108,9 +96,9 @@ require_once __DIR__ . '/../../../vendor/autoload.php';
         $control = new $controller();
         $control->$view($id);
       } else {
-         include __DIR__ . "../pages/erro.phtml";
+        include __DIR__ . "../pages/erro.phtml";
       }
-    } 
+    }
     ?>
 
 
@@ -165,7 +153,9 @@ require_once __DIR__ . '/../../../vendor/autoload.php';
       © 2025 Max Faxinas — Todos os direitos reservados.
     </div>
   </footer>
-
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="/js/jquery.mask.min.js"></script>
+  <script src="/js/scripts.js"></script>
 </body>
 
 </html>

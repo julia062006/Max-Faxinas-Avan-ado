@@ -341,22 +341,13 @@ form {
     font-size: 1.125rem;
 }
 
-.senhaLogin {
-    display: flex;
-}
-
 .senhaLogin input,
-.senhaLogin button {
-    flex: 1 1 auto;
-    width: auto;
-    margin-bottom: 10px;
-    height: 100%;
+.senhaLogin .btn {
+    height: calc(2.5rem + 2px);
 }
 
 .senhaLogin .btn {
-    display: inline-flex;
-    width: auto;
-    padding: 0.5rem 0.75rem;
+    display: flex;
     align-items: center;
     justify-content: center;
 }
@@ -441,6 +432,12 @@ textarea:focus {
 
     &:hover {
         text-decoration: underline;
+    }
+}
+
+.bntSair{
+    &:hover{
+        color: red;
     }
 }
 

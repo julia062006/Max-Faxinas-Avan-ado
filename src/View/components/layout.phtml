@@ -86,7 +86,8 @@ require_once __DIR__ . '/../../../vendor/autoload.php';
       $controlPagina->verificar($_POST);
     } else if (!isset($_SESSION["cliente"])) {
 
-      require "../views/pages/login.php";
+      include __DIR__ . "../pages/login.phtml";
+
     } else if (isset($_SESSION["cliente"])) {
       // mostrar o menu
       // require "../pages/menu.php";
@@ -102,12 +103,12 @@ require_once __DIR__ . '/../../../vendor/autoload.php';
 
       //incluir o controller
       if (file_exists("../Controller/{$controller}.php")) {
-        require "../Controller/{$controller}.php";
+        include __DIR__ . "../Controller/{$controller}.php";
 
         $control = new $controller();
         $control->$view($id);
       } else {
-        require "../View/pages/erro.phtml";
+         include __DIR__ . "../pages/erro.phtml";
       }
     } 
     ?>

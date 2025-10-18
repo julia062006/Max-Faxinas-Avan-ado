@@ -1,5 +1,8 @@
 <?php
-session_start();
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 
 use App\Controller\IndexController;
 
@@ -75,7 +78,7 @@ require_once __DIR__ . '/../../../vendor/autoload.php';
       $controlPagina->verificar($_POST);
     } else if (!isset($_SESSION["cliente"])) {
 
-      include __DIR__ . "../pages/login.phtml";
+      include __DIR__ . "/../pages/login.phtml";
     } else if (isset($_SESSION["cliente"])) {
       // mostrar o menu
       // require "../pages/menu.php";

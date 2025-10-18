@@ -29,6 +29,9 @@ class Agendamento
     #[ManyToOne()]
     private Servico $servico;
 
+    #[ManyToOne()]
+    private forma_pagamento $forma_pagamento;
+
     public function __construct(DateTime $data, string $status, Cliente $cliente, Servico $servico)
     {
         $this->data = $data;

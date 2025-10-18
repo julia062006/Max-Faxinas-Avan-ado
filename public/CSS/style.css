@@ -378,6 +378,16 @@ label {
     /* Corrigido: antes estava com espaço extra em '0.5 rem' */
 }
 
+.erro-message {
+    color: rgb(247, 75, 75);
+    font-size: medium;
+  }
+
+input.error,
+select.error {
+  border: 1px solid red;
+}
+
 input,
 textarea,
 select {

@@ -307,10 +307,9 @@ header {
     align-items: center;
     flex-direction: column;
     font-family: 'Nunito', sans-serif;
-    padding-right: 1rem;
-    padding-left: 1rem;
+    padding: 2rem;
     box-sizing: border-box;
-
+    
 }
 
 .agendamento input,

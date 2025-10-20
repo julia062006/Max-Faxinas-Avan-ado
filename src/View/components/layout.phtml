@@ -1,9 +1,9 @@
 <?php
 if (session_status() === PHP_SESSION_NONE) {
-    session_start();
+  session_start();
 }
 
-
+use App\Controller\HomeController;
 use App\Controller\IndexController;
 
 require_once __DIR__ . '/../../../vendor/autoload.php';
@@ -62,26 +62,27 @@ require_once __DIR__ . '/../../../vendor/autoload.php';
   <main>
     <?php
 
-    $pagina = __DIR__ . "/../pages/{$page}.phtml";
-
-    //verficar se a pagina existe
-    if (file_exists($pagina)) {
-      include $pagina;
-    } else {
-      include __DIR__ . "/../pages/erro.phtml";
-    }
+    $controlPagina = new IndexController();
 
     //login
     if (($_POST) && (!isset($_SESSION["cliente"]))) {
 
-      $controlPagina = new IndexController();
       $controlPagina->verificar($_POST);
-    } else if (!isset($_SESSION["cliente"])) {
+    }
 
+    $pagina = __DIR__ . "/../pages/{$page}.phtml";
+    $paginasProtegidas = ['agendamento', 'perfil', 'carrinho'];
+
+    if (in_array($page, $paginasProtegidas) && !isset($_SESSION["cliente"])) {
       include __DIR__ . "/../pages/login.phtml";
-    } else if (isset($_SESSION["cliente"])) {
-      // mostrar o menu
-      // require "../pages/menu.php";
+    } else {
+
+      //verficar se a pagina existe
+      if (file_exists($pagina)) {
+        include $pagina;
+      } else {
+        include __DIR__ . "/../pages/erro.phtml";
+      }
 
       //rotas
       if (isset($_GET["param"])) {

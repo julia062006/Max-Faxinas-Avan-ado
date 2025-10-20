@@ -19,6 +19,7 @@ $routes = [
     '/quemsou'       => [new HomeController, 'quemsou'],
     '/servico'       => [new HomeController, 'servico'],
     '/administrador' => [new HomeController, 'administrador'],
+    '/perfil' => [new HomeController, 'perfil'],
     '/login'         => [new HomeController, 'login'],
     '/cadastro'      => [new HomeController, 'cadastro'],
     '/agendamento'   => [new AgendamentoController, 'index'],

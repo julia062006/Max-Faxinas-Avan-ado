@@ -30,6 +30,12 @@ class HomeController
         include __DIR__ . '/../View/components/layout.phtml';
     }
 
+     public function perfil(): void
+    {
+        $page = 'perfil';
+        include __DIR__ . '/../View/components/layout.phtml';
+    }
+
     public function login(): void
     {
         $page = 'login';

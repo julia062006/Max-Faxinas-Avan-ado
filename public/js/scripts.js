@@ -8,6 +8,18 @@ function mostrarSenha() {
 }
 
 
+//função para mostrar mensagem de erro
+mensagem = function(msg, url, icone){
+  Swal.fire({
+    icon: icone,
+    title: msg,
+    confirmButtonText: "OK",
+  }).then((result) => {
+    location.href = url;
+  });
+}
+
+
 //validação cadastro
 $(document).ready(function () {
   $('.telefone').mask('(00) 00000-0000');
@@ -104,6 +116,18 @@ form.addEventListener("submit", (event) => {
     event.preventDefault();
 
     erroEmail.textContent = "Por favor, preencha seu email corretamente";
+    return;
+  }
+
+    if (senha.value === "") {
+    event.preventDefault();
+    erroSenha.textContent = "Por favor, preencha sua senha";
+    return;
+  }
+
+  if (senha.value.trim().length < 6) {
+    event.preventDefault();
+    erroSenha.textContent = "A senha deve ter pelo menos 6 caracteres";
     return;
   }
 

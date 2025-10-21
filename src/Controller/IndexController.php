@@ -24,10 +24,10 @@ class IndexController
         $senha = $dados["senha"] ?? null;
 
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            echo "<script>mensagem('Digite um e-mail válido', 'error', '')</script>";
+            echo "<script>mensagem('Digite um e-mail válido', '', 'error')</script>";
             exit;
         } elseif (empty($senha)) {
-            echo "<script>mensagem('Senha inválida', 'error','')</script>"; // usar o sweetAlert para as mensagens
+            echo "<script>mensagem('Senha inválida', '', 'error')</script>"; // usar o sweetAlert para as mensagens
             exit;
         }
 
@@ -46,7 +46,7 @@ class IndexController
 
             echo "<script>location.href='home';</script>";
         } else {
-            echo "<script>mensagem('Email ou senha incorretos', 'error','')</script>";
+            echo "<script>mensagem('Email ou senha incorretos','login', 'error')</script>";
             exit;
         }
     }

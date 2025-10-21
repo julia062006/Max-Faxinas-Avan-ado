@@ -75,33 +75,26 @@ require_once __DIR__ . '/../../../vendor/autoload.php';
 
     if (in_array($page, $paginasProtegidas) && !isset($_SESSION["cliente"])) {
       include __DIR__ . "/../pages/login.phtml";
+    }
+
+    //rotas
+    if (isset($_GET["param"])) {
+      $param = explode("/", $_GET["param"]);
+    }
+    $controller = ucfirst($param[0] ?? "index") . "Controller";
+    $view = $param[1] ?? "index";
+    $id = $param[2] ?? null;
+
+    //incluir o controller
+    if (file_exists("../Controller/{$controller}.php")) {
+
+      include __DIR__ . "/../Controller/{$controller}.php";
+      $control = new $controller();
+      $control->$view($id);
+    } elseif (file_exists($pagina)) {
+      include $pagina;
     } else {
-
-      //verficar se a pagina existe
-      if (file_exists($pagina)) {
-        include $pagina;
-      } else {
-        include __DIR__ . "/../pages/erro.phtml";
-      }
-
-      //rotas
-      if (isset($_GET["param"])) {
-        $param = explode("/", $_GET["param"]);
-      }
-
-      $controller = ucfirst($param[0] ?? "index") . "Controller";
-      $view = $param[1] ?? "index";
-      $id = $param[2] ?? null;
-
-      //incluir o controller
-      if (file_exists("../Controller/{$controller}.php")) {
-        include __DIR__ . "../Controller/{$controller}.php";
-
-        $control = new $controller();
-        $control->$view($id);
-      } else {
-        include __DIR__ . "../pages/erro.phtml";
-      }
+      include __DIR__ . "/../pages/erro.phtml";
     }
     ?>
 

@@ -9,7 +9,7 @@ function mostrarSenha() {
 
 
 //função para mostrar mensagem de erro
-mensagem = function(msg, url, icone){
+mensagem = function (msg, url, icone) {
   Swal.fire({
     icon: icone,
     title: msg,
@@ -30,18 +30,28 @@ const form = document.querySelector("#form");
 const nameInput = document.querySelector("#name");
 const cpfInput = document.querySelector("#cpf");
 const telefoneInput = document.querySelector("#telefone");
-const enderecoInput = document.querySelector("#endereco");
+const cidadeInput = document.querySelector("#cidade");
+const estadoInput = document.querySelector("#estado");
+const paisInput = document.querySelector("#pais");
+const ruaInput = document.querySelector("#rua");
+const numeroInput = document.querySelector("#numero");
+const bairroInput = document.querySelector("#bairro");
 const emailInput = document.querySelector("#email");
 const senha = document.querySelector("#senha");
 
- form.addEventListener('input', function () {
-        erroNome.textContent = "";
-        erroCpf.textContent = ""
-        erroTelefone.textContent = "";
-        erroEndereco.textContent = "";
-        erroEmail.textContent = "";
-        erroSenha.textContent = "";
-    });
+form.addEventListener('input', function () {
+  erroNome.textContent = "";
+  erroCpf.textContent = ""
+  erroTelefone.textContent = "";
+  erroCidade.textContent = "";
+  erroEstado.textContent = "";
+  erroPais.textContent = "";
+  erroRua.textContent = "";
+  erroNumero.textContent = "";
+  erroBairro.textContent = "";
+  erroEmail.textContent = "";
+  erroSenha.textContent = "";
+});
 
 
 form.addEventListener("submit", (event) => {
@@ -62,17 +72,16 @@ form.addEventListener("submit", (event) => {
 
   if (cpfInput.value === "") {
     event.preventDefault();
-     erroCpf.textContent = "Por favor, preencha seu CPF";
+    erroCpf.textContent = "Por favor, preencha seu CPF";
     return;
   }
 
   if (!isCpfValid(cpfInput.value)) {
     event.preventDefault();
-     erroCpf.textContent = "Por favor, preencha um CPF válido";
+    erroCpf.textContent = "Por favor, preencha um CPF válido";
     return;
   }
 
-  
 
   //verifica o TELEFONE está vazio
   if (telefoneInput.value === "") {
@@ -89,18 +98,45 @@ form.addEventListener("submit", (event) => {
     return;
   }
 
-  // verifica se o CEP esta vazio
-  if (enderecoInput.value === "") {
+  if (cidadeInput.value === "") {
     event.preventDefault();
 
-    erroEndereco.textContent = "Por favor, prencha o endereço";
+    erroCidade.textContent = "Por favor, preencha sua cidade corretamente";
     return;
   }
-  //verifica se o CEP foi preenchido corretamente
-  if (!isCepValid(cepInput.value)) {
+
+   if (estadoInput.value === "") {
     event.preventDefault();
 
-    alert("Por favor, preencha um CEP válido (formato 00000-000)");
+    erroEstado.textContent = "Por favor, preencha seu estado corretamente";
+    return;
+  }
+
+   if (paisInput.value === "") {
+    event.preventDefault();
+
+    erroPais.textContent = "Por favor, preencha seu país corretamente";
+    return;
+  }
+
+   if (ruaInput.value === "") {
+    event.preventDefault();
+
+    erroRua.textContent = "Por favor, preencha sua rua corretamente";
+    return;
+  }
+
+   if (numeroInput.value === "") {
+    event.preventDefault();
+
+    erroNumero.textContent = "Por favor, preencha seu número corretamente";
+    return;
+  }
+
+   if (bairroInput.value === "") {
+    event.preventDefault();
+
+    erroBairro.textContent = "Por favor, preencha seu bairro corretamente";
     return;
   }
 
@@ -119,7 +155,7 @@ form.addEventListener("submit", (event) => {
     return;
   }
 
-    if (senha.value === "") {
+  if (senha.value === "") {
     event.preventDefault();
     erroSenha.textContent = "Por favor, preencha sua senha";
     return;
@@ -130,9 +166,6 @@ form.addEventListener("submit", (event) => {
     erroSenha.textContent = "A senha deve ter pelo menos 6 caracteres";
     return;
   }
-
-
-  form.reset();
 });
 
 //Função que válida o NOME

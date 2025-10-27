@@ -57,7 +57,6 @@ class CadastroController
             header('Location: /login');
             exit;
         } catch (\Exception $e) {
-            // registra mensagem de erro e redireciona para a página de cadastro
             $_SESSION['mensagem'] = [
                 'texto' => 'Erro ao cadastrar',
                 'url' => 'cadastro',

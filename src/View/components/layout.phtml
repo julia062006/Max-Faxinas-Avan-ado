@@ -52,11 +52,9 @@ require_once __DIR__ . '/../../../vendor/autoload.php';
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="/js/jquery.mask.min.js"></script>
 
-  <script src="/js/scripts.js"></script>
 
-  <script src="/js/scripts.js"></script>
+  <script src="/js/scripts.js" defer></script>
 
-  <?php if (session_status() === PHP_SESSION_NONE) session_start(); ?>
   <?php if (!empty($_SESSION['mensagem'])): 
         $m = $_SESSION['mensagem']; ?>
     <script>

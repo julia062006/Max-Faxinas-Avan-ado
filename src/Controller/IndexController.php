@@ -44,7 +44,7 @@ class IndexController
                 'nome' => $cliente->getNome()
             ];
 
-            echo "<script>location.href='home';</script>";
+            echo "<script>mensagem('Login realizado com sucesso!', 'home', 'success')</script>";
         } else {
             echo "<script>mensagem('Email ou senha incorretos','login', 'error')</script>";
             exit;

@@ -26,17 +26,14 @@ class Cliente
     #[Column()]
     private string $telefone;
     #[Column()]
-    private string $endereco;
-    #[Column()]
     private string $senha;
 
-    public function __construct(string $cpf, string $nome, string $email, string $telefone, string $endereco, string $senha)
+    public function __construct(string $cpf, string $nome, string $email, string $telefone, string $senha)
     {
         $this->cpf = $cpf;
         $this->nome = $nome;
         $this->email = $email;
         $this->telefone = $telefone;
-        $this->endereco = $endereco;
         $this->senha = password_hash($senha, PASSWORD_DEFAULT);
     }
 
@@ -64,11 +61,6 @@ class Cliente
     public function getTelefone(): string
     {
         return $this->telefone;
-    }
-
-    public function getEndereco(): string
-    {
-        return $this->endereco;
     }
 
     public function getSenha(): string
@@ -100,11 +92,6 @@ class Cliente
     public function setTelefone(string $telefone): void
     {
         $this->telefone = $telefone;
-    }
-
-    public function setEndereco(string $endereco): void
-    {
-        $this->endereco = $endereco;
     }
 
     public function save(): void

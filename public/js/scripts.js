@@ -7,19 +7,6 @@ function mostrarSenha() {
   }
 }
 
-
-//função para mostrar mensagem de erro
-mensagem = function (msg, url, icone) {
-  Swal.fire({
-    icon: icone,
-    title: msg,
-    confirmButtonText: "OK",
-  }).then((result) => {
-    location.href = url;
-  });
-}
-
-
 //validação cadastro
 $(document).ready(function () {
   $('.telefone').mask('(00) 00000-0000');

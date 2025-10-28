@@ -55,8 +55,21 @@ require_once __DIR__ . '/../../../vendor/autoload.php';
 
   <script src="/js/scripts.js" defer></script>
 
-  <?php if (!empty($_SESSION['mensagem'])): 
-        $m = $_SESSION['mensagem']; ?>
+
+  <script>
+    //função para mostrar mensagem de erro
+    mensagem = function(msg, url, icone) {
+      Swal.fire({
+        icon: icone,
+        title: msg,
+        confirmButtonText: "OK",
+      }).then((result) => {
+        location.href = url;
+      });
+    }
+  </script>
+  <?php if (!empty($_SESSION['mensagem'])):
+    $m = $_SESSION['mensagem']; ?>
     <script>
       document.addEventListener('DOMContentLoaded', function() {
         mensagem(<?= json_encode($m['texto']) ?>, <?= json_encode($m['url']) ?>, <?= json_encode($m['icone']) ?>);

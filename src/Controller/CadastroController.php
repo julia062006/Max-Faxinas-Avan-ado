@@ -39,7 +39,7 @@ class CadastroController
             $cidade = new Cidade($cidadeNome, $estado);
             $em->persist($cidade);
 
-            $cliente = new Cliente($cpf, $nome, $email, $telefone, "-", $senha);
+            $cliente = new Cliente($cpf, $nome, $email, $telefone, $senha);
             $em->persist($cliente);
 
             $em->flush();

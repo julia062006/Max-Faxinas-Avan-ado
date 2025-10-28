@@ -347,15 +347,12 @@ form {
     margin: 2rem auto;
 }
 
-.senhaLogin input,
-.senhaLogin .btn {
-    height: calc(2.5rem + 2px);
-}
 
 .senhaLogin .btn {
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 100%;
 }
 
 .btnLogin {

@@ -60,21 +60,22 @@
                         <div id="erroBairro" class="erro-message"></div>
                     </div>
 
-                    <div class="mb-3">
+                    <div class="mb-3 col-md-6">
                         <label for="email" class="form-label">E-mail:</label>
                         <input type="email" id="email" class="form-control" placeholder="Digite seu e-mail" name="user_email">
                         <div id="erroEmail" class="erro-message"></div>
                     </div>
 
-                    <label for="senha" class="form-label">Defina sua senha:</label>
-                    <div class="input-group senhaLogin">
-                        <input type="password" name="user_senha" id="senha" class="form-control">
-                        <span type="button" class="btn" onclick="mostrarSenha()">
-                            <i class="bi bi-eye"></i>
-                        </span>
+                    <div class="mb-3 col-md-6">
+                        <label for="senha" class="form-label">Defina sua senha:</label>
+                        <div class="input-group senhaLogin">
+                            <input type="password" name="user_senha" id="senha" class="form-control" placeholder="Digite sua senha">
+                            <span type="button" class="btn" onclick="mostrarSenha()">
+                                <i class="bi bi-eye"></i>
+                            </span>
+                        </div>
                         <div id="erroSenha" class="erro-message"></div>
                     </div>
-
                     <button type="submit" class="btn btn-primary">Cadastrar</button>
                 </form>
                 <a class="linkCadastro" href="login">Voltar ao login</a>

@@ -1,20 +1,25 @@
 <?php
 namespace App\Model;
  
-use App\Core\Database;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\GeneratedValue;
 use Doctrine\ORM\Mapping\Id;
+use Doctrine\ORM\Mapping\ManyToOne;
 
+#[Entity()]
 class Adicional {
 
+    #[Column(), Id, GeneratedValue()]
     private int $id;
 
+    #[Column()]
     private string $nome;
 
+    #[Column()]
     private int $preco;
 
+    #[ManyToOne()]
     private Servico $servico;
 
     public function __construct(string $nome, float $preco, Servico $servico) {

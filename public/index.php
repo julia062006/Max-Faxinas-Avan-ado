@@ -22,6 +22,7 @@ $routes = [
     '/perfil'        => [new HomeController, 'perfil'],
     '/login'         => [new HomeController, 'login'],
     '/cadastro'      => [new HomeController, 'cadastro'],
+    '/adicional'     => [new HomeController, 'adicional'],
     '/agendamento'   => [new AgendamentoController, 'index'],
     '/enviar'        => [new AgendamentoController, 'criarAgendamento'],
     '/cadastrar'     => [new CadastroController, 'cadastrar'],

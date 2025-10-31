@@ -1,7 +1,7 @@
 <?php
 namespace App\Controller;
 
-class ServicoController{
+class AdicionalController{
     
     public function index($id){
         //form de cadastro e edição

@@ -82,9 +82,7 @@ require_once __DIR__ . '/../../../vendor/autoload.php';
 <body>
   <header>
     <?php
-    if (isset($_SESSION['admin'])) {
-      include __DIR__ . '/../menus/menu_admin.phtml';
-    } else if (isset($_SESSION['cliente'])) {
+    if (isset($_SESSION['cliente'])) {
       include __DIR__ . '/../menus/menu_cliente.phtml';
     } else {
       include __DIR__ . '/../menus/menu.phtml';

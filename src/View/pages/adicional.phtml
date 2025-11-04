@@ -1,3 +1,14 @@
+<?php
+
+use App\Model\Servico;
+
+
+// Busca todos os serviços
+$servicos = Servico::findAll();
+?>
+
+
+
 <div class="container">
     <div class="card">
         <div class="card-header">
@@ -25,13 +36,15 @@
                         <label for="nome">Nome do Adicional:</label>
                         <input type="text" name="nome" id="nome" class="form-control" required data-parsley-required-message="Digite o nome">
                     </div>
-                    <div class="col-12 col-md-3">
+                  <div class="col-12 col-md-3">
                         <label for="servico_id">Serviço:</label>
                         <select name="servico_id" id="servico_id" required class="form-control" data-parsley-required-message="Selecione um serviço">
-                            <option value=""></option>
-                            <?php
-
-                            ?>
+                            <option value="">Selecione um serviço</option>
+                            <?php foreach ($servicos as $servico): ?>
+                                <option value="<?= $servico->getId(); ?>">
+                                    <?= $servico->getTipoDeServico(); ?>
+                                </option>
+                            <?php endforeach; ?>
                         </select>
                     </div>
                     <div class="ol-12 col-md-6">

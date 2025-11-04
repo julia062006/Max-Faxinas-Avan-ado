@@ -17,15 +17,11 @@ class Servico
     private float $preco;
 
     #[Column()]
-    private string $formaDePagamento;
-
-    #[Column()]
     private string $tipoDeServico;
    
 
-     public function __construct(string $formaDePagamento, string $tipoDeServico, float $preco)
+     public function __construct(string $tipoDeServico, float $preco)
     {
-        $this->formaDePagamento = $formaDePagamento;
         $this->tipoDeServico = $tipoDeServico;
         $this->preco = $preco;
     }
@@ -35,10 +31,6 @@ class Servico
         
     }
     // Getters (Serve para pegar os valores)
-    public function getFormaDePagamento(): string
-    {
-        return $this->formaDePagamento;
-    }
 
     public function getTipoDeServico(): string
     {
@@ -51,10 +43,6 @@ class Servico
     }
 
     // Setters (Serve para alterar os valores)
-    public function setFormaDePagamento(string $formaDePagamento): void
-    {
-        $this->formaDePagamento = $formaDePagamento;
-    }
 
     public function setTipoDeServico(string $tipoDeServico): void
     {

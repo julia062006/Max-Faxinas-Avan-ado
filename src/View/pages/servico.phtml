@@ -1,28 +1,51 @@
-<?php include __DIR__ . "/../../array.php"; // o arquivo com seu array ?>
 <?php
-//  $numero_whatsapp = "554499444208"; // Número fixo com DDI + DDD
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+$api = "http://localhost:8001"; // ENDEREÇO CORRETO DO SERVIDOR PHP
+
+$url = "{$api}/api/servicos.php";
+
+$dadosServicos = file_get_contents($url);
+
+// Verifica erros
+if ($dadosServicos === false) {
+    echo "Erro ao acessar API: {$url}";
+    exit;
+}
+
+$dadosServicos = json_decode($dadosServicos);
+
+if (!$dadosServicos) {
+    echo "Erro: API retornou dados inválidos.";
+    exit;
+}
 ?>
+
 
 <section class="servico">
   <h1 class="titulo">Nossos Serviços</h1>
   <div class="row justify-content-center">
-    <?php foreach ($servico as $servicoAtual): ?>
-       <?php
-       // $mensagem = urlencode($servicoAtual['mensagem']);
-       // $link = "https://wa.me/{$numero_whatsapp}?text={$mensagem}";
-       ?>
+    <?php foreach ($dadosServicos as $servicoAtual): ?>
       <div class="col-md-4 mb-4 mobile-centralizado">
         <div class="card text-center">
-          <img src="<?= $servicoAtual['foto'] ?>" class="card-img-top" alt="<?= $servicoAtual['nome'] ?>">
+
+          <img src="<?= "{$api}/{$servicoAtual->imagem}" ?>"
+               class="card-img-top" 
+               alt="<?= $servicoAtual->tipoDeServico ?>">
+
           <div class="card-body">
-            <h5 class="card-title"><?= $servicoAtual['nome'] ?></h5>
-            <p class="card-text"><?= $servicoAtual['descricao'] ?></p>
-             <a href="<?= "agendamento" ?>" target="_blank" class="btn btn-primary d-block mx-auto">Agende agora pelo Formulário Max</a>
+            <h5 class="card-title"><?= $servicoAtual->tipoDeServico ?></h5>
+            <p class="card-text"><?= $servicoAtual->descricao ?></p>
+
+            <a href="agendamento" 
+               target="_blank" 
+               class="btn btn-primary d-block mx-auto">
+               Agende agora pelo Formulário Max
+            </a>
           </div>
         </div>
       </div>
     <?php endforeach; ?>
   </div>
-
-     
 </section>

@@ -38,10 +38,10 @@ if (!$dadosServicos) {
             <h5 class="card-title"><?= $servicoAtual->tipoDeServico ?></h5>
             <p class="card-text"><?= $servicoAtual->descricao ?></p>
 
-            <a href="agendamento" 
+           <a href="servico/<?= $servicoAtual->id?>"
                target="_blank" 
                class="btn btn-primary d-block mx-auto">
-               Agende agora pelo Formulário Max
+               Adicionar ao carrinho
             </a>
           </div>
         </div>

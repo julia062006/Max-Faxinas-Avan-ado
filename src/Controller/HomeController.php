@@ -36,6 +36,13 @@ class HomeController
         include __DIR__ . '/../View/components/layout.phtml';
     }
 
+        public function carrinho(): void
+    {
+        $page = 'carrinho';
+        include __DIR__ . '/../View/components/layout.phtml';
+    }
+
+
      public function perfil(): void
     {
         $page = 'perfil';

@@ -1,0 +1,87 @@
+<?php
+// garantir que a sessão está ativa
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+$carrinho = $_SESSION['carrinho'] ?? [];
+?>
+
+<section class="carrinho container my-5">
+
+    <h1 class="mb-4 text-center">Seu Carrinho</h1>
+
+    <?php if (empty($carrinho)): ?>
+        <p class="text-center">Seu carrinho está vazio.</p>
+        <div class="text-center mt-4">
+            <a href="/servico" class="btn btn-primary">Ver serviços</a>
+        </div>
+        <?php return; ?>
+    <?php endif; ?>
+
+    <table class="table table-bordered text-center">
+        <thead>
+            <tr>
+                <th>Serviço</th>
+                <th>Quantidade</th>
+                <th>Valor</th>
+                <th>Total</th>
+                <th>Ações</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <?php foreach ($servicos as $serv): ?>
+                <?php
+                $id = $serv["id"];
+                $quant = $carrinho[$id];
+                $valor = $serv["preco"];
+                $subtotal = $valor * $quant;
+                ?>
+                <tr>
+                    <td><?= $serv["tipoDeServico"] ?></td>
+
+                    <td>
+                        <form action="/carrinho/atualizar" method="POST" class="d-flex justify-content-center">
+                            <input type="hidden" name="id" value="<?= $id ?>">
+                            <input type="number"
+                                   name="quantidade"
+                                   min="1"
+                                   value="<?= $quant ?>"
+                                   class="form-control w-25 text-center">
+                            <button type="submit" class="btn btn-secondary ms-2">Atualizar</button>
+                        </form>
+                    </td>
+
+                    <td>R$ <?= number_format($valor, 2, ",", ".") ?></td>
+                    <td>R$ <?= number_format($subtotal, 2, ",", ".") ?></td>
+
+                    <td>
+                        <a href="/carrinho/remover/<?= $id ?>"
+                           class="btn btn-danger">
+                           Remover
+                        </a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+
+    <div class="text-end">
+        <h3>Total Geral:  
+            R$ <?= number_format(
+                array_sum(array_map(
+                    fn($id) => $servicosAssoc[$id]["preco"] * $carrinho[$id],
+                    array_keys($carrinho)
+                ))
+            , 2, ",", ".") ?>
+        </h3>
+    </div>
+
+    <div class="text-end mt-3">
+        <a href="/carrinho/finalizar" class="btn btn-success btn-lg">
+            Finalizar Pedido
+        </a>
+    </div>
+
+</section>

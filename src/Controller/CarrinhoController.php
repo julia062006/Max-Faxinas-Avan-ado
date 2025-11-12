@@ -1,38 +1,126 @@
 <?php
+
+namespace App\Controller;
+
+use App\Core\Database;
+use App\Model\Servico;
+use App\Model\Adicional;
+
 class CarrinhoController
 {
+    public function index(): void
+    {
+        session_start();
+        $itens = $_SESSION['carrinho'] ?? [];
 
+        $page = 'carrinho';
+        include __DIR__ . '/../View/components/layout.phtml';
+    }
 
-    public function adicionar()
+    public function adicionar(): void
     {
         session_start();
 
-        $id = $_POST['id_servico'] ?? null;
-        $adicionais = $_POST['adicionais'] ?? [];
+        $idServico = $_POST['id_servico'] ?? null;
+        $idsAdicionais = $_POST['adicionais'] ?? [];
 
-        // buscar dados completos do serviço na API
-        $api = "http://localhost:8001";
-
-        $url = "{$api}/api/servicos.php";
-
-        $dados = file_get_contents($url);
-
-        // Montar item do carrinho
-        $item = [
-            "servico" => $dados,
-            "adicionais" => $adicionais
-        ];
-
-        // criar carrinho se não existir
-        if (!isset($_SESSION['carrinho'])) {
-            $_SESSION['carrinho'] = [];
+        if (!$idServico) {
+            $_SESSION['mensagem'] = [
+                'texto' => 'Serviço inválido!',
+                'url' => '/servico',
+                'icone' => 'error'
+            ];
+            header("Location: /servico");
+            exit;
         }
 
-        // adicionar item
+        $em = Database::getEntityManager();
+        $repoServico = $em->getRepository(Servico::class);
+        $repoAdicional = $em->getRepository(Adicional::class);
+
+        $servico = $repoServico->find($idServico);
+        if (!$servico) {
+            $_SESSION['mensagem'] = [
+                'texto' => 'Serviço não encontrado!',
+                'url' => '/servico',
+                'icone' => 'error'
+            ];
+            header("Location: /servico");
+            exit;
+        }
+
+        $adicionais = [];
+        $valorTotal = $servico->getPreco();
+
+        if (!empty($idsAdicionais)) {
+            foreach ($idsAdicionais as $idAdicional) {
+                $adc = $repoAdicional->find($idAdicional);
+                if ($adc) {
+                    $adicionais[] = [
+                        "id" => $adc->getId(),
+                        "nome" => $adc->getNome(),
+                        "preco" => $adc->getPreco(),
+                    ];
+                    $valorTotal += $adc->getPreco();
+                }
+            }
+        }
+
+        $item = [
+            "id_servico" => $servico->getId(),
+            "nome_servico" => $servico->getTipoDeServico(),
+            "valor_servico" => $servico->getPreco(),
+            "adicionais" => $adicionais,
+            "valor_total" => $valorTotal
+        ];
+
         $_SESSION['carrinho'][] = $item;
 
-        // redirecionar
+        $_SESSION['mensagem'] = [
+            'texto' => 'Serviço adicionado ao carrinho!',
+            'url' => '/carrinho',
+            'icone' => 'success'
+        ];
         header("Location: /carrinho");
         exit;
+    }
+
+    public function remover(): void
+    {
+        session_start();
+
+        $index = $_GET['index'] ?? null;
+
+        if ($index !== null && isset($_SESSION['carrinho'][$index])) {
+            unset($_SESSION['carrinho'][$index]);
+            $_SESSION['carrinho'] = array_values($_SESSION['carrinho']);
+
+            $_SESSION['mensagem'] = [
+                'texto' => 'Item removido do carrinho!',
+                'url' => '/carrinho',
+                'icone' => 'success'
+            ];
+        } else {
+            $_SESSION['mensagem'] = [
+                'texto' => 'Item não encontrado no carrinho!',
+                'url' => '/carrinho',
+                'icone' => 'error'
+            ];
+        }
+        header('Location: /carrinho');
+        exit;
+    }
+
+    public function limpar(): void
+    {
+        session_start();
+        unset($_SESSION['carrinho']);
+        $_SESSION['mensagem'] = [
+        'texto' => 'Carrinho limpo com sucesso!',
+        'url' => '/carrinho',
+        'icone' => 'success'
+    ];
+    header('Location: /carrinho');
+    exit;
     }
 }

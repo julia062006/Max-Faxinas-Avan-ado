@@ -1,7 +1,24 @@
-<?php
-use App\Core\Database;
-use App\Model\Servico;
-use App\Model\Adicional;
+<section class="container mt-5">
+  <h1><?= $servico->getTipoDeServico() ?></h1>
+  <p><?= $servico->getDescricao() ?></p>
+  <h4>Escolha adicionais (opcional):</h4>
 
+  <form action="/carrinho/adicionar" method="POST">
+      <input type="hidden" name="id_servico" value="<?= $servico->getId() ?>">
 
-?>
+      <?php if (!empty($adicionais)): ?>
+          <?php foreach ($adicionais as $adicional): ?>
+              <div class="form-check">
+                  <input type="checkbox" name="adicionais[]" value="<?= $adicional->getId() ?>" class="form-check-input" id="adicional<?= $adicional->getId() ?>">
+                  <label for="adicional<?= $adicional->getId() ?>" class="form-check-label">
+                      <?= $adicional->getNome() ?> - R$ <?= number_format($adicional->getPreco(), 2, ",", ".") ?>
+                  </label>
+              </div>
+          <?php endforeach; ?>
+      <?php else: ?>
+          <p>Não há adicionais disponíveis para este serviço.</p>
+      <?php endif; ?>
+
+      <button type="submit" class="btn mt-3">Ir para o carrinho</button>
+  </form>
+</section>

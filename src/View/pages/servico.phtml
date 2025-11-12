@@ -1,8 +1,5 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-$api = "http://localhost:8001"; // ENDEREÇO CORRETO DO SERVIDOR PHP
+$api = "http://localhost:8001";
 
 $url = "{$api}/api/servicos.php";
 
@@ -38,9 +35,8 @@ if (!$dadosServicos) {
             <h5 class="card-title"><?= $servicoAtual->tipoDeServico ?></h5>
             <p class="card-text"><?= $servicoAtual->descricao ?></p>
 
-           <a href="servico/<?= $servicoAtual->id?>"
-               target="_blank" 
-               class="btn btn-primary d-block mx-auto">
+           <a href="/adicional?id=<?= $servicoAtual->id ?>" 
+               class="btn d-block mx-auto">
                Adicionar ao carrinho
             </a>
           </div>

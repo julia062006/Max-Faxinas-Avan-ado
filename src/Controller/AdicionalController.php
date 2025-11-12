@@ -1,60 +1,47 @@
 <?php
+
 namespace App\Controller;
 
 use App\Core\Database;
 use App\Model\Servico;
 use App\Model\Adicional;
 
-class AdicionalController {
-
-    public function index($id = null){
-        // Pega o EntityManager
-        $entityManager = Database::getEntityManager();
-
-        // Pega o repositório da entidade Servico
-        $repo = $entityManager->getRepository(Servico::class);
-
-        // Busca todos os serviços
-        $servicos = $repo->findAll();
-
-        // Inclui a view, passando $servicos
-        require "../View/adicional/index.phtml";
-    }
-
-     public function salvar(): void
+class AdicionalController
+{
+    public function index(): void
     {
-        $entityManager = Database::getEntityManager();
+        $idServico = $_GET['id'] ?? null;
 
-        // Dados vindos do formulário
-        $nome = $_POST['nome'] ?? '';
-        $preco = $_POST['preco'] ?? 0;
-        $servicoId = $_POST['servico_id'] ?? null;
-
-        if (!$servicoId) {
-            die("Serviço não selecionado!");
+        if (!$idServico) {
+            $_SESSION['mensagem'] = [
+                'texto' => 'Serviço inválido!',
+                'url'   => '/servico',
+                'icone' => 'error'
+            ];
+            header("Location: /servico");
+            exit;
         }
 
-        // Busca o serviço selecionado
-        $servico = $entityManager->find(Servico::class, $servicoId);
+        $em = Database::getEntityManager();
 
-        // Cria novo adicional
-        $adicional = new Adicional();;
-        $adicional->setNome($nome);
-        $adicional->setPreco((float)$preco);
-        $adicional->setServico($servico);
+        $repoServico = $em->getRepository(Servico::class);
+        $repoAdicional = $em->getRepository(Adicional::class);
 
-        // Salva no banco
-        $entityManager->persist($adicional);
-        $entityManager->flush();
+        $servico = $repoServico->find($idServico);
 
-        echo "✅ Adicional salvo com sucesso!";
-    }
+        if (!$servico) {
+            $_SESSION['mensagem'] = [
+                'texto' => 'Serviço não encontrado!',
+                'url'   => '/servico',
+                'icone' => 'error'
+            ];
+            header("Location: /servico");
+            exit;
+        }
 
-    public function excluir($id){
-        // excluir os dados
-    }
+        $adicionais = $repoAdicional->findBy(["servico" => $servico]);
 
-    public function listar(){
-        // listar os dados
+        $page = 'adicional';
+        include __DIR__ . '/../View/components/layout.phtml';
     }
 }

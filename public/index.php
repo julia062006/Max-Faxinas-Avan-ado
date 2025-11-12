@@ -3,9 +3,11 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+use App\Controller\AdicionalController;
 use App\Controller\HomeController;
 use App\Controller\AgendamentoController;
 use App\Controller\CadastroController;
+use App\Controller\CarrinhoController;
 use App\Controller\SairController;
 use App\Controller\NotFoundController;
 
@@ -22,8 +24,11 @@ $routes = [
     '/perfil'        => [new HomeController, 'perfil'],
     '/login'         => [new HomeController, 'login'],
     '/cadastro'      => [new HomeController, 'cadastro'],
-    '/adicional'     => [new HomeController, 'adicional'],
-    '/carrinho'      => [new HomeController, 'carrinho'],
+    '/carrinho'      => [new CarrinhoController, 'index'],
+    '/carrinho/adicionar' => [new CarrinhoController, 'adicionar'],
+    '/carrinho/remover'   => [new CarrinhoController, 'remover'],
+    '/carrinho/limpar'    => [new CarrinhoController, 'limpar'],
+    '/adicional'     => [new AdicionalController, 'index'], 
     '/agendamento'   => [new AgendamentoController, 'index'],
     '/enviar'        => [new AgendamentoController, 'criarAgendamento'],
     '/cadastrar'     => [new CadastroController, 'cadastrar'],

@@ -1,11 +1,16 @@
 <section class="container mt-5">
   <h1><?= $servico->getTipoDeServico() ?></h1>
   <p><?= $servico->getDescricao() ?></p>
-  <h4>Escolha adicionais (opcional):</h4>
 
+  
+  <h4>Escolha a data:</h4>
+  
   <form action="/carrinho/adicionar" method="POST">
       <input type="hidden" name="id_servico" value="<?= $servico->getId() ?>">
-
+      
+      <input type="text" id="calendario" name="data" class="form-control mb-4" required>
+      
+      <h4>Escolha adicionais (opcional):</h4>
       <?php if (!empty($adicionais)): ?>
           <?php foreach ($adicionais as $adicional): ?>
               <div class="form-check">
@@ -22,3 +27,23 @@
       <button type="submit" class="btn mt-3">Ir para o carrinho</button>
   </form>
 </section>
+<?php if(isset($dataIndisponiveis)): ?>
+<script>
+    var datasIndisponiveis = <?= json_encode($dataIndisponiveis) ?>
+</script>
+<?php else: ?>
+<script>
+    var datasIndisponiveis = [];
+</script>
+<?php endif;?>
+<script>
+  flatpickr("#calendario", {
+    locale: "pt",
+    altInput: true,
+    altFormat: "j F, Y",
+    dateFormat: "d-m-Y",
+    disable: datasIndisponiveis,
+    minDate: "today",
+    monthSelectorType: "static"
+  });
+</script>

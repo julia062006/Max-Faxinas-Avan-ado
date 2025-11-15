@@ -22,6 +22,7 @@ $carrinho = $_SESSION['carrinho'] ?? [];
         <thead>
             <tr>
                 <th>Serviço</th>
+                <th>Data</th>
                 <th>Valor</th>
                 <th>Total</th>
                 <th>Ações</th>
@@ -32,6 +33,7 @@ $carrinho = $_SESSION['carrinho'] ?? [];
     <?php foreach ($carrinho as $index => $item): ?>
         <tr>
             <td><?= $item["nome_servico"] ?></td>
+            <td><?= $item["data"] ?></td>
             <td>R$ <?= number_format($item["valor_servico"], 2, ",", ".") ?></td>
             <td>R$ <?= number_format($item["valor_total"], 2, ",", ".") ?></td>
             <td>

@@ -23,6 +23,7 @@ class CarrinhoController
 
         $idServico = $_POST['id_servico'] ?? null;
         $idsAdicionais = $_POST['adicionais'] ?? [];
+        $data = $_POST['data'] ?? [];
 
         if (!$idServico) {
             $_SESSION['mensagem'] = [
@@ -71,7 +72,8 @@ class CarrinhoController
             "nome_servico" => $servico->getTipoDeServico(),
             "valor_servico" => $servico->getPreco(),
             "adicionais" => $adicionais,
-            "valor_total" => $valorTotal
+            "valor_total" => $valorTotal,
+            "data" => $data
         ];
 
         $_SESSION['carrinho'][] = $item;
@@ -123,4 +125,27 @@ class CarrinhoController
     header('Location: /carrinho');
     exit;
     }
+
+    public function finalizar(): void
+{
+    session_start();
+
+    $carrinho = $_SESSION['carrinho'] ?? [];
+
+    $datas = array_column($carrinho, 'data');
+
+    if (count($datas) !== count(array_unique($datas))) {
+        $_SESSION['mensagem'] = [
+            'texto' => 'Você selecionou duas datas iguais. Cada serviço precisa ter uma data diferente.',
+            'url' => '/carrinho',
+            'icone' => 'error'
+        ];
+        header('Location: /carrinho');
+        exit;
+    }
+
+    header('Location: /agendamento');
+    exit;
+}
+
 }

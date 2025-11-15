@@ -28,6 +28,7 @@ $routes = [
     '/carrinho/adicionar' => [new CarrinhoController, 'adicionar'],
     '/carrinho/remover'   => [new CarrinhoController, 'remover'],
     '/carrinho/limpar'    => [new CarrinhoController, 'limpar'],
+    '/carrinho/finalizar' => [new CarrinhoController, 'finalizar'],
     '/adicional'     => [new AdicionalController, 'index'], 
     '/agendamento'   => [new AgendamentoController, 'index'],
     '/enviar'        => [new AgendamentoController, 'criarAgendamento'],

@@ -107,4 +107,10 @@ class Cliente
         $repository = $em->getRepository(Cliente::class);
         return $repository->findAll();
     }
+
+    public static function findById(int $id): ?Cliente
+    {
+        $em = Database::getEntityManager();
+        return $em->find(Cliente::class, $id);
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Model;
 
+use App\Core\Database;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\GeneratedValue;
@@ -23,11 +24,11 @@ class Endereco
 
     #[Column()]
     private string $bairro;
-    
+
     #[ManyToOne]
     private Cliente $cliente;
 
-     #[ManyToOne]
+    #[ManyToOne]
     private Cidade $cidade;
 
     public function __construct(string $rua, int $numero, string $bairro, Cliente $cliente, Cidade $cidade)
@@ -67,5 +68,12 @@ class Endereco
     public function getCidade(): Cidade
     {
         return $this->cidade;
+    }
+
+    public static function findByCliente(Cliente $cliente): array
+    {
+        $em = Database::getEntityManager();
+        $repo = $em->getRepository(Endereco::class);
+        return $repo->findBy(['cliente' => $cliente]);
     }
 }

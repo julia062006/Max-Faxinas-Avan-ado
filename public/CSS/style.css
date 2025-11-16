@@ -368,6 +368,15 @@ select {
     width: 100%;
 }
 
+input[type="radio"],
+input[type="checkbox"],
+.form-check-input {
+  display: inline-block;
+  width: auto;
+  height: auto;
+  vertical-align: middle;
+}
+
 label {
     line-height: 1;
     margin-bottom: 0.5rem;

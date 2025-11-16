@@ -2,62 +2,59 @@
   <section class="agendamento">
     <h1 class="titulo mb-4">Finalizar Agendamento</h1>
 
-    <h4>Serviço selecionado:</h4>
-    <ul>
-      <?php foreach($carrinho as $item): ?>
-        <li><?= $item["nome_servico"] ?></li>
-        <li>Data: <?= $item["data"] ?></li>
-        <li>Valor total: R$<?= number_format($item["valor_total"], 2, ",", ".") ?></li>
-        <?php if(!empty($item["adicionais"])):?>
-          <li>Adicionais:
-            <ul>
-              <?php foreach($item["adicionais"] as $ads): ?>
-                <li><?= $ads["nome"] ?> - R$<?= number_format($ads["preco"], 2, ",", ".") ?></li>
-              <?php endforeach; ?>
-            </ul>
-          </li>
-          <?php endif; ?>
-          <?php endforeach; ?>
-    </ul>
-    <form id="form" method="POST" action="/enviar">
-  
     <div class="mb-3">
-        <label for="cep" class="form-label">Endereço:</label>
-        <input type="text" id="endereco" class="form-control" placeholder="Digite seu endereço completo: Rua Flores, 1021, Bairro Solar" name="user_endereco">
-      </div>
+      <h4>Serviço selecionado:</h4>
+      <ul>
+        <?php foreach ($carrinho as $item): ?>
+          <li><?= $item["nome_servico"] ?></li>
+          <li>Data: <?= $item["data"] ?></li>
+          <li>Valor total: R$<?= number_format($item["valor_total"], 2, ",", ".") ?></li>
+          <?php if (!empty($item["adicionais"])): ?>
+            <li>Adicionais:
+              <ul>
+                <?php foreach ($item["adicionais"] as $ads): ?>
+                  <li><?= $ads["nome"] ?> - R$<?= number_format($ads["preco"], 2, ",", ".") ?></li>
+                <?php endforeach; ?>
+              </ul>
+            </li>
+          <?php endif; ?>
+        <?php endforeach; ?>
+      </ul>
+    </div>
+
+    <form id="form" method="POST" action="/enviar">
 
       <div class="mb-3">
-        <label for="job" class="form-label">Qual o serviço você quer contratar?</label>
-        <select name="job" id="job" class="form-select">
-          <option value="">Selecione uma opção</option>
-          <?php foreach ($servicos as $servico): ?>
-            <option value="<?= $servico->getId() ?>"><?= $servico->getTipoDeServico() ?> <?= $servico->getpreco() ?> <?= $servico->getFormaDePagamento() ?></option>
-          <?php endforeach ?>
-        </select>
+        <h4>Endereço:</h4>
+        <?php if (!empty($enderecos)): ?>
+          <?php foreach ($enderecos as $endereco): ?>
+            <div class="form-check">
+              <input type="radio" class="form-check-input" name="user_endereco" value="<?= $endereco->getId() ?>">
+              <label class="form-check-label">
+                <?= $endereco->getRua() ?>, <?= $endereco->getNumero() ?> - <?= $endereco->getBairro() ?>
+              </label>
+            </div>
+          <?php endforeach; ?>
+        <?php else: ?>
+          <p>Nenhum serviço encontrado</p>
+        <?php endif; ?>
       </div>
 
-      <div class="mb-3">
-        <label for="calendario" class="form-label">Escolha a data desejada: </label>
-        <input type="text" id="calendario" placeholder="Selecione uma data" name="data">
-      </div>
+      <h4>Forma de pagamento</h4>
+      <select name="formaPagamento" id="formaPagemento" class="form-select">
+        <option value="">Selecione uma forma de pagamento</option>
+        <?php foreach ($formas as $fp): ?>
+          <option value="<?= $fp->getId() ?>">
+            <?= $fp->getTipo() ?>
+          </option>
+        <?php endforeach; ?>
+      </select>
 
       <div class="col-12">
         <button class="btn btn-primary btn-agendamento" type="submit">Enviar</button>
       </div>
+
     </form>
   </section>
-
-  <div class="modal fade" id="sucessoModal" tabindex="-1" aria-labelledby="sucessoModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-body text-center">
-          Seu agendamento foi enviado com sucesso
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-success" data-bs-dismiss="modal">Ok</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
 </main>

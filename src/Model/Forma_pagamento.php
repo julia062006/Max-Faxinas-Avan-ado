@@ -29,5 +29,11 @@ class Forma_pagamento
     {
         return $this->tipo;
     }
+
+     public static function findAll(): array
+    {
+        $em = Database::getEntityManager();
+        return $em->getRepository(Forma_pagamento::class)->findAll();
+    }
 }
 ?>

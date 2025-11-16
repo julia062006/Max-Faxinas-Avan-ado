@@ -24,50 +24,52 @@ $carrinho = $_SESSION['carrinho'] ?? [];
                 <th>Serviço</th>
                 <th>Data</th>
                 <th>Valor</th>
+                <th>Adicionais</th> 
                 <th>Total</th>
                 <th>Ações</th>
             </tr>
         </thead>
 
         <tbody>
-    <?php foreach ($carrinho as $index => $item): ?>
-        <tr>
-            <td><?= $item["nome_servico"] ?></td>
-            <td><?= $item["data"] ?></td>
-            <td>R$ <?= number_format($item["valor_servico"], 2, ",", ".") ?></td>
-            <td>R$ <?= number_format($item["valor_total"], 2, ",", ".") ?></td>
-            <td>
-                <a href="/carrinho/remover?index=<?= $index ?>" class="btn btn-sm">Remover</a>
-            </td>
-        </tr>
-
-        <?php if (!empty($item["adicionais"])): ?>
+        <?php foreach ($carrinho as $index => $item): ?>
             <tr>
-                <td colspan="5">
-                    <ul class="list-unstyled mb-0">
-                        <?php foreach ($item["adicionais"] as $adc): ?>
-                            <li><?= $adc["nome"] ?> — R$ <?= number_format($adc["preco"], 2, ",", ".") ?></li>
-                        <?php endforeach; ?>
-                    </ul>
+                <td><?= $item["nome_servico"] ?></td>
+                <td><?= $item["data"] ?></td>
+                <td>R$ <?= number_format($item["valor_servico"], 2, ",", ".") ?></td>
+
+                <td>
+                    <?php if (!empty($item["adicionais"])): ?>
+                        <ul class="list-unstyled mb-0">
+                            <?php foreach ($item["adicionais"] as $adc): ?>
+                                <li><?= $adc["nome"] ?> — 
+                                    R$ <?= number_format($adc["preco"], 2, ",", ".") ?>
+                                </li>
+                            <?php endforeach; ?>
+                        </ul>
+                    <?php else: ?>
+                        <em>Nenhum adicional</em>
+                    <?php endif; ?>
+                </td>
+
+                <td>R$ <?= number_format($item["valor_total"], 2, ",", ".") ?></td>
+
+                <td>
+                    <a href="/carrinho/remover?index=<?= $index ?>" class="btn btn-sm">Remover</a>
                 </td>
             </tr>
-        <?php endif; ?>
-    <?php endforeach; ?>
-</tbody>
-
+        <?php endforeach; ?>
+        </tbody>
     </table>
 
-   <div class="text-end">
-    <h3>Total Geral:  
-        R$ <?= number_format(array_sum(array_column($_SESSION['carrinho'], 'valor_total')), 2, ",", ".") ?>
-    </h3>
-</div>
+    <div class="text-end">
+        <h3>Total Geral:  
+            R$ <?= number_format(array_sum(array_column($_SESSION['carrinho'], 'valor_total')), 2, ",", ".") ?>
+        </h3>
+    </div>
 
     <div class="text-end mt-3">
         <a href="/carrinho/limpar" class="btn btn-lg">Limpar Carrinho</a>
-        <a href="/carrinho/finalizar" class="btn btn-lg">
-            Finalizar Pedido
-        </a>
+        <a href="/carrinho/finalizar" class="btn btn-lg">Finalizar Pedido</a>
     </div>
 
 </section>

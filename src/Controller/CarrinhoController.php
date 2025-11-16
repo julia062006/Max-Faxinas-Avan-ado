@@ -10,7 +10,7 @@ class CarrinhoController
 {
     public function index(): void
     {
-        session_start();
+        
         $itens = $_SESSION['carrinho'] ?? [];
 
         $page = 'carrinho';
@@ -19,7 +19,7 @@ class CarrinhoController
 
     public function adicionar(): void
     {
-        session_start();
+       
 
         $idServico = $_POST['id_servico'] ?? null;
         $idsAdicionais = $_POST['adicionais'] ?? [];
@@ -89,7 +89,7 @@ class CarrinhoController
 
     public function remover(): void
     {
-        session_start();
+        
 
         $index = $_GET['index'] ?? null;
 
@@ -115,7 +115,7 @@ class CarrinhoController
 
     public function limpar(): void
     {
-        session_start();
+ 
         unset($_SESSION['carrinho']);
         $_SESSION['mensagem'] = [
         'texto' => 'Carrinho limpo com sucesso!',
@@ -128,7 +128,7 @@ class CarrinhoController
 
     public function finalizar(): void
 {
-    session_start();
+   
 
     $carrinho = $_SESSION['carrinho'] ?? [];
 

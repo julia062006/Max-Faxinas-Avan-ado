@@ -1,3 +1,4 @@
+
 <section class="container mt-5">
   <h1><?= $servico->getTipoDeServico() ?></h1>
   <p><?= $servico->getDescricao() ?></p>
@@ -36,8 +37,11 @@
     var datasIndisponiveis = [];
 </script>
 <?php endif;?>
+
+
+
 <script>
-  flatpickr("#calendario", {
+flatpickr("#calendario", {
     locale: "pt",
     altInput: true,
     altFormat: "j F, Y",
@@ -45,5 +49,20 @@
     disable: datasIndisponiveis,
     minDate: "today",
     monthSelectorType: "static"
-  });
+});
+
+document.querySelector("form").addEventListener("submit", function(e) {
+    const data = document.getElementById("calendario").value;
+
+    if (!data) {
+        e.preventDefault();
+
+        Swal.fire({
+            icon: 'error',
+            title: 'Selecione a data',
+            text: 'Por favor, escolha a data antes de continuar.'
+        });
+    }
+});
 </script>
+

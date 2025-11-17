@@ -369,13 +369,20 @@ select {
     width: 100%;
 }
 
+.form-check-input,
 input[type="radio"],
-input[type="checkbox"],
-.form-check-input {
-  display: inline-block;
-  width: auto;
-  height: auto;
-  vertical-align: middle;
+input[type="checkbox"] {
+  display: inline-block !important;
+  width: auto !important;
+  height: auto !important;
+  vertical-align: middle !important;
+  box-sizing: content-box !important;
+}
+
+.form-check {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* espaço entre radio e texto */
 }
 
 label {

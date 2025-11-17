@@ -10,8 +10,8 @@ class CarrinhoController
 {
     public function index(): void
     {
-        
-        $itens = $_SESSION['carrinho'] ?? [];
+        $idUsuario = $_SESSION["cliente"]["id"] ?? null;
+        $carrinho = $_SESSION['carrinho_' . $idUsuario] ?? [];
 
         $page = 'carrinho';
         include __DIR__ . '/../View/components/layout.phtml';
@@ -19,11 +19,10 @@ class CarrinhoController
 
     public function adicionar(): void
     {
-       
-
         $idServico = $_POST['id_servico'] ?? null;
         $idsAdicionais = $_POST['adicionais'] ?? [];
-        $data = $_POST['data'] ?? [];
+        // garantir que data seja string (ou null) — não array
+        $data = is_array($_POST['data'] ?? null) ? ($_POST['data'][0] ?? null) : ($_POST['data'] ?? null);
 
         if (!$idServico) {
             $_SESSION['mensagem'] = [
@@ -76,7 +75,8 @@ class CarrinhoController
             "data" => $data
         ];
 
-        $_SESSION['carrinho'][] = $item;
+        $idUsuario = $_SESSION["cliente"]["id"];
+        $_SESSION['carrinho_' . $idUsuario][] = $item;
 
         $_SESSION['mensagem'] = [
             'texto' => 'Serviço adicionado ao carrinho!',
@@ -89,13 +89,12 @@ class CarrinhoController
 
     public function remover(): void
     {
-        
-
         $index = $_GET['index'] ?? null;
+        $idUsuario = $_SESSION["cliente"]["id"];
 
-        if ($index !== null && isset($_SESSION['carrinho'][$index])) {
-            unset($_SESSION['carrinho'][$index]);
-            $_SESSION['carrinho'] = array_values($_SESSION['carrinho']);
+        if ($index !== null && isset($_SESSION['carrinho_' . $idUsuario][$index])) {
+            unset($_SESSION['carrinho_' . $idUsuario][$index]);
+            $_SESSION['carrinho_' . $idUsuario] = array_values($_SESSION['carrinho_' . $idUsuario]);
 
             $_SESSION['mensagem'] = [
                 'texto' => 'Item removido do carrinho!',
@@ -115,37 +114,58 @@ class CarrinhoController
 
     public function limpar(): void
     {
- 
-        unset($_SESSION['carrinho']);
+        $idUsuario = $_SESSION["cliente"]["id"];
+        unset($_SESSION['carrinho_' . $idUsuario]);
         $_SESSION['mensagem'] = [
-        'texto' => 'Carrinho limpo com sucesso!',
-        'url' => '/carrinho',
-        'icone' => 'success'
-    ];
-    header('Location: /carrinho');
-    exit;
-    }
-
-    public function finalizar(): void
-{
-   
-
-    $carrinho = $_SESSION['carrinho'] ?? [];
-
-    $datas = array_column($carrinho, 'data');
-
-    if (count($datas) !== count(array_unique($datas))) {
-        $_SESSION['mensagem'] = [
-            'texto' => 'Você selecionou duas datas iguais. Cada serviço precisa ter uma data diferente.',
+            'texto' => 'Carrinho limpo com sucesso!',
             'url' => '/carrinho',
-            'icone' => 'error'
+            'icone' => 'success'
         ];
         header('Location: /carrinho');
         exit;
     }
 
-    header('Location: /agendamento');
-    exit;
-}
+    public function finalizar(): void
+    {
+        $idUsuario = $_SESSION["cliente"]["id"];
+        $carrinho = $_SESSION['carrinho_' . $idUsuario] ?? [];
 
+        if (empty($carrinho)) {
+            $_SESSION['mensagem'] = [
+                'texto' => 'Seu carrinho está vazio!',
+                'url' => '/carrinho',
+                'icone' => 'error'
+            ];
+            header('Location: /carrinho');
+            exit;
+        }
+
+        // pega as datas corretamente e valida
+        $datas = array_map(fn($item) => $item['data'] ?? null, $carrinho);
+
+        foreach ($datas as $d) {
+            if (empty($d)) {
+                $_SESSION['mensagem'] = [
+                    'texto' => 'Selecione uma data para cada serviço.',
+                    'url' => '/carrinho',
+                    'icone' => 'error'
+                ];
+                header('Location: /carrinho');
+                exit;
+            }
+        }
+
+        if (count($datas) !== count(array_unique($datas))) {
+            $_SESSION['mensagem'] = [
+                'texto' => 'Você selecionou duas datas iguais. Cada serviço precisa ter uma data diferente.',
+                'url' => '/carrinho',
+                'icone' => 'error'
+            ];
+            header('Location: /carrinho');
+            exit;
+        }
+
+        header('Location: /agendamento');
+        exit;
+    }
 }

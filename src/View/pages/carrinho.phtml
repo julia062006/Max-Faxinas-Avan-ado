@@ -3,7 +3,8 @@ if (!isset($_SESSION)) {
     session_start();
 }
 
-$carrinho = $_SESSION['carrinho'] ?? [];
+$idUsuario = $_SESSION["cliente"]["id"] ?? null;
+$carrinho = $_SESSION['carrinho_' . $idUsuario] ?? [];
 ?>
 
 <section class="carrinho container my-5">
@@ -63,7 +64,7 @@ $carrinho = $_SESSION['carrinho'] ?? [];
 
     <div class="text-end">
         <h3>Total Geral:  
-            R$ <?= number_format(array_sum(array_column($_SESSION['carrinho'], 'valor_total')), 2, ",", ".") ?>
+            R$ <?= number_format(array_sum(array_column($carrinho, 'valor_total')), 2, ",", ".") ?>
         </h3>
     </div>
 

@@ -43,15 +43,15 @@
       <h4>Forma de pagamento</h4>
       <select name="formaPagamento" id="formaPagemento" class="form-select">
         <option value="">Selecione uma forma de pagamento</option>
-        <?php foreach ($formas as $fp): ?>
+        <?php foreach ($formasPagamento as $fp): ?>
           <option value="<?= $fp->getId() ?>">
             <?= $fp->getTipo() ?>
           </option>
         <?php endforeach; ?>
       </select>
-
+      <div id="pagamento-info" class="mt-3"></div>
       <div class="col-12">
-        <button class="btn btn-primary btn-agendamento" type="submit">Enviar</button>
+        <button class="btn btn-agendamento" type="submit">Enviar</button>
       </div>
 
     </form>

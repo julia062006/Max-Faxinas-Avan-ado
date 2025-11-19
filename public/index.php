@@ -33,7 +33,6 @@ $routes = [
     '/agendamento'   => [new AgendamentoController, 'finalizar'],
     '/enviar'        => [new AgendamentoController, 'criarAgendamento'],
     '/cadastrar'     => [new CadastroController, 'cadastrar'],
-    '/mudarStatus'   => [new AgendamentoController, 'mudarStatus'],
     '/sair'          => [new SairController, 'index']
 ];
 

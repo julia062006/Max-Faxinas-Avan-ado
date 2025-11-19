@@ -130,7 +130,7 @@ class AgendamentoController
             $data = new \DateTime($item["data"]);
             $valorTotal = $item["valor_total"];
 
-            $agendamento = new Agendamento($data, "Pendente", $cliente, $servico, $formaPagamento, $endereco, $valorTotal);
+            $agendamento = new Agendamento($data, "pendente", $cliente, $servico, $formaPagamento, $endereco, $valorTotal);
 
             $em->persist($agendamento);
             $em->flush();

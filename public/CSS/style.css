@@ -7,8 +7,20 @@
 
 
 body {
-    font-family: 'Nunito', sans-serif;
     padding-top: 70px;
+    font-family: 'Nunito', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+main {
+    flex: 1;
 }
 
 /* INICIO DO ADMINSTRADOR */

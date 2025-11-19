@@ -41,6 +41,19 @@ class AdicionalController
 
         $adicionais = $repoAdicional->findBy(["servico" => $servico]);
 
+        $query = $em->createQuery("
+            SELECT a.data 
+            FROM App\Model\Agendamento a 
+            WHERE a.status != 'cancelado'
+        ");
+
+        $datas = $query->getResult();
+
+        $dataIndisponiveis = array_map(function ($d) {
+            return $d['data']->format('d-m-Y');
+        }, $datas);
+
+
         $page = 'adicional';
         include __DIR__ . '/../View/components/layout.phtml';
     }

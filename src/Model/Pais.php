@@ -1,6 +1,7 @@
 <?php
 namespace App\Model;
- 
+
+use App\Core\Database;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\GeneratedValue;
@@ -25,6 +26,13 @@ class Pais {
 
     public function getNome(): string {
         return $this->nome;
+    }
+
+    public static function findAll(): array
+    {
+        $em = Database::getEntityManager();
+        $repository = $em->getRepository(Pais::class);
+        return $repository->findAll();
     }
 }
 

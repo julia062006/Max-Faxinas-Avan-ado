@@ -2,6 +2,7 @@
 
 namespace App\Model;
 
+use App\Core\Database;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\GeneratedValue;
@@ -39,5 +40,12 @@ class Estado
     public function getPais(): Pais
     {
         return $this->pais;
+    }
+
+    public static function findAll(): array
+    {
+        $em = Database::getEntityManager();
+        $repository = $em->getRepository(Estado::class);
+        return $repository->findAll();
     }
 }

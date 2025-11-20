@@ -24,14 +24,14 @@ if (!$dadosServicos) {
   <h1 class="titulo">Nossos Serviços</h1>
   <div class="row justify-content-center">
     <?php foreach ($dadosServicos as $servicoAtual): ?>
-      <div class="col-md-4 mb-4 mobile-centralizado">
-        <div class="card text-center">
+      <div class="col-md-4 mb-4 d-flex mobile-centralizado">
+        <div class="card text-center flex-fill d-flex flex-column">
 
           <img src="<?= "{$api}/{$servicoAtual->imagem}" ?>"
                class="card-img-top" 
                alt="<?= $servicoAtual->tipoDeServico ?>">
 
-          <div class="card-body">
+          <div class="card-body d-flex flex-column">
             <h5 class="card-title"><?= $servicoAtual->tipoDeServico ?></h5>
             <p class="card-text"><?= $servicoAtual->descricao ?></p>
 

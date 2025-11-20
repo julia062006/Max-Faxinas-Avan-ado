@@ -14,47 +14,47 @@ use App\Model\Servico;
 class AgendamentoController
 {
     public function finalizar()
-{
-    $clienteId = $_SESSION["cliente"]["id"] ?? null;
-    if (!$clienteId) {
-        header("Location: /login");
-        exit;
+    {
+        $clienteId = $_SESSION["cliente"]["id"] ?? null;
+        if (!$clienteId) {
+            header("Location: /login");
+            exit;
+        }
+
+        // pega o carrinho do usuário
+        $carrinho = $_SESSION['carrinho_' . $clienteId] ?? [];
+
+        if (empty($carrinho)) {
+            $_SESSION['mensagem'] = [
+                'texto' => 'Seu carrinho está vazio!',
+                'url' => '/carrinho',
+                'icone' => 'error'
+            ];
+            header("Location: /carrinho");
+            exit;
+        }
+
+        $cliente = Cliente::findById($clienteId);
+        if (!$cliente) {
+            $_SESSION['mensagem'] = [
+                'texto' => 'Cliente não encontrado!',
+                'url' => '/carrinho',
+                'icone' => 'error'
+            ];
+            header("Location: /carrinho");
+            exit;
+        }
+
+        $enderecos = Endereco::findByCliente($cliente);
+        $formasPagamento = Forma_pagamento::findAll();
+
+        $servicoSelecionado = $carrinho[0]['nome_servico'] ?? null;
+        $adicionais = $carrinho[0]['adicionais'] ?? [];
+        $dataSelecionada = $carrinho[0]['data'] ?? null;
+
+        $page = 'agendamento';
+        require __DIR__ . '/../View/components/layout.phtml';
     }
-
-    // pega o carrinho do usuário
-    $carrinho = $_SESSION['carrinho_' . $clienteId] ?? [];
-
-    if (empty($carrinho)) {
-        $_SESSION['mensagem'] = [
-            'texto' => 'Seu carrinho está vazio!',
-            'url' => '/carrinho',
-            'icone' => 'error'
-        ];
-        header("Location: /carrinho");
-        exit;
-    }
-
-    $cliente = Cliente::findById($clienteId);
-    if (!$cliente) {
-        $_SESSION['mensagem'] = [
-            'texto' => 'Cliente não encontrado!',
-            'url' => '/carrinho',
-            'icone' => 'error'
-        ];
-        header("Location: /carrinho");
-        exit;
-    }
-
-    $enderecos = Endereco::findByCliente($cliente);
-    $formasPagamento = Forma_pagamento::findAll();
-
-    $servicoSelecionado = $carrinho[0]['nome_servico'] ?? null;
-    $adicionais = $carrinho[0]['adicionais'] ?? [];
-    $dataSelecionada = $carrinho[0]['data'] ?? null;
-
-    $page = 'agendamento';
-    require __DIR__ . '/../View/components/layout.phtml';
-}
 
     public function criarAgendamento()
     {
@@ -162,6 +162,20 @@ class AgendamentoController
 
             $em->flush();
         }
+
+        $em->flush();
+      
+        $pagamento = new \App\Model\Pagamento(
+            new \DateTime(),               
+            $valorTotal,                  
+            $formaPagamento,               
+            $cliente,                      
+            $agendamento,                  
+        );
+
+        $em->persist($pagamento);
+        $em->flush();
+
 
         $idUsuario = $_SESSION["cliente"]["id"];
         unset($_SESSION['carrinho_' . $idUsuario]);

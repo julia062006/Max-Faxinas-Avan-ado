@@ -24,8 +24,15 @@
                     </div>
 
                     <div class="mb-3 col-md-4">
-                        <label for="cidade" class="form-label">Cidade:</label>
-                        <input type="text" id="cidade" class="form-control" placeholder="Digite sua cidade" name="user_cidade">
+                        <label class="form-label">Cidade:</label>
+                        <select name="cidade" id="cidade" class="form-select">
+                            <option value="">Selecione uma cidade</option>
+                            <?php foreach ($cidades as $c): ?>
+                                <option value="<?= $c->getId() ?>">
+                                    <?= $c->getNome() ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
                         <div id="erroCidade" class="erro-message"></div>
                     </div>
 

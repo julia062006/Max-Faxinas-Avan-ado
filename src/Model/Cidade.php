@@ -2,7 +2,7 @@
     //Grupo de classes
 namespace App\Model;
 
-
+use App\Core\Database;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\GeneratedValue;
@@ -38,5 +38,13 @@ class Cidade {
     public function getEstado(): Estado {
         return $this->estado;
     }
+
+    public static function findAll(): array
+    {
+        $em = Database::getEntityManager();
+        $repository = $em->getRepository(Cidade::class);
+        return $repository->findAll();
+    }
+
 }
 ?>

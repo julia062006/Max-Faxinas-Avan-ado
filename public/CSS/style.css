@@ -274,8 +274,8 @@ header {
 }
 
 .servico {
-    padding-left: 100px;
-    padding-right: 100px;
+    padding-left: 30px;
+    padding-right: 30px;
     padding-bottom: 80px;
 }
 
@@ -556,6 +556,12 @@ footer .text-center {
     background: none !important;
     /* REMOVE QUALQUER BACKGROUND VINDO DE OUTRO LUGAR */
     background-image: none !important;
+}
+
+@media (max-width: 992px) {
+    .navbar-nav .nav-item{
+        margin-bottom: 10px;
+    }
 }
 
 

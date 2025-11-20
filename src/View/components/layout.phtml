@@ -102,11 +102,6 @@ require_once __DIR__ . '/../../../vendor/autoload.php';
     }
 
     $pagina = __DIR__ . "/../pages/{$page}.phtml";
-    $paginasProtegidas = ['agendamento', 'perfil', 'carrinho'];
-
-    if (in_array($page, $paginasProtegidas) && !isset($_SESSION["cliente"])) {
-      include __DIR__ . "/../pages/login.phtml";
-    }
 
     //rotas
     if (isset($_GET["param"])) {

@@ -1,7 +1,7 @@
 
 <section class="container mt-5">
-  <h1><?= $servico->getTipoDeServico() ?></h1>
-  <p><?= $servico->getDescricao() ?></p>
+    <h1><?= $servico->getTipoDeServico() ?> - R$ <?= number_format($servico->getPreco(), 2, ",", ".") ?></h1>
+    <p><?= $servico->getDescricao() ?></p>
 
   
   <h4>Escolha a data:</h4>

@@ -10,6 +10,15 @@ class CarrinhoController
 {
     public function index(): void
     {
+        if (!isset($_SESSION["cliente"])) {
+            $_SESSION["mensagem"] = [
+                "texto" => "Faça login para adicionar itens ao carrinho",
+                "icone" => "error",
+                "url" => "login"
+            ];
+            header("Location: /login");
+            exit;
+        }
         $idUsuario = $_SESSION["cliente"]["id"] ?? null;
         $carrinho = $_SESSION['carrinho_' . $idUsuario] ?? [];
 

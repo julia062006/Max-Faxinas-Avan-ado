@@ -26,27 +26,19 @@ class Endereco
     #[Column]
     private string $bairro;
 
-    // Agora cidade, estado e país viram strings
-    #[Column]
-    private string $cidade;
+    #[ManyToOne()]
+    private Cidade $cidade;
 
-    #[Column]
-    private string $estado;
-
-    #[Column]
-    private string $pais;
 
     #[ManyToOne]
     private Cliente $cliente;
 
-    public function __construct(string $rua,int $numero,string $bairro,string $cidade,string $estado,string $pais,Cliente $cliente
+    public function __construct(string $rua,int $numero,string $bairro,Cidade $cidade,Cliente $cliente
     ) {
         $this->rua = $rua;
         $this->numero = $numero;
         $this->bairro = $bairro;
         $this->cidade = $cidade;
-        $this->estado = $estado;
-        $this->pais = $pais;
         $this->cliente = $cliente;
     }
 
@@ -70,19 +62,9 @@ class Endereco
         return $this->bairro;
     }
 
-    public function getCidade(): string
+    public function getCidade(): Cidade
     {
         return $this->cidade;
-    }
-
-    public function getEstado(): string
-    {
-        return $this->estado;
-    }
-
-    public function getPais(): string
-    {
-        return $this->pais;
     }
 
     public function getCliente(): Cliente

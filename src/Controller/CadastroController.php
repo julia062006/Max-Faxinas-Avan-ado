@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Core\Database;
+use App\Model\Cidade;
 use App\Model\Cliente;
 use App\Model\Endereco;
 
@@ -16,9 +17,6 @@ class CadastroController
         $email = $_POST['user_email'] ?? '';
         $senha = $_POST['user_senha'];
 
-        // Agora tudo é STRING
-        $paisNome   = $_POST['user_pais'] ?? '';
-        $estadoNome = $_POST['user_estado'] ?? '';
         $cidadeNome = $_POST['user_cidade'] ?? '';
 
         $rua = $_POST['user_rua'] ?? '';
@@ -33,13 +31,13 @@ class CadastroController
             $em->persist($cliente);
             $em->flush();
 
+            $cidade = $em->getRepository(Cidade::class)->find($cidadeNome);
+
             $endereco = new Endereco(
                 $rua,
                 $numero,
                 $bairro,
-                $cidadeNome,
-                $estadoNome,
-                $paisNome,
+                $cidade,
                 $cliente
             );
 
@@ -54,7 +52,6 @@ class CadastroController
 
             header('Location: /login');
             exit;
-
         } catch (\Exception $e) {
 
             $_SESSION['mensagem'] = [

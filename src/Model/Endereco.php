@@ -9,35 +9,45 @@ use Doctrine\ORM\Mapping\GeneratedValue;
 use Doctrine\ORM\Mapping\Id;
 use Doctrine\ORM\Mapping\ManyToOne;
 
-#[Entity()]
+#[Entity]
 class Endereco
 {
-
-    #[Column(), Id, GeneratedValue()]
+    #[Id]
+    #[GeneratedValue]
+    #[Column]
     private int $id;
 
-    #[Column()]
+    #[Column]
     private string $rua;
 
-    #[Column()]
+    #[Column]
     private int $numero;
 
-    #[Column()]
+    #[Column]
     private string $bairro;
+
+    // Agora cidade, estado e país viram strings
+    #[Column]
+    private string $cidade;
+
+    #[Column]
+    private string $estado;
+
+    #[Column]
+    private string $pais;
 
     #[ManyToOne]
     private Cliente $cliente;
 
-    #[ManyToOne]
-    private Cidade $cidade;
-
-    public function __construct(string $rua, int $numero, string $bairro, Cliente $cliente, Cidade $cidade)
-    {
+    public function __construct(string $rua,int $numero,string $bairro,string $cidade,string $estado,string $pais,Cliente $cliente
+    ) {
         $this->rua = $rua;
         $this->numero = $numero;
         $this->bairro = $bairro;
-        $this->cliente = $cliente;
         $this->cidade = $cidade;
+        $this->estado = $estado;
+        $this->pais = $pais;
+        $this->cliente = $cliente;
     }
 
     public function getId(): int
@@ -60,14 +70,24 @@ class Endereco
         return $this->bairro;
     }
 
+    public function getCidade(): string
+    {
+        return $this->cidade;
+    }
+
+    public function getEstado(): string
+    {
+        return $this->estado;
+    }
+
+    public function getPais(): string
+    {
+        return $this->pais;
+    }
+
     public function getCliente(): Cliente
     {
         return $this->cliente;
-    }
-
-    public function getCidade(): Cidade
-    {
-        return $this->cidade;
     }
 
     public static function findByCliente(Cliente $cliente): array

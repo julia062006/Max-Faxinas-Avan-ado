@@ -487,6 +487,13 @@ textarea:focus {
   padding: 8px 15px;
 }
 
+.parsley-errors-list {
+    list-style: none;
+    padding: 0;
+    color: #dc3545;
+    font-size: 0.875rem;
+}
+
 footer {
     background-color: #eef4ed;
     padding-top: 40px;

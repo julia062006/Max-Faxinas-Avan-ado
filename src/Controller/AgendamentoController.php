@@ -9,7 +9,9 @@ use App\Model\Agendamento_adicional;
 use App\Model\Cliente;
 use App\Model\Endereco;
 use App\Model\Forma_pagamento;
+use App\Model\Pagamento;
 use App\Model\Servico;
+use DateTime;
 
 class AgendamentoController
 {
@@ -114,6 +116,27 @@ class AgendamentoController
 
         foreach ($carrinho as $item) {
 
+            $conn = $em->getConnection();
+
+            $sql = "SELECT fn_verificar_agendamento_dia(:data) AS retorno";
+            $result = $conn->fetchAssociative($sql, [
+                'data' => (new \DateTime($item["data"]))->format("Y-m-d")
+            ]);
+
+            $mensagemBanco = $result['retorno'] ?? '';
+            
+            if ($mensagemBanco === "Já existe agendamento para esta data.") {
+
+                $_SESSION['mensagem'] = [
+                    'texto' => $mensagemBanco,
+                    'url' => '/agendamento',
+                    'icone' => 'error'
+                ];
+
+                header("Location: /agendamento");
+                exit;
+            }
+
             $servicoId = $item["id_servico"];
             $servico = $em->find(Servico::class, $servicoId);
 
@@ -164,13 +187,13 @@ class AgendamentoController
         }
 
         $em->flush();
-      
-        $pagamento = new \App\Model\Pagamento(
-            new \DateTime(),               
-            $valorTotal,                  
-            $formaPagamento,               
-            $cliente,                      
-            $agendamento,                  
+
+        $pagamento = new Pagamento(
+            new DateTime(),
+            $valorTotal,
+            $formaPagamento,
+            $cliente,
+            $agendamento,
         );
 
         $em->persist($pagamento);

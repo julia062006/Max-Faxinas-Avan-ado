@@ -72,10 +72,11 @@ class AgendamentoController
         }
 
         $em = Database::getEntityManager();
+        $conn = $em->getConnection();
 
         $cliente = $em->find(Cliente::class, $clienteId);
 
-        $idUsuario = $_SESSION["cliente"]["id"];
+        $idUsuario = $clienteId;
         $carrinho = $_SESSION['carrinho_' . $idUsuario] ?? [];
 
         if (empty($carrinho)) {
@@ -114,101 +115,119 @@ class AgendamentoController
             exit;
         }
 
-        foreach ($carrinho as $item) {
-
-            $conn = $em->getConnection();
-
-            $sql = "SELECT fn_verificar_agendamento_dia(:data) AS retorno";
-            $result = $conn->fetchAssociative($sql, [
-                'data' => (new \DateTime($item["data"]))->format("Y-m-d")
-            ]);
-
-            $mensagemBanco = $result['retorno'] ?? '';
+        try {
+           
+            $conn->beginTransaction();
             
-            if ($mensagemBanco === "Já existe agendamento para esta data.") {
+            foreach ($carrinho as $item) {
+                // verifica regra de negócio no banco (função fn_verificar_agendamento_dia)
+                $sql = "SELECT fn_verificar_agendamento_dia(:data) AS retorno";
+                $result = $conn->fetchAssociative($sql, [
+                    'data' => (new \DateTime($item["data"]))->format("Y-m-d")
+                ]);
 
-                $_SESSION['mensagem'] = [
-                    'texto' => $mensagemBanco,
-                    'url' => '/agendamento',
-                    'icone' => 'error'
-                ];
+                $mensagemBanco = $result['retorno'] ?? '';
 
-                header("Location: /agendamento");
-                exit;
-            }
-
-            $servicoId = $item["id_servico"];
-            $servico = $em->find(Servico::class, $servicoId);
-
-            if (!$servico) {
-                $_SESSION['mensagem'] = [
-                    'texto' => 'Serviço não encontrado',
-                    'url' => '/agendamento',
-                    'icone' => 'error'
-                ];
-                header("Location: /agendamento");
-                exit;
-            }
-
-            $data = new \DateTime($item["data"]);
-            $valorTotal = $item["valor_total"];
-
-            $agendamento = new Agendamento($data, "pendente", $cliente, $servico, $formaPagamento, $endereco, $valorTotal);
-
-            $em->persist($agendamento);
-            $em->flush();
-
-            if (!empty($item["adicionais"])) {
-
-                foreach ($item["adicionais"] as $adc) {
-
-                    $adicionalEntity = $em->find(Adicional::class, $adc["id"]);
-
-                    if (!$adicionalEntity) {
-                        $_SESSION['mensagem'] = [
-                            'texto' => 'Adicional inválido!',
-                            'url' => '/carrinho',
-                            'icone' => 'error'
-                        ];
-                        header("Location: /carrinho");
-                        exit;
-                    }
-
-                    $agendamentoAdicional = new Agendamento_adicional(
-                        $agendamento,
-                        $adicionalEntity
-                    );
-
-                    $em->persist($agendamentoAdicional);
+                if ($mensagemBanco === "Já existe agendamento para esta data.") {
+                    // aborta transação e retorna erro ao usuário
+                    $conn->rollBack();
+                    $_SESSION['mensagem'] = [
+                        'texto' => $mensagemBanco,
+                        'url' => '/agendamento',
+                        'icone' => 'error'
+                    ];
+                    header("Location: /agendamento");
+                    exit;
                 }
+
+                $servicoId = $item["id_servico"];
+                $servico = $em->find(Servico::class, $servicoId);
+
+                if (!$servico) {
+                    $conn->rollBack();
+                    $_SESSION['mensagem'] = [
+                        'texto' => 'Serviço não encontrado',
+                        'url' => '/agendamento',
+                        'icone' => 'error'
+                    ];
+                    header("Location: /agendamento");
+                    exit;
+                }
+
+                $data = new \DateTime($item["data"]);
+                $valorTotalItem = $item["valor_total"];
+
+                $agendamento = new Agendamento($data, "pendente", $cliente, $servico, $formaPagamento, $endereco, $valorTotalItem);
+                $em->persist($agendamento);
+                $em->flush();
+
+
+                if (!empty($item["adicionais"])) {
+                    foreach ($item["adicionais"] as $adc) {
+                        $adicionalEntity = $em->find(Adicional::class, $adc["id"]);
+                        if (!$adicionalEntity) {
+                            $conn->rollBack();
+                            $_SESSION['mensagem'] = [
+                                'texto' => 'Adicional inválido!',
+                                'url' => '/carrinho',
+                                'icone' => 'error'
+                            ];
+                            header("Location: /carrinho");
+                            exit;
+                        }
+
+                        $agendamentoAdicional = new Agendamento_adicional($agendamento, $adicionalEntity);
+                        $em->persist($agendamentoAdicional);
+                    }
+                    // persiste os adicionais do agendamento
+                    $em->flush();
+                }
+
+                // cria o pagamento referente a ESTE agendamento
+                $pagamento = new Pagamento(
+                    new DateTime(),
+                    $valorTotalItem,
+                    $formaPagamento,
+                    $cliente,
+                    $agendamento
+                );
+
+                // se existir campo/método status no model, seta como pendente
+                if (method_exists($pagamento, 'setStatus')) {
+                    $pagamento->setStatus('pendente');
+                }
+
+                $em->persist($pagamento);
+                $em->flush();
             }
 
-            $em->flush();
+            // se chegou até aqui, commita a transação
+            $conn->commit();
+
+            // limpa carrinho do usuário
+            unset($_SESSION['carrinho_' . $idUsuario]);
+
+            $_SESSION['mensagem'] = [
+                'texto' => 'Agendamento(s) salvo(s) com sucesso!',
+                'url' => '/carrinho',
+                'icone' => 'success'
+            ];
+            header("Location: /carrinho");
+            exit;
+        } catch (\Throwable $e) {
+            // rollback se der erro
+            if ($conn->isTransactionActive()) {
+                $conn->rollBack();
+            }
+
+            // registra/mostra erro (em dev pode exibir a mensagem)
+            $_SESSION['mensagem'] = [
+                'texto' => 'Erro ao salvar agendamento: ' . $e->getMessage(),
+                'url' => '/carrinho',
+                'icone' => 'error'
+            ];
+            header("Location: /carrinho");
+            exit;
         }
-
-        $em->flush();
-
-        $pagamento = new Pagamento(
-            new DateTime(),
-            $valorTotal,
-            $formaPagamento,
-            $cliente,
-            $agendamento,
-        );
-
-        $em->persist($pagamento);
-        $em->flush();
-
-
-        $idUsuario = $_SESSION["cliente"]["id"];
-        unset($_SESSION['carrinho_' . $idUsuario]);
-
-        $_SESSION['mensagem'] = [
-            'texto' => 'Agendamento salvo com sucesso!',
-            'url' => '/carrinho',
-            'icone' => 'success'
-        ];
-        header("Location: /carrinho");
-        exit;
     }
 }

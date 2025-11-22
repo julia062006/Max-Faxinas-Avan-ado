@@ -18,7 +18,7 @@ $carrinho = $_SESSION['carrinho_' . $idUsuario] ?? [];
         </div>
         <?php return; ?>
     <?php endif; ?>
-
+<div class="table-responsive">
     <table class="table table-bordered text-center">
         <thead>
             <tr>
@@ -61,16 +61,16 @@ $carrinho = $_SESSION['carrinho_' . $idUsuario] ?? [];
         <?php endforeach; ?>
         </tbody>
     </table>
-
-    <div class="text-end">
+</div>
+    <div class="text-center text-lg-end">
         <h3>Total Geral:  
             R$ <?= number_format(array_sum(array_column($carrinho, 'valor_total')), 2, ",", ".") ?>
         </h3>
     </div>
 
-    <div class="text-end mt-3">
-        <a href="/carrinho/limpar" class="btn btn-lg">Limpar Carrinho</a>
-        <a href="/carrinho/finalizar" class="btn btn-lg">Finalizar Pedido</a>
+    <div class="text-center text-lg-end mt-3">
+        <a href="/carrinho/limpar" class="btn btn-lg mb-2">Limpar Carrinho</a>
+        <a href="/carrinho/finalizar" class="btn btn-lg mb-2">Finalizar Pedido</a>
     </div>
 
 </section>
